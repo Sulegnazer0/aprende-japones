@@ -1,81 +1,289 @@
-id_jlpt,tipo,categoria,caracter,romaji,significado,onyomi,kunyomi
-1,kanji,N5,一,ichi,Uno,イチ (ichi),ひと (hito)
-2,kanji,N5,二,ni,Dos,ニ (ni),ふた (futa)
-3,kanji,N5,三,san,Tres,サン (san),み (mi)
-4,kanji,N5,四,yon,Cuatro,シ (shi),よん / よ (yon / yo)
-5,kanji,N5,五,go,Cinco,ゴ (go),いつ (itsu)
-6,kanji,N5,六,roku,Seis,ロク (roku),む (mu)
-7,kanji,N5,七,nana,Siete,シチ (shichi),なな (nana)
-8,kanji,N5,八,hachi,Ocho,ハチ (hachi),や (ya)
-9,kanji,N5,九,kyuu,Nueve,キュウ / ク (kyuu / ku),ここの (kokono)
-10,kanji,N5,十,juu,Diez,ジュウ (juu),とお (too)
-11,kanji,N5,百,hyaku,Cien,ヒャク (hyaku),もも (momo)
-12,kanji,N5,千,sen,Mil,セン (sen),ち (chi)
-13,kanji,N5,万,man,Diez mil,マン / バン (man / ban),-
-14,kanji,N5,円,en,Yen / Circulo,エン (en),まる (maru)
-15,kanji,N5,日,nichi,Dia / Sol,ニチ / ジツ (nichi / jitsu),ひ / か (hi / ka)
-16,kanji,N5,月,getsu,Mes / Luna,ゲツ / ガツ (getsu / gatsu),つき (tsuki)
-17,kanji,N5,火,ka,Fuego,カ (ka),ひ (hi)
-18,kanji,N5,水,mizu,Agua,スイ (sui),みず (mizu)
-19,kanji,N5,木,moku,Arbol / Madera,モク / ボク (moku / boku),き (ki)
-20,kanji,N5,金,kin,Oro / Dinero,キン (kin),かね (kane)
-21,kanji,N5,土,to,Tierra,ド / ト (do / to),つち (tsuchi)
-22,kanji,N5,国,koku,Pais,コク (koku),くに (kuni)
-23,kanji,N5,人,jin,Persona,ジン / ニン (jin / nin),ひと (hito)
-24,kanji,N5,年,nen,Ano,ネン (nen),とし (toshi)
-25,kanji,N5,大,dai,Grande,ダイ / タイ (dai / tai),おお (oo)
-26,kanji,N5,小,shou,Pequeno,ショウ (shou),ちい (chii)
-27,kanji,N5,中,chuu,Medio / Dentro,チュウ (chuu),なか (naka)
-28,kanji,N5,本,hon,Libro / Origen,ホン (hon),moto (moto)
-29,kanji,N5,長,chou,Largo,チョウ (chou),なが (nagai)
-30,kanji,N5,出,shutsu,Salir,シュツ (shutsu),で / だ (de / da)
-31,kanji,N5,入,nyuu,Entrar,ニュウ (nyuu),hai / i (hai / i)
-32,kanji,N5,生,sei,Vida / Nacer,セイ / ショウ (sei / shou),i / uma (i / uma)
-33,kanji,N5,学,gaku,Estudiar,ガク (gaku),まな (mana)
-34,kanji,N5,校,kou,Escuela,コウ (kou),-
-35,kanji,N5,先,sen,Antes / Futuro,セン (sen),さき (saki)
-36,kanji,N5,男,dan,Hombre,ダン / ナン (dan / nan),おとこ (otoko)
-37,kanji,N5,女,jo,Mujer,ジョ (jo),おんな (onna)
-38,kanji,N5,子,shi,Nino,シ / ス (shi / su),こ (co)
-39,kanji,N5,車,sha,Carro / Vehiculo,シャ (sha),くるma (kuruma)
-40,kanji,N5,気,ki,Energia / Espiritu,キ / ケ (ki / ke),-
-41,kanji,N5,北,kita,Norte,ホク (hoku),きた (kita)
-42,kanji,N5,南,minami,Sur,ナン (nan),みなみ (minami)
-43,kanji,N5,西,nishi,Oeste,セイ / サイ (sei / sai),nishi (nishi)
-44,kanji,N5,東,higashi,Este,トウ (tou),ひがし (higashi)
-45,kanji,N5,上,ue,Arriba,ジョウ (jou),ue / kami (ue / kami)
-46,kanji,N5,下,shita,Abajo,カ / ゲ (ka / ge),shita / shimo (shita / shimo)
-47,kanji,N5,左,hidari,Izquierda,サ (sa),ひだり (hidari)
-48,kanji,N5,右,migi,Derecha,ウ / ユウ (u / yuu),みぎ (migi)
-49,kanji,N5,前,mae,Antes / Frente,ゼン (zen),mae (mae)
-50,kanji,N5,後,ushiro,Despues / Atras,ゴ / コウ (go / kou),ushiro / ato (ushiro / ato)
-51,kanji,N5,午,go,Mediodia,ゴ (go),-
-52,kanji,N5,門,mon,Puerta / Portal,モン (mon),かど (kado)
-53,kanji,N5,間,aida,Intervalo / Espacio,カン / ケン (kan / ken),あいだ / ま (aida / ma)
-54,kanji,N5,聞,bun,Escuchar,ブン / モン (bun / mon),き (ki)
-55,kanji,N5,見,ken,Ver,ケン (ken),み (mi)
-56,kanji,N5,行,kou,Ir,コウ / ギョウ (kou / gyou),い / ゆ (i / yu)
-57,kanji,N5,来,rai,Venir,ライ (rai),く / き / こ (ku / ki / ko)
-58,kanji,N5,食,shoku,Comer,ショク (shoku),た (ta)
-59,kanji,N5,飲,in,Beber,イン (in),の (no)
-60,kanji,N5,買,ka,Comprar,バイ (bai),か (ka)
-61,kanji,N5,話,wa,Hablar,ワ (wa),はな / はなし (hana / hanashi)
-62,kanji,N5,語,go,Idioma / Palabra,ゴ (go),かた (kata)
-63,kanji,N5,読,yomu,Leer,ドク (doku),よ (yo)
-64,kanji,N5,書,kaku,Escribir,ショ (sho),か (ka)
-65,kanji,N5,友,tomo,Amigo,ユウ (yuu),とも (tomo)
-66,kanji,N5,足,ashi,Pie / Pierna,ソク (soku),あし (ashi)
-67,kanji,N5,目,me,Ojo,モク (moku),め (me)
-68,kanji,N5,耳,mimi,Oreja,ジ (ji),みみ (mimi)
-70,kanji,N5,口,kuchi,Boca,コウ / ク (kou / ku),くち (kuchi)
-71,kanji,N5,手,te,Mano,シュ (shu),て (te)
-72,kanji,N5,白,shiro,Blanco,ハク (haku),しろ (shiro)
-73,kanji,N5,新,shin,Nuevo,シン (shin),あたら (atara)
-74,kanji,N5,古,furui,Viejo,コ (ko),ふる (furu)
-75,kanji,N5,高,takai,Alto / Caro,コウ (kou),たか (taka)
-69,kanji,N5,安,yasui,Barato / Seguro,アン (an),やす (yasu)
-76,kanji,N5,多,ooui,Mucho,タ (ta),おお (oo)
-77,kanji,N5,少,sukunai,Poco,ショウ (shou),すく / すこ (suku / suko)
-78,kanji,N5,何,nani,Que,カ (ka),なに / なん (nani / nan)
-79,kanji,N5,時,toki,Tiempo / Hora,ジ (ji),とき (toki)
-80,kanji,N5,分,fun,Minuto / Dividir,ブン / フン (bun / fun),わ (wa)
+id_jlpt,tipo,categoria,caracter,romaji,significado,onyomi,kunyomi,contraparte,palabra_ejemplo
+,hiragana,basico,あ,a,Letra A,,,ア (Katakana),あめ (Ame - Lluvia)
+,katakana,basico,ア,a,Letra A,,,あ (Hiragana),アメリカ (Amerika - Estados Unidos)
+,hiragana,basico,い,i,Letra I,,,イ (Katakana),
+,katakana,basico,イ,i,Letra I,,,い (Hiragana),
+,hiragana,basico,う,u,Letra U,,,ウ (Katakana),
+,katakana,basico,ウ,u,Letra U,,,う (Hiragana),
+,hiragana,basico,え,e,Letra E,,,エ (Katakana),
+,katakana,basico,エ,e,Letra E,,,え (Hiragana),
+,hiragana,basico,お,o,Letra O,,,オ (Katakana),
+,katakana,basico,オ,o,Letra O,,,お (Hiragana),
+,hiragana,basico,か,ka,Letra KA,,,カ (Katakana),
+,katakana,basico,カ,ka,Letra KA,,,か (Hiragana),
+,hiragana,basico,き,ki,Letra KI,,,キ (Katakana),
+,katakana,basico,キ,ki,Letra KI,,,き (Hiragana),
+,hiragana,basico,く,ku,Letra KU,,,ク (Katakana),
+,katakana,basico,ク,ku,Letra KU,,,く (Hiragana),
+,hiragana,basico,け,ke,Letra KE,,,ケ (Katakana),
+,katakana,basico,ケ,ke,Letra KE,,,け (Hiragana),
+,hiragana,basico,こ,ko,Letra KO,,,コ (Katakana),
+,katakana,basico,コ,ko,Letra KO,,,こ (Hiragana),
+,hiragana,basico,さ,sa,Letra SA,,,サ (Katakana),
+,katakana,basico,サ,sa,Letra SA,,,さ (Hiragana),
+,hiragana,basico,し,shi,Letra SHI,,,シ (Katakana),
+,katakana,basico,シ,shi,Letra SHI,,,し (Hiragana),
+,hiragana,basico,す,su,Letra SU,,,ス (Katakana),
+,katakana,basico,ス,su,Letra SU,,,す (Hiragana),
+,hiragana,basico,せ,se,Letra SE,,,セ (Katakana),
+,katakana,basico,セ,se,Letra SE,,,せ (Hiragana),
+,hiragana,basico,そ,so,Letra SO,,,ソ (Katakana),
+,katakana,basico,ソ,so,Letra SO,,,そ (Hiragana),
+,hiragana,basico,た,ta,Letra TA,,,タ (Katakana),
+,katakana,basico,タ,ta,Letra TA,,,た (Hiragana),
+,hiragana,basico,ち,chi,Letra CHI,,,チ (Katakana),
+,katakana,basico,チ,chi,Letra CHI,,,ち (Hiragana),
+,hiragana,basico,つ,tsu,Letra TSU,,,ツ (Katakana),
+,katakana,basico,ツ,tsu,Letra TSU,,,つ (Hiragana),
+,hiragana,basico,て,te,Letra TE,,,テ (Katakana),
+,katakana,basico,テ,te,Letra TE,,,て (Hiragana),
+,hiragana,basico,と,to,Letra TO,,,ト (Katakana),
+,katakana,basico,ト,to,Letra TO,,,と (Hiragana),
+,hiragana,basico,な,na,Letra NA,,,ナ (Katakana),
+,katakana,basico,ナ,na,Letra NA,,,な (Hiragana),
+,hiragana,basico,に,ni,Letra NI,,,ニ (Katakana),
+,katakana,basico,ニ,ni,Letra NI,,,に (Hiragana),
+,hiragana,basico,ぬ,nu,Letra NU,,,ヌ (Katakana),
+,katakana,basico,ヌ,nu,Letra NU,,,ぬ (Hiragana),
+,hiragana,basico,ね,ne,Letra NE,,,ネ (Katakana),
+,katakana,basico,ネ,ne,Letra NE,,,ね (Hiragana),
+,hiragana,basico,の,no,Letra NO,,,ノ (Katakana),
+,katakana,basico,ノ,no,Letra NO,,,の (Hiragana),
+,hiragana,basico,は,ha,Letra HA,,,ハ (Katakana),
+,katakana,basico,ハ,ha,Letra HA,,,は (Hiragana),
+,hiragana,basico,ひ,hi,Letra HI,,,ヒ (Katakana),
+,katakana,basico,ヒ,hi,Letra HI,,,ひ (Hiragana),
+,hiragana,basico,ふ,fu,Letra FU,,,フ (Katakana),
+,katakana,basico,フ,fu,Letra FU,,,ふ (Hiragana),
+,hiragana,basico,へ,he,Letra HE,,,ヘ (Katakana),
+,katakana,basico,ヘ,he,Letra HE,,,へ (Hiragana),
+,hiragana,basico,ほ,ho,Letra HO,,,ホ (Katakana),
+,katakana,basico,ホ,ho,Letra HO,,,ほ (Hiragana),
+,hiragana,basico,ま,ma,Letra MA,,,マ (Katakana),
+,katakana,basico,マ,ma,Letra MA,,,ま (Hiragana),
+,hiragana,basico,み,mi,Letra MI,,,ミ (Katakana),
+,katakana,basico,ミ,mi,Letra MI,,,み (Hiragana),
+,hiragana,basico,む,mu,Letra MU,,,ム (Katakana),
+,katakana,basico,ム,mu,Letra MU,,,む (Hiragana),
+,hiragana,basico,め,me,Letra ME,,,メ (Katakana),
+,katakana,basico,メ,me,Letra ME,,,め (Hiragana),
+,hiragana,basico,も,mo,Letra MO,,,モ (Katakana),
+,katakana,basico,モ,mo,Letra MO,,,も (Hiragana),
+,hiragana,basico,や,ya,Letra YA,,,ヤ (Katakana),
+,katakana,basico,ヤ,ya,Letra YA,,,や (Hiragana),
+,hiragana,basico,ゆ,yu,Letra YU,,,ユ (Katakana),
+,katakana,basico,ユ,yu,Letra YU,,,ゆ (Hiragana),
+,hiragana,basico,よ,yo,Letra YO,,,ヨ (Katakana),
+,katakana,basico,ヨ,yo,Letra YO,,,よ (Hiragana),
+,hiragana,basico,ら,ra,Letra RA,,,ラ (Katakana),
+,katakana,basico,ラ,ra,Letra RA,,,ら (Hiragana),
+,hiragana,basico,り,ri,Letra RI,,,リ (Katakana),
+,katakana,basico,リ,ri,Letra RI,,,り (Hiragana),
+,hiragana,basico,る,ru,Letra RU,,,ル (Katakana),
+,katakana,basico,ル,ru,Letra RU,,,る (Hiragana),
+,hiragana,basico,れ,re,Letra RE,,,レ (Katakana),
+,katakana,basico,レ,re,Letra RE,,,れ (Hiragana),
+,hiragana,basico,ろ,ro,Letra RO,,,ロ (Katakana),
+,katakana,basico,ロ,ro,Letra RO,,,ろ (Hiragana),
+,hiragana,basico,わ,wa,Letra WA,,,ワ (Katakana),
+,katakana,basico,ワ,wa,Letra WA,,,わ (Hiragana),
+,hiragana,basico,を,wo,Letra WO,,,ヲ (Katakana),
+,katakana,basico,ヲ,wo,Letra WO,,,を (Hiragana),
+,hiragana,basico,ん,n,Letra N,,,ン (Katakana),
+,katakana,basico,ン,n,Letra N,,,ん (Hiragana),
+,hiragana,basico,が,ga,Letra GA,,,ガ (Katakana),
+,katakana,basico,ガ,ga,Letra GA,,,が (Hiragana),
+,hiragana,basico,ぎ,gi,Letra GI,,,ギ (Katakana),
+,katakana,basico,ギ,gi,Letra GI,,,ぎ (Hiragana),
+,hiragana,basico,ぐ,gu,Letra GU,,,グ (Katakana),
+,katakana,basico,グ,gu,Letra GU,,,ぐ (Hiragana),
+,hiragana,basico,げ,ge,Letra GE,,,ゲ (Katakana),
+,katakana,basico,ゲ,ge,Letra GE,,,げ (Hiragana),
+,hiragana,basico,ご,go,Letra GO,,,ゴ (Katakana),
+,katakana,basico,ゴ,go,Letra GO,,,ご (Hiragana),
+,hiragana,basico,ざ,za,Letra ZA,,,ザ (Katakana),
+,katakana,basico,ザ,za,Letra ZA,,,ざ (Hiragana),
+,hiragana,basico,じ,ji,Letra JI,,,ジ (Katakana),
+,katakana,basico,ジ,ji,Letra JI,,,じ (Hiragana),
+,hiragana,basico,ず,zu,Letra ZU,,,ズ (Katakana),
+,katakana,basico,ズ,zu,Letra ZU,,,ず (Hiragana),
+,hiragana,basico,ぜ,ze,Letra ZE,,,ゼ (Katakana),
+,katakana,basico,ゼ,ze,Letra ZE,,,ぜ (Hiragana),
+,hiragana,basico,ぞ,zo,Letra ZO,,,ゾ (Katakana),
+,katakana,basico,ゾ,zo,Letra ZO,,,ぞ (Hiragana),
+,hiragana,basico,だ,da,Letra DA,,,ダ (Katakana),
+,katakana,basico,ダ,da,Letra DA,,,だ (Hiragana),
+,hiragana,basico,ぢ,ji,Letra JI,,,ヂ (Katakana),
+,katakana,basico,ヂ,ji,Letra JI,,,ぢ (Hiragana),
+,hiragana,basico,づ,zu,Letra ZU,,,ヅ (Katakana),
+,katakana,basico,ヅ,zu,Letra ZU,,,づ (Hiragana),
+,hiragana,basico,で,de,Letra DE,,,デ (Katakana),
+,katakana,basico,デ,de,Letra DE,,,で (Hiragana),
+,hiragana,basico,ど,do,Letra DO,,,ド (Katakana),
+,katakana,basico,ド,do,Letra DO,,,ど (Hiragana),
+,hiragana,basico,ば,ba,Letra BA,,,バ (Katakana),
+,katakana,basico,バ,ba,Letra BA,,,ば (Hiragana),
+,hiragana,basico,び,bi,Letra BI,,,ビ (Katakana),
+,katakana,basico,ビ,bi,Letra BI,,,び (Hiragana),
+,hiragana,basico,ぶ,bu,Letra BU,,,ブ (Katakana),
+,katakana,basico,ブ,bu,Letra BU,,,ぶ (Hiragana),
+,hiragana,basico,べ,be,Letra BE,,,ベ (Katakana),
+,katakana,basico,ベ,be,Letra BE,,,べ (Hiragana),
+,hiragana,basico,ぼ,bo,Letra BO,,,ボ (Katakana),
+,katakana,basico,ボ,bo,Letra BO,,,ぼ (Hiragana),
+,hiragana,basico,ぱ,pa,Letra PA,,,パ (Katakana),
+,katakana,basico,パ,pa,Letra PA,,,ぱ (Hiragana),
+,hiragana,basico,ぴ,pi,Letra PI,,,ピ (Katakana),
+,katakana,basico,ピ,pi,Letra PI,,,ぴ (Hiragana),
+,hiragana,basico,ぷ,pu,Letra PU,,,プ (Katakana),
+,katakana,basico,プ,pu,Letra PU,,,ぷ (Hiragana),
+,hiragana,basico,ぺ,pe,Letra PE,,,ペ (Katakana),
+,katakana,basico,ペ,pe,Letra PE,,,ぺ (Hiragana),
+,hiragana,basico,ぽ,po,Letra PO,,,ポ (Katakana),
+,katakana,basico,ポ,po,Letra PO,,,ぽ (Hiragana),
+,hiragana,basico,きゃ,kya,Letra KYA,,,キャ (Katakana),
+,katakana,basico,キャ,kya,Letra KYA,,,きゃ (Hiragana),
+,hiragana,basico,きゅ,kyu,Letra KYU,,,キュ (Katakana),
+,katakana,basico,キュ,kyu,Letra KYU,,,きゅ (Hiragana),
+,hiragana,basico,きょ,kyo,Letra KYO,,,キョ (Katakana),
+,katakana,basico,キョ,kyo,Letra KYO,,,きょ (Hiragana),
+,hiragana,basico,しゃ,sha,Letra SHA,,,シャ (Katakana),
+,katakana,basico,シャ,sha,Letra SHA,,,しゃ (Hiragana),
+,hiragana,basico,しゅ,shu,Letra SHU,,,シュ (Katakana),
+,katakana,basico,シュ,shu,Letra SHU,,,しゅ (Hiragana),
+,hiragana,basico,しょ,sho,Letra SHO,,,ショ (Katakana),
+,katakana,basico,ショ,sho,Letra SHO,,,しょ (Hiragana),
+,hiragana,basico,ちゃ,cha,Letra CHA,,,チャ (Katakana),
+,katakana,basico,チャ,cha,Letra CHA,,,ちゃ (Hiragana),
+,hiragana,basico,ちゅ,chu,Letra CHU,,,チュ (Katakana),
+,katakana,basico,チュ,chu,Letra CHU,,,ちゅ (Hiragana),
+,hiragana,basico,ちょ,cho,Letra CHO,,,チョ (Katakana),
+,katakana,basico,チョ,cho,Letra CHO,,,ちょ (Hiragana),
+,hiragana,basico,にゃ,nya,Letra NYA,,,ニャ (Katakana),
+,katakana,basico,ニャ,nya,Letra NYA,,,にゃ (Hiragana),
+,hiragana,basico,にゅ,nyu,Letra NYU,,,ニュ (Katakana),
+,katakana,basico,ニュ,nyu,Letra NYU,,,にゅ (Hiragana),
+,hiragana,basico,にょ,nyo,Letra NYO,,,ニョ (Katakana),
+,katakana,basico,ニョ,nyo,Letra NYO,,,にょ (Hiragana),
+,hiragana,basico,ひゃ,hya,Letra HYA,,,ヒャ (Katakana),
+,katakana,basico,ヒャ,hya,Letra HYA,,,ひゃ (Hiragana),
+,hiragana,basico,ひゅ,hyu,Letra HYU,,,ヒュ (Katakana),
+,katakana,basico,ヒュ,hyu,Letra HYU,,,ひゅ (Hiragana),
+,hiragana,basico,ひょ,hyo,Letra HYO,,,ヒョ (Katakana),
+,katakana,basico,ヒョ,hyo,Letra HYO,,,ひょ (Hiragana),
+,hiragana,basico,みゃ,mya,Letra MYA,,,ミャ (Katakana),
+,katakana,basico,ミャ,mya,Letra MYA,,,みゃ (Hiragana),
+,hiragana,basico,みゅ,myu,Letra MYU,,,ミュ (Katakana),
+,katakana,basico,ミュ,myu,Letra MYU,,,みゅ (Hiragana),
+,hiragana,basico,みょ,myo,Letra MYO,,,ミョ (Katakana),
+,katakana,basico,ミョ,myo,Letra MYO,,,みょ (Hiragana),
+,hiragana,basico,りゃ,rya,Letra RYA,,,リャ (Katakana),
+,katakana,basico,リャ,rya,Letra RYA,,,りゃ (Hiragana),
+,hiragana,basico,りゅ,ryu,Letra RYU,,,リュ (Katakana),
+,katakana,basico,リュ,ryu,Letra RYU,,,りゅ (Hiragana),
+,hiragana,basico,りょ,ryo,Letra RYO,,,リョ (Katakana),
+,katakana,basico,リョ,ryo,Letra RYO,,,りょ (Hiragana),
+,hiragana,basico,ぎゃ,gya,Letra GYA,,,ギャ (Katakana),
+,katakana,basico,ギャ,gya,Letra GYA,,,ぎゃ (Hiragana),
+,hiragana,basico,ぎゅ,gyu,Letra GYU,,,ギュ (Katakana),
+,katakana,basico,ギュ,gyu,Letra GYU,,,ぎゅ (Hiragana),
+,hiragana,basico,ぎょ,gyo,Letra GYO,,,ギョ (Katakana),
+,katakana,basico,ギョ,gyo,Letra GYO,,,ぎょ (Hiragana),
+,hiragana,basico,じゃ,ja,Letra JA,,,ジャ (Katakana),
+,katakana,basico,ジャ,ja,Letra JA,,,じゃ (Hiragana),
+,hiragana,basico,じゅ,ju,Letra JU,,,ジュ (Katakana),
+,katakana,basico,ジュ,ju,Letra JU,,,じゅ (Hiragana),
+,hiragana,basico,じょ,jo,Letra JO,,,ジョ (Katakana),
+,katakana,basico,ジョ,jo,Letra JO,,,じょ (Hiragana),
+,hiragana,basico,びゃ,bya,Letra BYA,,,ビャ (Katakana),
+,katakana,basico,ビャ,bya,Letra BYA,,,びゃ (Hiragana),
+,hiragana,basico,びゅ,byu,Letra BYU,,,ビュ (Katakana),
+,katakana,basico,ビュ,byu,Letra BYU,,,びゅ (Hiragana),
+,hiragana,basico,びょ,byo,Letra BYO,,,ビョ (Katakana),
+,katakana,basico,ビョ,byo,Letra BYO,,,びょ (Hiragana),
+,hiragana,basico,ぴゃ,pya,Letra PYA,,,ピャ (Katakana),
+,katakana,basico,ピャ,pya,Letra PYA,,,ぴゃ (Hiragana),
+,hiragana,basico,ぴゅ,pyu,Letra PYU,,,ピュ (Katakana),
+,katakana,basico,ピュ,pyu,Letra PYU,,,ぴゅ (Hiragana),
+,hiragana,basico,ぴょ,pyo,Letra PYO,,,ピョ (Katakana),
+,katakana,basico,ピョ,pyo,Letra PYO,,,ぴょ (Hiragana),
+1,kanji,N5,一,ichi,Uno,イチ (ichi),ひと (hito),,
+2,kanji,N5,二,ni,Dos,ニ (ni),ふた (futa),,
+3,kanji,N5,三,san,Tres,サン (san),み (mi),,
+4,kanji,N5,四,yon,Cuatro,シ (shi),よん / よ (yon / yo),,
+5,kanji,N5,五,go,Cinco,ゴ (go),いつ (itsu),,
+6,kanji,N5,六,roku,Seis,ロク (roku),む (mu),,
+7,kanji,N5,七,nana,Siete,シチ (shichi),なな (nana),,
+8,kanji,N5,八,hachi,Ocho,ハチ (hachi),や (ya),,
+9,kanji,N5,九,kyuu,Nueve,キュウ / ク (kyuu / ku),ここの (kokono),,
+10,kanji,N5,十,juu,Diez,ジュウ (juu),とお (too),,
+11,kanji,N5,百,hyaku,Cien,ヒャク (hyaku),もも (momo),,
+12,kanji,N5,千,sen,Mil,セン (sen),ち (chi),,
+13,kanji,N5,万,man,Diez mil,マン / バン (man / ban),-,,
+14,kanji,N5,円,en,Yen / Circulo,エン (en),まる (maru),,
+15,kanji,N5,日,nichi,Dia / Sol,ニチ / ジツ (nichi / jitsu),ひ / か (hi / ka),,
+16,kanji,N5,月,getsu,Mes / Luna,ゲツ / ガツ (getsu / gatsu),つき (tsuki),,
+17,kanji,N5,火,ka,Fuego,カ (ka),ひ (hi),,
+18,kanji,N5,水,mizu,Agua,スイ (sui),みず (mizu),,
+19,kanji,N5,木,moku,Arbol / Madera,モク / ボク (moku / boku),き (ki),,
+20,kanji,N5,金,kin,Oro / Dinero,キン (kin),かね (kane),,
+21,kanji,N5,土,to,Tierra,ド / ト (do / to),つち (tsuchi),,
+22,kanji,N5,国,koku,Pais,コク (koku),くに (kuni),,
+23,kanji,N5,人,jin,Persona,ジン / ニン (jin / nin),ひと (hito),,
+24,kanji,N5,年,nen,Ano,ネン (nen),とし (toshi),,
+25,kanji,N5,大,dai,Grande,ダイ / タイ (dai / tai),おお (oo),,
+26,kanji,N5,小,shou,Pequeno,ショウ (shou),ちい (chii),,
+27,kanji,N5,中,chuu,Medio / Dentro,チュウ (chuu),なか (naka),,
+28,kanji,N5,本,hon,Libro / Origen,ホン (hon),moto (moto),,
+29,kanji,N5,長,chou,Largo,チョウ (chou),なが (nagai),,
+30,kanji,N5,出,shutsu,Salir,シュツ (shutsu),で / だ (de / da),,
+31,kanji,N5,入,nyuu,Entrar,ニュウ (nyuu),hai / i (hai / i),,
+32,kanji,N5,生,sei,Vida / Nacer,セイ / ショウ (sei / shou),i / uma (i / uma),,
+33,kanji,N5,学,gaku,Estudiar,ガク (gaku),まな (mana),,
+34,kanji,N5,校,kou,Escuela,コウ (kou),-,,
+35,kanji,N5,先,sen,Antes / Futuro,セン (sen),さき (saki),,
+36,kanji,N5,男,dan,Hombre,ダン / ナン (dan / nan),おとこ (otoko),,
+37,kanji,N5,女,jo,Mujer,ジョ (jo),おんな (onna),,
+38,kanji,N5,子,shi,Nino,シ / ス (shi / su),こ (co),,
+39,kanji,N5,車,sha,Carro / Vehiculo,シャ (sha),くるma (kuruma),,
+40,kanji,N5,気,ki,Energia / Espiritu,キ / ケ (ki / ke),-,,
+41,kanji,N5,北,kita,Norte,ホク (hoku),きた (kita),,
+42,kanji,N5,南,minami,Sur,ナン (nan),みなみ (minami),,
+43,kanji,N5,西,nishi,Oeste,セイ / サイ (sei / sai),nishi (nishi),,
+44,kanji,N5,東,higashi,Este,トウ (tou),ひがし (higashi),,
+45,kanji,N5,上,ue,Arriba,ジョウ (jou),ue / kami (ue / kami),,
+46,kanji,N5,下,shita,Abajo,カ / ゲ (ka / ge),shita / shimo (shita / shimo),,
+47,kanji,N5,左,hidari,Izquierda,サ (sa),ひだり (hidari),,
+48,kanji,N5,右,migi,Derecha,ウ / ユウ (u / yuu),みぎ (migi),,
+49,kanji,N5,前,mae,Antes / Frente,ゼン (zen),mae (mae),,
+50,kanji,N5,後,ushiro,Despues / Atras,ゴ / コウ (go / kou),ushiro / ato (ushiro / ato),,
+51,kanji,N5,午,go,Mediodia,ゴ (go),-,,
+52,kanji,N5,門,mon,Puerta / Portal,モン (mon),かど (kado),,
+53,kanji,N5,間,aida,Intervalo / Espacio,カン / ケン (kan / ken),あいだ / ま (aida / ma),,
+54,kanji,N5,聞,bun,Escuchar,ブン / モン (bun / mon),き (ki),,
+55,kanji,N5,見,ken,Ver,ケン (ken),み (mi),,
+56,kanji,N5,行,kou,Ir,コウ / ギョウ (kou / gyou),い / ゆ (i / yu),,
+57,kanji,N5,来,rai,Venir,ライ (rai),く / き / こ (ku / ki / ko),,
+58,kanji,N5,食,shoku,Comer,ショク (shoku),た (ta),,
+59,kanji,N5,飲,in,Beber,イン (in),の (no),,
+60,kanji,N5,買,ka,Comprar,バイ (bai),か (ka),,
+61,kanji,N5,話,wa,Hablar,ワ (wa),はな / はなし (hana / hanashi),,
+62,kanji,N5,語,go,Idioma / Palabra,ゴ (go),かた (kata),,
+63,kanji,N5,読,yomu,Leer,ドク (doku),よ (yo),,
+64,kanji,N5,書,kaku,Escribir,ショ (sho),か (ka),,
+65,kanji,N5,友,tomo,Amigo,ユウ (yuu),とも (tomo),,
+66,kanji,N5,足,ashi,Pie / Pierna,ソク (soku),あし (ashi),,
+67,kanji,N5,目,me,Ojo,モク (moku),め (me),,
+68,kanji,N5,耳,mimi,Oreja,ジ (ji),みみ (mimi),,
+69,kanji,N5,安,yasui,Barato / Seguro,アン (an),やす (yasu),,
+70,kanji,N5,口,kuchi,Boca,コウ / ク (kou / ku),くち (kuchi),,
+71,kanji,N5,手,te,Mano,シュ (shu),て (te),,
+72,kanji,N5,白,shiro,Blanco,ハク (haku),しろ (shiro),,
+73,kanji,N5,新,shin,Nuevo,シン (shin),あたら (atara),,
+74,kanji,N5,古,furui,Viejo,コ (ko),ふる (furu),,
+75,kanji,N5,高,takai,Alto / Caro,コウ (kou),たか (taka),,
+76,kanji,N5,多,ooui,Mucho,タ (ta),おお (oo),,
+77,kanji,N5,少,sukunai,Poco,ショウ (shou),すく / すこ (suku / suko),,
+78,kanji,N5,何,nani,Que,カ (ka),なに / なん (nani / nan),,
+79,kanji,N5,時,toki,Tiempo / Hora,ジ (ji),とき (toki),,
+80,kanji,N5,分,fun,Minuto / Dividir,ブン / フン (bun / fun),わ (wa),,
