@@ -52,7 +52,7 @@ const panelRespuesta = document.getElementById('panel-respuesta');
 const btnRevelar = document.getElementById('btn-revelar');
 const btnSiguiente = document.getElementById('btn-siguiente');
 
-// Campos de respuesta y sus contenedores (para ocultarlos dinámicamente)
+// Campos de respuesta y sus contenedores
 const respCaracter = document.getElementById('resp-caracter');
 const respRomaji = document.getElementById('resp-romaji');
 const respCategoria = document.getElementById('resp-categoria');
@@ -90,15 +90,20 @@ function procesarCSV(texto) {
 
 async function cargarDatos() {
     try {
-        const respuesta = await fetch('datos.csv');
+        // TRUCO ANTI-CACHÉ: Agregamos el tiempo exacto a la URL para forzar al celular a descargar los datos frescos.
+        const respuesta = await fetch('datos.csv?v=' + new Date().getTime());
         const textoCSV = await respuesta.text();
+        
         diccionarioJapones = procesarCSV(textoCSV);
         
         if(diccionarioJapones.length > 0) {
             presentarDesafio();
+        } else {
+            txtSignificado.innerText = "El archivo Excel está vacío.";
         }
     } catch (error) {
         txtSignificado.innerText = "Error al conectar con datos.csv";
+        console.error(error);
     }
 }
 
@@ -106,42 +111,37 @@ function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // 1. Leer qué opción elegiste en el menú desplegable
     const modoElegido = selectorModo.value;
     
-    // 2. Filtrar la base de datos según tu elección
+    // Filtrado de seguridad
     let listaFiltrada = diccionarioJapones;
     if (modoElegido !== 'todos') {
-        listaFiltrada = diccionarioJapones.filter(item => item.tipo.toLowerCase() === modoElegido);
+        listaFiltrada = diccionarioJapones.filter(item => (item.tipo || "").toLowerCase() === modoElegido);
     }
     
-    // Si no hay caracteres de esa categoría aún en tu Excel
     if (listaFiltrada.length === 0) {
         txtTipo.innerText = "Aviso";
         txtSignificado.innerText = "No hay datos de esta categoría aún en tu Excel.";
         return;
     }
 
-    // 3. Elegir uno al azar de la lista ya filtrada
     const indiceAzar = Math.floor(Math.random() * listaFiltrada.length);
     caracterActual = listaFiltrada[indiceAzar];
     
-    txtTipo.innerText = caracterActual.tipo + " - " + caracterActual.categoria;
+    txtTipo.innerText = (caracterActual.tipo || "Extra").toUpperCase() + " - " + (caracterActual.categoria || "");
     txtSignificado.innerText = `Dibuja: "${caracterActual.significado}"`;
 }
 
 function revelarRespuesta() {
     if (!caracterActual) return;
     
-    respCaracter.innerText = caracterActual.caracter;
-    respRomaji.innerText = caracterActual.romaji;
-    respCategoria.innerText = caracterActual.categoria;
+    respCaracter.innerText = caracterActual.caracter || "?";
+    respRomaji.innerText = caracterActual.romaji || "-";
+    respCategoria.innerText = caracterActual.categoria || "-";
     
-    // Lógica para mostrar/ocultar información dependiendo de si es Kanji o Kana
-    const esKanji = caracterActual.tipo.toLowerCase() === 'kanji';
+    const esKanji = (caracterActual.tipo || "").toLowerCase() === 'kanji';
 
     if (esKanji) {
-        // Mostrar datos de Kanji
         filaId.style.display = 'block';
         filaOnyomi.style.display = 'block';
         filaKunyomi.style.display = 'block';
@@ -149,17 +149,14 @@ function revelarRespuesta() {
         respOnyomi.innerText = caracterActual.onyomi || "-";
         respKunyomi.innerText = caracterActual.kunyomi || "-";
         
-        // Ocultar datos de Kana
         filaContraparte.style.display = 'none';
         filaPalabra.style.display = 'none';
     } else {
-        // Mostrar datos de Kana
         filaContraparte.style.display = 'block';
         filaPalabra.style.display = 'block';
         respContraparte.innerText = caracterActual.contraparte || "-";
         respPalabra.innerText = caracterActual.palabra_ejemplo || "-";
 
-        // Ocultar datos de Kanji
         filaId.style.display = 'none';
         filaOnyomi.style.display = 'none';
         filaKunyomi.style.display = 'none';
@@ -171,7 +168,7 @@ function revelarRespuesta() {
 // Eventos
 btnRevelar.addEventListener('click', revelarRespuesta);
 btnSiguiente.addEventListener('click', presentarDesafio);
-// Si cambias el selector, lanza un nuevo desafío inmediatamente
 selectorModo.addEventListener('change', presentarDesafio); 
 
+// Arrancar la app
 cargarDatos();
