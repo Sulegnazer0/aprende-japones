@@ -7,42 +7,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="contenedor">
-        <select id="selector-modo" class="selector-modo">
-            <option value="todos">Repasar Todos (Mezclado)</option>
-            <option value="hiragana">Práctica: Solo Hiragana</option>
-            <option value="katakana">Práctica: Solo Katakana</option>
-            <option value="kanji">Práctica: Solo Kanji</option>
-        </select>
-
-        <div class="tarjeta-pregunta">
-            <span id="info-tipo" class="etiqueta">Cargando...</span>
-            <h1 id="texto-significado">Cargando vocabulario...</h1>
-            <p id="pista-romaji" class="pista"></p>
+    <div class="contenedor" style="max-width: 500px;"> <div class="tabs-navegacion">
+            <button id="tab-practica" class="btn-tab activo">✏️ Modo Práctica</button>
+            <button id="tab-estudio" class="btn-tab">📚 Modo Estudio</button>
         </div>
 
-        <canvas id="pizarra" width="320" height="320"></canvas>
-        
-        <div class="controles-pizarra">
-            <button id="btn-limpiar" class="btn-secundario">Limpiar</button>
-            <button id="btn-revelar" class="btn-primario">Revelar Respuesta</button>
-        </div>
+        <div id="seccion-practica">
+            <select id="selector-modo" class="selector-modo">
+                <option value="todos">Repasar Todos (Mezclado)</option>
+                <option value="hiragana">Práctica: Solo Hiragana</option>
+                <option value="katakana">Práctica: Solo Katakana</option>
+                <option value="kanji">Práctica: Solo Kanji</option>
+            </select>
 
-        <div id="panel-respuesta" class="panel-respuesta oculto">
-            <div class="caracter-correcto" id="resp-caracter">?</div>
-            <div class="detalles-grid">
-                <p id="fila-romaji"><strong>Romaji:</strong> <span id="resp-romaji">-</span></p>
-                <p id="fila-categoria"><strong>Categoría:</strong> <span id="resp-categoria">-</span></p>
-                
-                <p id="fila-contraparte"><strong>Contraparte:</strong> <span id="resp-contraparte">-</span></p>
-                <p id="fila-palabra"><strong>Ejemplo:</strong> <span id="resp-palabra">-</span></p>
-                
-                <p id="fila-id"><strong>Nº Lista:</strong> <span id="resp-id">-</span></p>
-                <p id="fila-onyomi"><strong>Onyomi:</strong> <span id="resp-onyomi">-</span></p>
-                <p id="fila-kunyomi"><strong>Kunyomi:</strong> <span id="resp-kunyomi">-</span></p>
+            <div class="tarjeta-pregunta">
+                <span id="info-tipo" class="etiqueta">Cargando...</span>
+                <h1 id="texto-significado">Cargando vocabulario...</h1>
+                <p id="pista-romaji" class="pista"></p>
             </div>
-            <button id="btn-siguiente" class="btn-exito">Siguiente Carácter ➔</button>
+
+            <canvas id="pizarra" width="320" height="320"></canvas>
+            
+            <div class="controles-pizarra">
+                <button id="btn-limpiar" class="btn-secundario">Limpiar</button>
+                <button id="btn-revelar" class="btn-primario">Revelar Respuesta</button>
+            </div>
+
+            <div id="panel-respuesta" class="panel-respuesta oculto">
+                <div class="caracter-correcto" id="resp-caracter">?</div>
+                <div class="detalles-grid">
+                    <p id="fila-romaji"><strong>Romaji:</strong> <span id="resp-romaji">-</span></p>
+                    <p id="fila-categoria"><strong>Categoría:</strong> <span id="resp-categoria">-</span></p>
+                    
+                    <p id="fila-contraparte"><strong>Contraparte:</strong> <span id="resp-contraparte">-</span></p>
+                    <p id="fila-palabra"><strong>Ejemplo:</strong> <span id="resp-palabra">-</span></p>
+                    
+                    <p id="fila-id"><strong>Nº Lista:</strong> <span id="resp-id">-</span></p>
+                    <p id="fila-onyomi"><strong>Onyomi:</strong> <span id="resp-onyomi">-</span></p>
+                    <p id="fila-kunyomi"><strong>Kunyomi:</strong> <span id="resp-kunyomi">-</span></p>
+                </div>
+                <button id="btn-siguiente" class="btn-exito">Siguiente Carácter ➔</button>
+            </div>
         </div>
+
+        <div id="seccion-estudio" class="oculto">
+            <div class="filtros-estudio">
+                <input type="text" id="buscador-texto" placeholder="Buscar significado o romaji (ej. agua, a, mizu)...">
+                <select id="filtro-nivel">
+                    <option value="todos">Todos los niveles</option>
+                    <option value="basico">Kana (Básico)</option>
+                    <option value="N5">Kanji N5</option>
+                    </select>
+            </div>
+            
+            <div id="lista-diccionario" class="grid-diccionario"></div>
+        </div>
+
     </div>
     
     <script src="script.js"></script>
