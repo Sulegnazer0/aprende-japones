@@ -174,21 +174,39 @@ selectorModo.addEventListener('change', presentarDesafio);
 cargarDatos();
 
 // ==========================================
-// 3. MODO ESTUDIO Y BUSCADOR
+// 3. MODO ESTUDIO Y BUSCADOR (CON MODAL)
 // ==========================================
 
-// Referencias de las pestañas y secciones
 const tabPractica = document.getElementById('tab-practica');
 const tabEstudio = document.getElementById('tab-estudio');
 const seccionPractica = document.getElementById('seccion-practica');
 const seccionEstudio = document.getElementById('seccion-estudio');
 
-// Referencias del buscador
 const buscadorTexto = document.getElementById('buscador-texto');
 const filtroNivel = document.getElementById('filtro-nivel');
 const listaDiccionario = document.getElementById('lista-diccionario');
 
-// Lógica para cambiar entre pestañas
+// Referencias de la Ventana Modal
+const modalDetalles = document.getElementById('modal-detalles');
+const cerrarModal = document.getElementById('cerrar-modal');
+const modalCaracter = document.getElementById('modal-caracter');
+const modalRomaji = document.getElementById('modal-romaji');
+const modalSignificado = document.getElementById('modal-significado');
+const modalCategoria = document.getElementById('modal-categoria');
+
+const modalFilaContraparte = document.getElementById('modal-fila-contraparte');
+const modalContraparte = document.getElementById('modal-contraparte');
+const modalFilaPalabra = document.getElementById('modal-fila-palabra');
+const modalPalabra = document.getElementById('modal-palabra');
+
+const modalFilaId = document.getElementById('modal-fila-id');
+const modalId = document.getElementById('modal-id');
+const modalFilaOnyomi = document.getElementById('modal-fila-onyomi');
+const modalOnyomi = document.getElementById('modal-onyomi');
+const modalFilaKunyomi = document.getElementById('modal-fila-kunyomi');
+const modalKunyomi = document.getElementById('modal-kunyomi');
+
+// Navegación de pestañas
 tabPractica.addEventListener('click', () => {
     seccionPractica.classList.remove('oculto');
     seccionEstudio.classList.add('oculto');
@@ -201,38 +219,73 @@ tabEstudio.addEventListener('click', () => {
     seccionPractica.classList.add('oculto');
     tabEstudio.classList.add('activo');
     tabPractica.classList.remove('activo');
-    renderizarDiccionario(); // Cargar la lista al abrir la pestaña
+    renderizarDiccionario(); 
 });
 
-// Lógica para filtrar y dibujar la lista
+// Función para abrir la ventana emergente con datos
+function abrirModal(item) {
+    // 1. Llenar los datos básicos
+    modalCaracter.innerText = item.caracter || "?";
+    modalRomaji.innerText = item.romaji || "-";
+    modalSignificado.innerText = item.significado || "-";
+    modalCategoria.innerText = item.categoria || "-";
+
+    // 2. Revisar si es Kanji o Kana para mostrar lo correcto
+    const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
+
+    if (esKanji) {
+        modalFilaId.style.display = 'block';
+        modalFilaOnyomi.style.display = 'block';
+        modalFilaKunyomi.style.display = 'block';
+        modalId.innerText = item.id_jlpt || "N/A";
+        modalOnyomi.innerText = item.onyomi || "-";
+        modalKunyomi.innerText = item.kunyomi || "-";
+        
+        modalFilaContraparte.style.display = 'none';
+        modalFilaPalabra.style.display = 'none';
+    } else {
+        modalFilaContraparte.style.display = 'block';
+        modalFilaPalabra.style.display = 'block';
+        modalContraparte.innerText = item.contraparte || "-";
+        modalPalabra.innerText = item.palabra_ejemplo || "-";
+
+        modalFilaId.style.display = 'none';
+        modalFilaOnyomi.style.display = 'none';
+        modalFilaKunyomi.style.display = 'none';
+    }
+
+    // 3. Mostrar la ventana
+    modalDetalles.classList.remove('oculto');
+}
+
+// Cerrar ventana modal con la 'X' o tocando fuera
+cerrarModal.addEventListener('click', () => modalDetalles.classList.add('oculto'));
+window.addEventListener('click', (e) => {
+    if (e.target === modalDetalles) modalDetalles.classList.add('oculto');
+});
+
+// Función para dibujar las tarjetas de la lista
 function renderizarDiccionario() {
-    listaDiccionario.innerHTML = ''; // Limpiar lista actual
-    
-    // Obtener los valores de búsqueda
+    listaDiccionario.innerHTML = ''; 
     const texto = buscadorTexto.value.toLowerCase();
     const categoriaSeleccionada = filtroNivel.value;
 
-    // Filtrar nuestra base de datos maestra
     const filtrados = diccionarioJapones.filter(item => {
         const romaji = (item.romaji || "").toLowerCase();
         const significado = (item.significado || "").toLowerCase();
         const categoria = (item.categoria || "");
 
-        // ¿Coincide el texto buscado con el romaji o el significado?
         const coincideTexto = romaji.includes(texto) || significado.includes(texto);
-        // ¿Coincide el nivel (ej. N5) con el selector?
         const coincideNivel = categoriaSeleccionada === 'todos' || categoria === categoriaSeleccionada;
 
         return coincideTexto && coincideNivel;
     });
 
-    // Si no hay resultados
     if(filtrados.length === 0) {
         listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b;">No se encontraron caracteres.</p>';
         return;
     }
 
-    // Dibujar cada tarjeta filtrada
     filtrados.forEach(item => {
         const div = document.createElement('div');
         div.className = 'tarjeta-diccionario';
@@ -242,10 +295,13 @@ function renderizarDiccionario() {
             <div class="td-significado">${item.significado}</div>
             <div class="td-tipo">${(item.tipo || "").toUpperCase()}</div>
         `;
+        
+        // --- ¡AQUÍ ESTÁ LA MAGIA! Le decimos que abra el modal al tocarla ---
+        div.addEventListener('click', () => abrirModal(item));
+        
         listaDiccionario.appendChild(div);
     });
 }
 
-// Escuchar cambios en el teclado o el selector para buscar en tiempo real
 buscadorTexto.addEventListener('input', renderizarDiccionario);
 filtroNivel.addEventListener('change', renderizarDiccionario);
