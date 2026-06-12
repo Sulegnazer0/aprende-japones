@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aprende Japonés - Panel de Práctica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="tarjeta-pregunta">
+            <span id="info-tipo" class="etiqueta">Cargando...</span>
+            <h1 id="texto-significado">Cargando vocabulario...</h1>
+            <p id="pista-romaji" class="pista"></p>
+        </div>
+
+        <canvas id="pizarra" width="320" height="320"></canvas>
+        
+        <div class="controles-pizarra">
+            <button id="btn-limpiar" class="btn-secundario">Limpiar</button>
+            <button id="btn-revelar" class="btn-primario">Revelar Respuesta</button>
+        </div>
+
+        <div id="panel-respuesta" class="panel-respuesta oculto">
+            <div class="caracter-correcto" id="resp-caracter">?</div>
+            <div class="detalles-grid">
+                <p><strong>Romaji:</strong> <span id="resp-romaji">-</span></p>
+                <p><strong>Categoría:</strong> <span id="resp-categoria">-</span></p>
+                <p><strong>Nº Lista:</strong> <span id="resp-id">-</span></p>
+                <p><strong>Onyomi:</strong> <span id="resp-onyomi">-</span></p>
+                <p><strong>Kunyomi:</strong> <span id="resp-kunyomi">-</span></p>
+            </div>
+            <button id="btn-siguiente" class="btn-exito">Siguiente Carácter ➔</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
