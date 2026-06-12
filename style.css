@@ -147,3 +147,79 @@ button:active {
 .selector-modo:focus {
     border-color: #3b82f6;
 }
+
+/* --- Estilos de Pestañas (Tabs) --- */
+.tabs-navegacion {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-tab {
+    flex: 1;
+    background-color: #e2e8f0;
+    color: #475569;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-tab.activo {
+    background-color: #3b82f6;
+    color: white;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Estilos del Buscador y Filtros --- */
+.filtros-estudio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtros-estudio input, .filtros-estudio select {
+    padding: 12px;
+    font-size: 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+}
+
+.filtros-estudio input:focus {
+    border-color: #3b82f6;
+}
+
+/* --- Grid de Resultados (Diccionario) --- */
+.grid-diccionario {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    max-height: 50vh; /* Para que puedas hacer scroll interno en tu celular */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.tarjeta-diccionario {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.td-caracter {
+    font-size: 35px;
+    font-weight: bold;
+    color: #0f172a;
+    margin-bottom: 5px;
+}
+
+.td-romaji { font-size: 14px; font-weight: bold; color: #3b82f6; }
+.td-significado { font-size: 12px; color: #475569; margin: 5px 0; }
+.td-tipo { font-size: 10px; background: #cbd5e1; padding: 2px 6px; border-radius: 10px; display: inline-block;}
