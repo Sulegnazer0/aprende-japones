@@ -172,3 +172,80 @@ selectorModo.addEventListener('change', presentarDesafio);
 
 // Arrancar la app
 cargarDatos();
+
+// ==========================================
+// 3. MODO ESTUDIO Y BUSCADOR
+// ==========================================
+
+// Referencias de las pestañas y secciones
+const tabPractica = document.getElementById('tab-practica');
+const tabEstudio = document.getElementById('tab-estudio');
+const seccionPractica = document.getElementById('seccion-practica');
+const seccionEstudio = document.getElementById('seccion-estudio');
+
+// Referencias del buscador
+const buscadorTexto = document.getElementById('buscador-texto');
+const filtroNivel = document.getElementById('filtro-nivel');
+const listaDiccionario = document.getElementById('lista-diccionario');
+
+// Lógica para cambiar entre pestañas
+tabPractica.addEventListener('click', () => {
+    seccionPractica.classList.remove('oculto');
+    seccionEstudio.classList.add('oculto');
+    tabPractica.classList.add('activo');
+    tabEstudio.classList.remove('activo');
+});
+
+tabEstudio.addEventListener('click', () => {
+    seccionEstudio.classList.remove('oculto');
+    seccionPractica.classList.add('oculto');
+    tabEstudio.classList.add('activo');
+    tabPractica.classList.remove('activo');
+    renderizarDiccionario(); // Cargar la lista al abrir la pestaña
+});
+
+// Lógica para filtrar y dibujar la lista
+function renderizarDiccionario() {
+    listaDiccionario.innerHTML = ''; // Limpiar lista actual
+    
+    // Obtener los valores de búsqueda
+    const texto = buscadorTexto.value.toLowerCase();
+    const categoriaSeleccionada = filtroNivel.value;
+
+    // Filtrar nuestra base de datos maestra
+    const filtrados = diccionarioJapones.filter(item => {
+        const romaji = (item.romaji || "").toLowerCase();
+        const significado = (item.significado || "").toLowerCase();
+        const categoria = (item.categoria || "");
+
+        // ¿Coincide el texto buscado con el romaji o el significado?
+        const coincideTexto = romaji.includes(texto) || significado.includes(texto);
+        // ¿Coincide el nivel (ej. N5) con el selector?
+        const coincideNivel = categoriaSeleccionada === 'todos' || categoria === categoriaSeleccionada;
+
+        return coincideTexto && coincideNivel;
+    });
+
+    // Si no hay resultados
+    if(filtrados.length === 0) {
+        listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b;">No se encontraron caracteres.</p>';
+        return;
+    }
+
+    // Dibujar cada tarjeta filtrada
+    filtrados.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'tarjeta-diccionario';
+        div.innerHTML = `
+            <div class="td-caracter">${item.caracter}</div>
+            <div class="td-romaji">${item.romaji}</div>
+            <div class="td-significado">${item.significado}</div>
+            <div class="td-tipo">${(item.tipo || "").toUpperCase()}</div>
+        `;
+        listaDiccionario.appendChild(div);
+    });
+}
+
+// Escuchar cambios en el teclado o el selector para buscar en tiempo real
+buscadorTexto.addEventListener('input', renderizarDiccionario);
+filtroNivel.addEventListener('change', renderizarDiccionario);
