@@ -1,212 +1,212 @@
 id_jlpt,tipo,categoria,caracter,romaji,significado,onyomi,kunyomi,contraparte,palabra_ejemplo
 ,hiragana,basico,あ,a,Letra A,,,ア (Katakana),あめ (Ame - Lluvia)
 ,katakana,basico,ア,a,Letra A,,,あ (Hiragana),アメリカ (Amerika - Estados Unidos)
-,hiragana,basico,い,i,Letra I,,,イ (Katakana),
-,katakana,basico,イ,i,Letra I,,,い (Hiragana),
-,hiragana,basico,う,u,Letra U,,,ウ (Katakana),
-,katakana,basico,ウ,u,Letra U,,,う (Hiragana),
-,hiragana,basico,え,e,Letra E,,,エ (Katakana),
-,katakana,basico,エ,e,Letra E,,,え (Hiragana),
-,hiragana,basico,お,o,Letra O,,,オ (Katakana),
-,katakana,basico,オ,o,Letra O,,,お (Hiragana),
-,hiragana,basico,か,ka,Letra KA,,,カ (Katakana),
-,katakana,basico,カ,ka,Letra KA,,,か (Hiragana),
-,hiragana,basico,き,ki,Letra KI,,,キ (Katakana),
-,katakana,basico,キ,ki,Letra KI,,,き (Hiragana),
-,hiragana,basico,く,ku,Letra KU,,,ク (Katakana),
-,katakana,basico,ク,ku,Letra KU,,,く (Hiragana),
-,hiragana,basico,け,ke,Letra KE,,,ケ (Katakana),
-,katakana,basico,ケ,ke,Letra KE,,,け (Hiragana),
-,hiragana,basico,こ,ko,Letra KO,,,コ (Katakana),
-,katakana,basico,コ,ko,Letra KO,,,こ (Hiragana),
-,hiragana,basico,さ,sa,Letra SA,,,サ (Katakana),
-,katakana,basico,サ,sa,Letra SA,,,さ (Hiragana),
-,hiragana,basico,し,shi,Letra SHI,,,シ (Katakana),
-,katakana,basico,シ,shi,Letra SHI,,,し (Hiragana),
-,hiragana,basico,す,su,Letra SU,,,ス (Katakana),
-,katakana,basico,ス,su,Letra SU,,,す (Hiragana),
-,hiragana,basico,せ,se,Letra SE,,,セ (Katakana),
-,katakana,basico,セ,se,Letra SE,,,せ (Hiragana),
-,hiragana,basico,そ,so,Letra SO,,,ソ (Katakana),
-,katakana,basico,ソ,so,Letra SO,,,そ (Hiragana),
-,hiragana,basico,た,ta,Letra TA,,,タ (Katakana),
-,katakana,basico,タ,ta,Letra TA,,,た (Hiragana),
-,hiragana,basico,ち,chi,Letra CHI,,,チ (Katakana),
-,katakana,basico,チ,chi,Letra CHI,,,ち (Hiragana),
-,hiragana,basico,つ,tsu,Letra TSU,,,ツ (Katakana),
-,katakana,basico,ツ,tsu,Letra TSU,,,つ (Hiragana),
-,hiragana,basico,て,te,Letra TE,,,テ (Katakana),
-,katakana,basico,テ,te,Letra TE,,,て (Hiragana),
-,hiragana,basico,と,to,Letra TO,,,ト (Katakana),
-,katakana,basico,ト,to,Letra TO,,,と (Hiragana),
-,hiragana,basico,な,na,Letra NA,,,ナ (Katakana),
-,katakana,basico,ナ,na,Letra NA,,,な (Hiragana),
-,hiragana,basico,に,ni,Letra NI,,,ニ (Katakana),
-,katakana,basico,ニ,ni,Letra NI,,,に (Hiragana),
-,hiragana,basico,ぬ,nu,Letra NU,,,ヌ (Katakana),
-,katakana,basico,ヌ,nu,Letra NU,,,ぬ (Hiragana),
-,hiragana,basico,ね,ne,Letra NE,,,ネ (Katakana),
-,katakana,basico,ネ,ne,Letra NE,,,ね (Hiragana),
-,hiragana,basico,の,no,Letra NO,,,ノ (Katakana),
-,katakana,basico,ノ,no,Letra NO,,,の (Hiragana),
-,hiragana,basico,は,ha,Letra HA,,,ハ (Katakana),
-,katakana,basico,ハ,ha,Letra HA,,,は (Hiragana),
-,hiragana,basico,ひ,hi,Letra HI,,,ヒ (Katakana),
-,katakana,basico,ヒ,hi,Letra HI,,,ひ (Hiragana),
-,hiragana,basico,ふ,fu,Letra FU,,,フ (Katakana),
-,katakana,basico,フ,fu,Letra FU,,,ふ (Hiragana),
-,hiragana,basico,へ,he,Letra HE,,,ヘ (Katakana),
-,katakana,basico,ヘ,he,Letra HE,,,へ (Hiragana),
-,hiragana,basico,ほ,ho,Letra HO,,,ホ (Katakana),
-,katakana,basico,ホ,ho,Letra HO,,,ほ (Hiragana),
-,hiragana,basico,ま,ma,Letra MA,,,マ (Katakana),
-,katakana,basico,マ,ma,Letra MA,,,ま (Hiragana),
-,hiragana,basico,み,mi,Letra MI,,,ミ (Katakana),
-,katakana,basico,ミ,mi,Letra MI,,,み (Hiragana),
-,hiragana,basico,む,mu,Letra MU,,,ム (Katakana),
-,katakana,basico,ム,mu,Letra MU,,,む (Hiragana),
-,hiragana,basico,め,me,Letra ME,,,メ (Katakana),
-,katakana,basico,メ,me,Letra ME,,,め (Hiragana),
-,hiragana,basico,も,mo,Letra MO,,,モ (Katakana),
-,katakana,basico,モ,mo,Letra MO,,,も (Hiragana),
-,hiragana,basico,や,ya,Letra YA,,,ヤ (Katakana),
-,katakana,basico,ヤ,ya,Letra YA,,,や (Hiragana),
-,hiragana,basico,ゆ,yu,Letra YU,,,ユ (Katakana),
-,katakana,basico,ユ,yu,Letra YU,,,ゆ (Hiragana),
-,hiragana,basico,よ,yo,Letra YO,,,ヨ (Katakana),
-,katakana,basico,ヨ,yo,Letra YO,,,よ (Hiragana),
-,hiragana,basico,ら,ra,Letra RA,,,ラ (Katakana),
-,katakana,basico,ラ,ra,Letra RA,,,ら (Hiragana),
-,hiragana,basico,り,ri,Letra RI,,,リ (Katakana),
-,katakana,basico,リ,ri,Letra RI,,,り (Hiragana),
-,hiragana,basico,る,ru,Letra RU,,,ル (Katakana),
-,katakana,basico,ル,ru,Letra RU,,,る (Hiragana),
-,hiragana,basico,れ,re,Letra RE,,,レ (Katakana),
-,katakana,basico,レ,re,Letra RE,,,れ (Hiragana),
-,hiragana,basico,ろ,ro,Letra RO,,,ロ (Katakana),
-,katakana,basico,ロ,ro,Letra RO,,,ろ (Hiragana),
-,hiragana,basico,わ,wa,Letra WA,,,ワ (Katakana),
-,katakana,basico,ワ,wa,Letra WA,,,わ (Hiragana),
-,hiragana,basico,を,wo,Letra WO,,,ヲ (Katakana),
-,katakana,basico,ヲ,wo,Letra WO,,,を (Hiragana),
-,hiragana,basico,ん,n,Letra N,,,ン (Katakana),
-,katakana,basico,ン,n,Letra N,,,ん (Hiragana),
-,hiragana,basico,が,ga,Letra GA,,,ガ (Katakana),
-,katakana,basico,ガ,ga,Letra GA,,,が (Hiragana),
-,hiragana,basico,ぎ,gi,Letra GI,,,ギ (Katakana),
-,katakana,basico,ギ,gi,Letra GI,,,ぎ (Hiragana),
-,hiragana,basico,ぐ,gu,Letra GU,,,グ (Katakana),
-,katakana,basico,グ,gu,Letra GU,,,ぐ (Hiragana),
-,hiragana,basico,げ,ge,Letra GE,,,ゲ (Katakana),
-,katakana,basico,ゲ,ge,Letra GE,,,げ (Hiragana),
-,hiragana,basico,ご,go,Letra GO,,,ゴ (Katakana),
-,katakana,basico,ゴ,go,Letra GO,,,ご (Hiragana),
-,hiragana,basico,ざ,za,Letra ZA,,,ザ (Katakana),
-,katakana,basico,ザ,za,Letra ZA,,,ざ (Hiragana),
-,hiragana,basico,じ,ji,Letra JI,,,ジ (Katakana),
-,katakana,basico,ジ,ji,Letra JI,,,じ (Hiragana),
-,hiragana,basico,ず,zu,Letra ZU,,,ズ (Katakana),
-,katakana,basico,ズ,zu,Letra ZU,,,ず (Hiragana),
-,hiragana,basico,ぜ,ze,Letra ZE,,,ゼ (Katakana),
-,katakana,basico,ゼ,ze,Letra ZE,,,ぜ (Hiragana),
-,hiragana,basico,ぞ,zo,Letra ZO,,,ゾ (Katakana),
-,katakana,basico,ゾ,zo,Letra ZO,,,ぞ (Hiragana),
-,hiragana,basico,だ,da,Letra DA,,,ダ (Katakana),
-,katakana,basico,ダ,da,Letra DA,,,だ (Hiragana),
-,hiragana,basico,ぢ,ji,Letra JI,,,ヂ (Katakana),
-,katakana,basico,ヂ,ji,Letra JI,,,ぢ (Hiragana),
-,hiragana,basico,づ,zu,Letra ZU,,,ヅ (Katakana),
-,katakana,basico,ヅ,zu,Letra ZU,,,づ (Hiragana),
-,hiragana,basico,で,de,Letra DE,,,デ (Katakana),
-,katakana,basico,デ,de,Letra DE,,,で (Hiragana),
-,hiragana,basico,ど,do,Letra DO,,,ド (Katakana),
-,katakana,basico,ド,do,Letra DO,,,ど (Hiragana),
-,hiragana,basico,ば,ba,Letra BA,,,バ (Katakana),
-,katakana,basico,バ,ba,Letra BA,,,ば (Hiragana),
-,hiragana,basico,び,bi,Letra BI,,,ビ (Katakana),
-,katakana,basico,ビ,bi,Letra BI,,,び (Hiragana),
-,hiragana,basico,ぶ,bu,Letra BU,,,ブ (Katakana),
-,katakana,basico,ブ,bu,Letra BU,,,ぶ (Hiragana),
-,hiragana,basico,べ,be,Letra BE,,,ベ (Katakana),
-,katakana,basico,ベ,be,Letra BE,,,べ (Hiragana),
-,hiragana,basico,ぼ,bo,Letra BO,,,ボ (Katakana),
-,katakana,basico,ボ,bo,Letra BO,,,ぼ (Hiragana),
-,hiragana,basico,ぱ,pa,Letra PA,,,パ (Katakana),
-,katakana,basico,パ,pa,Letra PA,,,ぱ (Hiragana),
-,hiragana,basico,ぴ,pi,Letra PI,,,ピ (Katakana),
-,katakana,basico,ピ,pi,Letra PI,,,ぴ (Hiragana),
-,hiragana,basico,ぷ,pu,Letra PU,,,プ (Katakana),
-,katakana,basico,プ,pu,Letra PU,,,ぷ (Hiragana),
-,hiragana,basico,ぺ,pe,Letra PE,,,ペ (Katakana),
-,katakana,basico,ペ,pe,Letra PE,,,ぺ (Hiragana),
-,hiragana,basico,ぽ,po,Letra PO,,,ポ (Katakana),
-,katakana,basico,ポ,po,Letra PO,,,ぽ (Hiragana),
-,hiragana,basico,きゃ,kya,Letra KYA,,,キャ (Katakana),
-,katakana,basico,キャ,kya,Letra KYA,,,きゃ (Hiragana),
-,hiragana,basico,きゅ,kyu,Letra KYU,,,キュ (Katakana),
-,katakana,basico,キュ,kyu,Letra KYU,,,きゅ (Hiragana),
-,hiragana,basico,きょ,kyo,Letra KYO,,,キョ (Katakana),
-,katakana,basico,キョ,kyo,Letra KYO,,,きょ (Hiragana),
-,hiragana,basico,しゃ,sha,Letra SHA,,,シャ (Katakana),
-,katakana,basico,シャ,sha,Letra SHA,,,しゃ (Hiragana),
-,hiragana,basico,しゅ,shu,Letra SHU,,,シュ (Katakana),
-,katakana,basico,シュ,shu,Letra SHU,,,しゅ (Hiragana),
-,hiragana,basico,しょ,sho,Letra SHO,,,ショ (Katakana),
-,katakana,basico,ショ,sho,Letra SHO,,,しょ (Hiragana),
-,hiragana,basico,ちゃ,cha,Letra CHA,,,チャ (Katakana),
-,katakana,basico,チャ,cha,Letra CHA,,,ちゃ (Hiragana),
-,hiragana,basico,ちゅ,chu,Letra CHU,,,チュ (Katakana),
-,katakana,basico,チュ,chu,Letra CHU,,,ちゅ (Hiragana),
-,hiragana,basico,ちょ,cho,Letra CHO,,,チョ (Katakana),
-,katakana,basico,チョ,cho,Letra CHO,,,ちょ (Hiragana),
-,hiragana,basico,にゃ,nya,Letra NYA,,,ニャ (Katakana),
-,katakana,basico,ニャ,nya,Letra NYA,,,にゃ (Hiragana),
-,hiragana,basico,にゅ,nyu,Letra NYU,,,ニュ (Katakana),
-,katakana,basico,ニュ,nyu,Letra NYU,,,にゅ (Hiragana),
-,hiragana,basico,にょ,nyo,Letra NYO,,,ニョ (Katakana),
-,katakana,basico,ニョ,nyo,Letra NYO,,,にょ (Hiragana),
-,hiragana,basico,ひゃ,hya,Letra HYA,,,ヒャ (Katakana),
-,katakana,basico,ヒャ,hya,Letra HYA,,,ひゃ (Hiragana),
-,hiragana,basico,ひゅ,hyu,Letra HYU,,,ヒュ (Katakana),
-,katakana,basico,ヒュ,hyu,Letra HYU,,,ひゅ (Hiragana),
-,hiragana,basico,ひょ,hyo,Letra HYO,,,ヒョ (Katakana),
-,katakana,basico,ヒョ,hyo,Letra HYO,,,ひょ (Hiragana),
-,hiragana,basico,みゃ,mya,Letra MYA,,,ミャ (Katakana),
-,katakana,basico,ミャ,mya,Letra MYA,,,みゃ (Hiragana),
-,hiragana,basico,みゅ,myu,Letra MYU,,,ミュ (Katakana),
-,katakana,basico,ミュ,myu,Letra MYU,,,みゅ (Hiragana),
-,hiragana,basico,みょ,myo,Letra MYO,,,ミョ (Katakana),
-,katakana,basico,ミョ,myo,Letra MYO,,,みょ (Hiragana),
-,hiragana,basico,りゃ,rya,Letra RYA,,,リャ (Katakana),
-,katakana,basico,リャ,rya,Letra RYA,,,りゃ (Hiragana),
-,hiragana,basico,りゅ,ryu,Letra RYU,,,リュ (Katakana),
-,katakana,basico,リュ,ryu,Letra RYU,,,りゅ (Hiragana),
-,hiragana,basico,りょ,ryo,Letra RYO,,,リョ (Katakana),
-,katakana,basico,リョ,ryo,Letra RYO,,,りょ (Hiragana),
-,hiragana,basico,ぎゃ,gya,Letra GYA,,,ギャ (Katakana),
-,katakana,basico,ギャ,gya,Letra GYA,,,ぎゃ (Hiragana),
-,hiragana,basico,ぎゅ,gyu,Letra GYU,,,ギュ (Katakana),
-,katakana,basico,ギュ,gyu,Letra GYU,,,ぎゅ (Hiragana),
-,hiragana,basico,ぎょ,gyo,Letra GYO,,,ギョ (Katakana),
-,katakana,basico,ギョ,gyo,Letra GYO,,,ぎょ (Hiragana),
-,hiragana,basico,じゃ,ja,Letra JA,,,ジャ (Katakana),
-,katakana,basico,ジャ,ja,Letra JA,,,じゃ (Hiragana),
-,hiragana,basico,じゅ,ju,Letra JU,,,ジュ (Katakana),
-,katakana,basico,ジュ,ju,Letra JU,,,じゅ (Hiragana),
-,hiragana,basico,じょ,jo,Letra JO,,,ジョ (Katakana),
-,katakana,basico,ジョ,jo,Letra JO,,,じょ (Hiragana),
-,hiragana,basico,びゃ,bya,Letra BYA,,,ビャ (Katakana),
-,katakana,basico,ビャ,bya,Letra BYA,,,びゃ (Hiragana),
-,hiragana,basico,びゅ,byu,Letra BYU,,,ビュ (Katakana),
-,katakana,basico,ビュ,byu,Letra BYU,,,びゅ (Hiragana),
-,hiragana,basico,びょ,byo,Letra BYO,,,ビョ (Katakana),
-,katakana,basico,ビョ,byo,Letra BYO,,,びょ (Hiragana),
-,hiragana,basico,ぴゃ,pya,Letra PYA,,,ピャ (Katakana),
-,katakana,basico,ピャ,pya,Letra PYA,,,ぴゃ (Hiragana),
-,hiragana,basico,ぴゅ,pyu,Letra PYU,,,ピュ (Katakana),
-,katakana,basico,ピュ,pyu,Letra PYU,,,ぴゅ (Hiragana),
-,hiragana,basico,ぴょ,pyo,Letra PYO,,,ピョ (Katakana),
-,katakana,basico,ピョ,pyo,Letra PYO,,,ぴょ (Hiragana),
+,hiragana,basico,い,i,Letra I,,,イ (Katakana),いぬ (Inu - Perro)
+,katakana,basico,イ,i,Letra I,,,い (Hiragana),インターネット (Intaanetto - Internet)
+,hiragana,basico,う,u,Letra U,,,ウ (Katakana),うみ (Umi - Mar)
+,katakana,basico,ウ,u,Letra U,,,う (Hiragana),ウイルス (Uirusu - Virus)
+,hiragana,basico,え,e,Letra E,,,エ (Katakana),えき (Eki - Estación)
+,katakana,basico,エ,e,Letra E,,,え (Hiragana),エレベーター (Erebeetaa - Ascensor)
+,hiragana,basico,お,o,Letra O,,,オ (Katakana),おにぎり (Onigiri - Bola de arroz)
+,katakana,basico,オ,o,Letra O,,,お (Hiragana),オレンジ (Orenji - Naranja)
+,hiragana,basico,か,ka,Letra KA,,,カ (Katakana),かさ (Kasa - Paraguas)
+,katakana,basico,カ,ka,Letra KA,,,か (Hiragana),カメラ (Kamera - Cámara)
+,hiragana,basico,き,ki,Letra KI,,,キ (Katakana),き (Ki - Árbol)
+,katakana,basico,キ,ki,Letra KI,,,き (Hiragana),キロ (Kiro - Kilo)
+,hiragana,basico,く,ku,Letra KU,,,ク (Katakana),くつ (Kutsu - Zapatos)
+,katakana,basico,ク,ku,Letra KU,,,く (Hiragana),クラス (Kurasu - Clase)
+,hiragana,basico,け,ke,Letra KE,,,ケ (Katakana),けむり (Kemuri - Humo)
+,katakana,basico,ケ,ke,Letra KE,,,け (Hiragana),ケーキ (Keeki - Pastel)
+,hiragana,basico,こ,ko,Letra KO,,,コ (Katakana),こども (Kodomo - Niño)
+,katakana,basico,コ,ko,Letra KO,,,こ (Hiragana),コーヒー (Koohii - Café)
+,hiragana,basico,さ,sa,Letra SA,,,サ (Katakana),さかな (Sakana - Pescado)
+,katakana,basico,サ,sa,Letra SA,,,さ (Hiragana),サラダ (Sarada - Ensalada)
+,hiragana,basico,し,shi,Letra SHI,,,シ (Katakana),しお (Shio - Sal)
+,katakana,basico,シ,shi,Letra SHI,,,し (Hiragana),シャツ (Shatsu - Camisa)
+,hiragana,basico,す,su,Letra SU,,,ス (Katakana),すいか (Suika - Sandía)
+,katakana,basico,ス,su,Letra SU,,,す (Hiragana),スープ (Suupu - Sopa)
+,hiragana,basico,せ,se,Letra SE,,,セ (Katakana),せんせい (Sensei - Profesor)
+,katakana,basico,セ,se,Letra SE,,,せ (Hiragana),セーター (Seetaa - Suéter)
+,hiragana,basico,そ,so,Letra SO,,,ソ (Katakana),そら (Sora - Cielo)
+,katakana,basico,ソ,so,Letra SO,,,そ (Hiragana),ソーセージ (Sooseeji - Salchicha)
+,hiragana,basico,た,ta,Letra TA,,,タ (Katakana),たまご (Tamago - Huevo)
+,katakana,basico,タ,ta,Letra TA,,,た (Hiragana),タクシー (Takushii - Taxi)
+,hiragana,basico,ち,chi,Letra CHI,,,チ (Katakana),ちち (Chichi - Padre)
+,katakana,basico,チ,chi,Letra CHI,,,ち (Hiragana),チーズ (Chiizu - Queso)
+,hiragana,basico,つ,tsu,Letra TSU,,,ツ (Katakana),つき (Tsuki - Luna)
+,katakana,basico,ツ,tsu,Letra TSU,,,つ (Hiragana),ツアー (Tsuaa - Tour)
+,hiragana,basico,て,te,Letra TE,,,テ (Katakana),て (Te - Mano)
+,katakana,basico,テ,te,Letra TE,,,て (Hiragana),テニス (Tenisu - Tenis)
+,hiragana,basico,と,to,Letra TO,,,ト (Katakana),とけい (Tokei - Reloj)
+,katakana,basico,ト,to,Letra TO,,,と (Hiragana),トマト (Tomato - Tomate)
+,hiragana,basico,な,na,Letra NA,,,ナ (Katakana),なつ (Natsu - Verano)
+,katakana,basico,ナ,na,Letra NA,,,な (Hiragana),ナイフ (Naifu - Cuchillo)
+,hiragana,basico,に,ni,Letra NI,,,ニ (Katakana),にく (Niku - Carne)
+,katakana,basico,ニ,ni,Letra NI,,,に (Hiragana),ニュース (Nyuusu - Noticias)
+,hiragana,basico,ぬ,nu,Letra NU,,,ヌ (Katakana),ぬいぐるみ (Nuigurumi - Peluche)
+,katakana,basico,ヌ,nu,Letra NU,,,ぬ (Hiragana),ヌードル (Nuudoru - Fideos)
+,hiragana,basico,ね,ne,Letra NE,,,ネ (Katakana),ねこ (Neko - Gato)
+,katakana,basico,ネ,ne,Letra NE,,,ね (Hiragana),ネクタイ (Nekutai - Corbata)
+,hiragana,basico,の,no,Letra NO,,,ノ (Katakana),のみもの (Nomimono - Bebida)
+,katakana,basico,ノ,no,Letra NO,,,の (Hiragana),ノート (Nooto - Cuaderno)
+,hiragana,basico,は,ha,Letra HA,,,ハ (Katakana),はな (Hana - Flor)
+,katakana,basico,ハ,ha,Letra HA,,,は (Hiragana),ハム (Hamu - Jamón)
+,hiragana,basico,ひ,hi,Letra HI,,,ヒ (Katakana),ひこうき (Hikouki - Avión)
+,katakana,basico,ヒ,hi,Letra HI,,,ひ (Hiragana),ヒーター (Hiitaa - Calentador)
+,hiragana,basico,ふ,fu,Letra FU,,,フ (Katakana),ふね (Fune - Barco)
+,katakana,basico,フ,fu,Letra FU,,,ふ (Hiragana),フィルム (Firumu - Película)
+,hiragana,basico,へ,he,Letra HE,,,ヘ (Katakana),へや (Heya - Habitación)
+,katakana,basico,ヘ,he,Letra HE,,,へ (Hiragana),ヘリコプター (Herikoputaa - Helicóptero)
+,hiragana,basico,ほ,ho,Letra HO,,,ホ (Katakana),ほん (Hon - Libro)
+,katakana,basico,ホ,ho,Letra HO,,,ほ (Hiragana),ホテル (Hoteru - Hotel)
+,hiragana,basico,ま,ma,Letra MA,,,マ (Katakana),まど (Mado - Ventana)
+,katakana,basico,マ,ma,Letra MA,,,ま (Hiragana),マッチ (Matchi - Fósforo)
+,hiragana,basico,み,mi,Letra MI,,,ミ (Katakana),みず (Mizu - Agua)
+,katakana,basico,ミ,mi,Letra MI,,,み (Hiragana),ミルク (Miruku - Leche)
+,hiragana,basico,む,mu,Letra MU,,,ム (Katakana),むし (Mushi - Insecto)
+,katakana,basico,ム,mu,Letra MU,,,む (Hiragana),ムード (Muudo - Humor)
+,hiragana,basico,め,me,Letra ME,,,メ (Katakana),めがね (Megane - Gafas)
+,katakana,basico,メ,me,Letra ME,,,め (Hiragana),メロン (Meron - Melón)
+,hiragana,basico,も,mo,Letra MO,,,モ (Katakana),もも (Momo - Durazno)
+,katakana,basico,モ,mo,Letra MO,,,も (Hiragana),モーター (Mootaa - Motor)
+,hiragana,basico,や,ya,Letra YA,,,ヤ (Katakana),やま (Yama - Montaña)
+,katakana,basico,ヤ,ya,Letra YA,,,や (Hiragana),ヤンキース (Yankiisu - Yankees)
+,hiragana,basico,ゆ,yu,Letra YU,,,ユ (Katakana),ゆき (Yuki - Nieve)
+,katakana,basico,ユ,yu,Letra YU,,,ゆ (Hiragana),ユニフォーム (Yunifoomu - Uniforme)
+,hiragana,basico,よ,yo,Letra YO,,,ヨ (Katakana),よる (Yoru - Noche)
+,katakana,basico,ヨ,yo,Letra YO,,,よ (Hiragana),ヨーロッパ (Yooroppa - Europa)
+,hiragana,basico,ら,ra,Letra RA,,,ラ (Katakana),らいおん (Raion - León)
+,katakana,basico,ラ,ra,Letra RA,,,ら (Hiragana),ラジオ (Rajio - Radio)
+,hiragana,basico,り,ri,Letra RI,,,リ (Katakana),りんご (Ringo - Manzana)
+,katakana,basico,リ,ri,Letra RI,,,り (Hiragana),リットル (Rittoru - Litro)
+,hiragana,basico,る,ru,Letra RU,,,ル (Katakana),くるま (Kuruma - Coche)
+,katakana,basico,ル,ru,Letra RU,,,る (Hiragana),ルール (Ruuru - Regla)
+,hiragana,basico,れ,re,Letra RE,,,レ (Katakana),れきし (Rekishi - Historia)
+,katakana,basico,レ,re,Letra RE,,,れ (Hiragana),レストラン (Resutoran - Restaurante)
+,hiragana,basico,ろ,ro,Letra RO,,,ロ (Katakana),ろく (Roku - Seis)
+,katakana,basico,ロ,ro,Letra RO,,,ろ (Hiragana),ロボット (Robotto - Robot)
+,hiragana,basico,わ,wa,Letra WA,,,ワ (Katakana),わたし (Watashi - Yo)
+,katakana,basico,ワ,wa,Letra WA,,,わ (Hiragana),ワイン (Wain - Vino)
+,hiragana,basico,を,wo,Letra WO,,,ヲ (Katakana),を (Wo - Partícula)
+,katakana,basico,ヲ,wo,Letra WO,,,を (Hiragana),ヲタク (Wotaku - Otaku)
+,hiragana,basico,ん,n,Letra N,,,ン (Katakana),でんわ (Denwa - Teléfono)
+,katakana,basico,ン,n,Letra N,,,ん (Hiragana),ペン (Pen - Bolígrafo)
+,hiragana,basico,が,ga,Letra GA,,,ガ (Katakana),がっこう (Gakkou - Escuela)
+,katakana,basico,ガ,ga,Letra GA,,,が (Hiragana),ガラス (Garasu - Cristal)
+,hiragana,basico,ぎ,gi,Letra GI,,,ギ (Katakana),ぎんこう (Ginkou - Banco)
+,katakana,basico,ギ,gi,Letra GI,,,ぎ (Hiragana),ギター (Gitaa - Guitarra)
+,hiragana,basico,ぐ,gu,Letra GU,,,グ (Katakana),ぐあい (Guai - Condición)
+,katakana,basico,グ,gu,Letra GU,,,ぐ (Hiragana),グラス (Gurasu - Vaso)
+,hiragana,basico,げ,ge,Letra GE,,,ゲ (Katakana),げんき (Genki - Salud)
+,katakana,basico,ゲ,ge,Letra GE,,,げ (Hiragana),ゲーム (Geemu - Juego)
+,hiragana,basico,ご,go,Letra GO,,,ゴ (Katakana),ごはん (Gohan - Arroz/Comida)
+,katakana,basico,ゴ,go,Letra GO,,,ご (Hiragana),ゴム (Gomu - Goma)
+,hiragana,basico,ざ,za,Letra ZA,,,ザ (Katakana),ざっし (Zasshi - Revista)
+,katakana,basico,ザ,za,Letra ZA,,,ざ (Hiragana),ザリガニ (Zarigani - Cangrejo)
+,hiragana,basico,じ,ji,Letra JI,,,ジ (Katakana),じかん (Jikan - Tiempo)
+,katakana,basico,ジ,ji,Letra JI,,,じ (Hiragana),ジュース (Juusu - Jugo)
+,hiragana,basico,ず,zu,Letra ZU,,,ズ (Katakana),みず (Mizu - Agua)
+,katakana,basico,ズ,zu,Letra ZU,,,ず (Hiragana),ズボン (Zubon - Pantalones)
+,hiragana,basico,ぜ,ze,Letra ZE,,,ゼ (Katakana),かぜ (Kaze - Viento)
+,katakana,basico,ゼ,ze,Letra ZE,,,ぜ (Hiragana),ゼロ (Zero - Cero)
+,hiragana,basico,ぞ,zo,Letra ZO,,,ゾ (Katakana),ぞう (Zou - Elefante)
+,katakana,basico,ゾ,zo,Letra ZO,,,ぞ (Hiragana),ゾンビ (Zonbi - Zombi)
+,hiragana,basico,だ,da,Letra DA,,,ダ (Katakana),だいがく (Daigaku - Universidad)
+,katakana,basico,ダ,da,Letra DA,,,だ (Hiragana),ダンス (Dansu - Baile)
+,hiragana,basico,ぢ,ji,Letra JI,,,ヂ (Katakana),はなぢ (Hanaji - Sangrado nasal)
+,katakana,basico,ヂ,ji,Letra JI,,,ぢ (Hiragana),ヂーゼル (Jiizeru - Diésel)
+,hiragana,basico,づ,zu,Letra ZU,,,ヅ (Katakana),つづく (Tsudzuku - Continuar)
+,katakana,basico,ヅ,zu,Letra ZU,,,づ (Hiragana),ヅラ (Dzura - Peluca)
+,hiragana,basico,で,de,Letra DE,,,デ (Katakana),でんわ (Denwa - Teléfono)
+,katakana,basico,デ,de,Letra DE,,,で (Hiragana),デザイン (Dezain - Diseño)
+,hiragana,basico,ど,do,Letra DO,,,ド (Katakana),どうぶつ (Doubutsu - Animal)
+,katakana,basico,ド,do,Letra DO,,,ど (Hiragana),ドア (Doa - Puerta)
+,hiragana,basico,ば,ba,Letra BA,,,バ (Katakana),ばんごう (Bangou - Número)
+,katakana,basico,バ,ba,Letra BA,,,ば (Hiragana),バス (Basu - Autobús)
+,hiragana,basico,び,bi,Letra BI,,,ビ (Katakana),びょういん (Byouin - Hospital)
+,katakana,basico,ビ,bi,Letra BI,,,び (Hiragana),ビール (Biiru - Cerveza)
+,hiragana,basico,ぶ,bu,Letra BU,,,ブ (Katakana),ぶた (Buta - Cerdo)
+,katakana,basico,ブ,bu,Letra BU,,,ぶ (Hiragana),ブロック (Burokku - Bloque)
+,hiragana,basico,べ,be,Letra BE,,,ベ (Katakana),べんとう (Bentou - Almuerzo)
+,katakana,basico,ベ,be,Letra BE,,,べ (Hiragana),ベッド (Beddo - Cama)
+,hiragana,basico,ぼ,bo,Letra BO,,,ボ (Katakana),ぼうし (Boushi - Sombrero)
+,katakana,basico,ボ,bo,Letra BO,,,ぼ (Hiragana),ボール (Booru - Pelota)
+,hiragana,basico,ぱ,pa,Letra PA,,,パ (Katakana),ぱちんこ (Pachinko)
+,katakana,basico,パ,pa,Letra PA,,,ぱ (Hiragana),パン (Pan - Pan)
+,hiragana,basico,ぴ,pi,Letra PI,,,ピ (Katakana),えんぴつ (Enpitsu - Lápiz)
+,katakana,basico,ピ,pi,Letra PI,,,ぴ (Hiragana),ピアノ (Piano - Piano)
+,hiragana,basico,ぷ,pu,Letra PU,,,プ (Katakana),きっぷ (Kippu - Boleto)
+,katakana,basico,プ,pu,Letra PU,,,ぷ (Hiragana),プール (Puuru - Piscina)
+,hiragana,basico,ぺ,pe,Letra PE,,,ペ (Katakana),ぺこぺこ (Pekopeko - Hambriento)
+,katakana,basico,ペ,pe,Letra PE,,,ぺ (Hiragana),ペン (Pen - Bolígrafo)
+,hiragana,basico,ぽ,po,Letra PO,,,ポ (Katakana),さんぽ (Sanpo - Paseo)
+,katakana,basico,ポ,po,Letra PO,,,ぽ (Hiragana),ポスト (Posuto - Buzón)
+,hiragana,basico,きゃ,kya,Letra KYA,,,キャ (Katakana),きゃく (Kyaku - Cliente)
+,katakana,basico,キャ,kya,Letra KYA,,,きゃ (Hiragana),キャベツ (Kyabetsu - Repollo)
+,hiragana,basico,きゅ,kyu,Letra KYU,,,キュ (Katakana),きゅうり (Kyuuri - Pepino)
+,katakana,basico,キュ,kyu,Letra KYU,,,きゅ (Hiragana),キューピッド (Kyuupiddo - Cupido)
+,hiragana,basico,きょ,kyo,Letra KYO,,,キョ (Katakana),きょう (Kyou - Hoy)
+,katakana,basico,キョ,kyo,Letra KYO,,,きょ (Hiragana),キョロキョロ (Kyorokyoro - Mirar)
+,hiragana,basico,しゃ,sha,Letra SHA,,,シャ (Katakana),しゃしん (Shashin - Foto)
+,katakana,basico,シャ,sha,Letra SHA,,,しゃ (Hiragana),シャツ (Shatsu - Camisa)
+,hiragana,basico,しゅ,shu,Letra SHU,,,シュ (Katakana),しゅくだい (Shukudai - Tarea)
+,katakana,basico,シュ,shu,Letra SHU,,,しゅ (Hiragana),シューズ (Shuuzu - Zapatos)
+,hiragana,basico,しょ,sho,Letra SHO,,,ショ (Katakana),しょくどう (Shokudou - Comedor)
+,katakana,basico,ショ,sho,Letra SHO,,,しょ (Hiragana),ショップ (Shoppu - Tienda)
+,hiragana,basico,ちゃ,cha,Letra CHA,,,チャ (Katakana),おちゃ (Ocha - Té)
+,katakana,basico,チャ,cha,Letra CHA,,,ちゃ (Hiragana),チャンス (Chansu - Oportunidad)
+,hiragana,basico,ちゅ,chu,Letra CHU,,,チュ (Katakana),ちゅうごく (Chuugoku - China)
+,katakana,basico,チュ,chu,Letra CHU,,,ちゅ (Hiragana),チューリップ (Chuurrippu - Tulipán)
+,hiragana,basico,ちょ,cho,Letra CHO,,,チョ (Katakana),ちょうちょ (Choucho - Mariposa)
+,katakana,basico,チョ,cho,Letra CHO,,,ちょ (Hiragana),チョコレート (Chokoreeto - Chocolate)
+,hiragana,basico,にゃ,nya,Letra NYA,,,ニャ (Katakana),こんにゃく (Konnyaku)
+,katakana,basico,ニャ,nya,Letra NYA,,,にゃ (Hiragana),ニャンコ (Nyanko - Gatito)
+,hiragana,basico,にゅ,nyu,Letra NYU,,,ニュ (Katakana),ぎゅうにゅう (Gyuunyuu - Leche)
+,katakana,basico,ニュ,nyu,Letra NYU,,,にゅ (Hiragana),ニュース (Nyuusu - Noticias)
+,hiragana,basico,にょ,nyo,Letra NYO,,,ニョ (Katakana),にょろにょろ (Nyoronyoro)
+,katakana,basico,ニョ,nyo,Letra NYO,,,にょ (Hiragana),ニョッキ (Nyokki - Ñoquis)
+,hiragana,basico,ひゃ,hya,Letra HYA,,,ヒャ (Katakana),ひゃく (Hyaku - Cien)
+,katakana,basico,ヒャ,hya,Letra HYA,,,ひゃ (Hiragana),ヒヤシンス (Hiyashinsu - Jacinto)
+,hiragana,basico,ひゅ,hyu,Letra HYU,,,ヒュ (Katakana),ひゅーひゅー (Hyuuhyuu - Viento)
+,katakana,basico,ヒュ,hyu,Letra HYU,,,ひゅ (Hiragana),ヒューマン (Hyuuman - Humano)
+,hiragana,basico,ひょ,hyo,Letra HYO,,,ヒョ (Katakana),ひょう (Hyou - Leopardo)
+,katakana,basico,ヒョ,hyo,Letra HYO,,,ひょ (Hiragana),ヒョウ (Hyou - Leopardo)
+,hiragana,basico,みゃ,mya,Letra MYA,,,ミャ (Katakana),みゃく (Myaku - Pulso)
+,katakana,basico,ミャ,mya,Letra MYA,,,みゃ (Hiragana),ミャンマー (Myanmaa - Myanmar)
+,hiragana,basico,みゅ,myu,Letra MYU,,,ミュ (Katakana),みゅーじしゃん (Myuujishan - Músico)
+,katakana,basico,ミュ,myu,Letra MYU,,,みゅ (Hiragana),ミュージック (Myuujikku - Música)
+,hiragana,basico,みょ,myo,Letra MYO,,,ミョ (Katakana),みょうじ (Myouji - Apellido)
+,katakana,basico,ミョ,myo,Letra MYO,,,みょ (Hiragana),ミョウバン (Myouban - Alumbre)
+,hiragana,basico,りゃ,rya,Letra RYA,,,リャ (Katakana),りゃく (Ryaku - Abreviación)
+,katakana,basico,リャ,rya,Letra RYA,,,りゃ (Hiragana),リャマ (Ryama - Llama)
+,hiragana,basico,りゅ,ryu,Letra RYU,,,リュ (Katakana),りゅう (Ryuu - Dragón)
+,katakana,basico,リュ,ryu,Letra RYU,,,りゅ (Hiragana),リュック (Ryukku - Mochila)
+,hiragana,basico,りょ,ryo,Letra RYO,,,リョ (Katakana),りょうり (Ryouri - Cocina)
+,katakana,basico,リョ,ryo,Letra RYO,,,りょ (Hiragana),リョーシカ (Ryoshika)
+,hiragana,basico,ぎゃ,gya,Letra GYA,,,ギャ (Katakana),ぎゃく (Gyaku - Reverso)
+,katakana,basico,ギャ,gya,Letra GYA,,,ぎゃ (Hiragana),ギャング (Gyangu - Pandilla)
+,hiragana,basico,ぎゅ,gyu,Letra GYU,,,ギュ (Katakana),ぎゅうにく (Gyuuniku - Carne de res)
+,katakana,basico,ギュ,gyu,Letra GYU,,,ぎゅ (Hiragana),ギュッと (Gyutto - Apretado)
+,hiragana,basico,ぎょ,gyo,Letra GYO,,,ギョ (Katakana),きんぎょ (Kingyo - Pez dorado)
+,katakana,basico,ギョ,gyo,Letra GYO,,,ぎょ (Hiragana),ギョーザ (Gyooza - Empanadilla)
+,hiragana,basico,じゃ,ja,Letra JA,,,ジャ (Katakana),じゃがいも (Jagaimo - Papa)
+,katakana,basico,ジャ,ja,Letra JA,,,じゃ (Hiragana),ジャム (Jamu - Mermelada)
+,hiragana,basico,じゅ,ju,Letra JU,,,ジュ (Katakana),じゅう (Juu - Diez)
+,katakana,basico,ジュ,ju,Letra JU,,,じゅ (Hiragana),ジュース (Juusu - Jugo)
+,hiragana,basico,じょ,jo,Letra JO,,,ジョ (Katakana),じょせい (Josei - Mujer)
+,katakana,basico,ジョ,jo,Letra JO,,,じょ (Hiragana),ジョギング (Jogingu - Trotar)
+,hiragana,basico,びゃ,bya,Letra BYA,,,ビャ (Katakana),さんびゃく (Sanbyaku - Trescientos)
+,katakana,basico,ビャ,bya,Letra BYA,,,びゃ (Hiragana),ビャクダン (Byakudan - Sándalo)
+,hiragana,basico,びゅ,byu,Letra BYU,,,ビュ (Katakana),びゅんびゅん (Byunbyun - Zumbido)
+,katakana,basico,ビュ,byu,Letra BYU,,,びゅ (Hiragana),ビューティー (Byuutii - Belleza)
+,hiragana,basico,びょ,byo,Letra BYO,,,ビョ (Katakana),びょうき (Byouki - Enfermedad)
+,katakana,basico,ビョ,byo,Letra BYO,,,びょ (Hiragana),ビョーク (Byooku - Bjork)
+,hiragana,basico,ぴゃ,pya,Letra PYA,,,ピャ (Katakana),ぴゃあぴゃあ (Pyaapyaa - Pajarito)
+,katakana,basico,ピャ,pya,Letra PYA,,,ぴゃ (Hiragana),ピャー (Pyaa - Sonido)
+,hiragana,basico,ぴゅ,pyu,Letra PYU,,,ピュ (Katakana),ぴゅーぴゅー (Pyuupyuu - Silbido)
+,katakana,basico,ピュ,pyu,Letra PYU,,,ぴゅ (Hiragana),ピューレ (Pyuure - Puré)
+,hiragana,basico,ぴょ,pyo,Letra PYO,,,ピョ (Katakana),ぴょんぴょん (Pyonpyon - Salto)
+,katakana,basico,ピョ,pyo,Letra PYO,,,ぴょ (Hiragana),ピョートル (Pyootoru - Pyotr)
 1,kanji,N5,一,ichi,Uno,イチ (ichi),ひと (hito),,
 2,kanji,N5,二,ni,Dos,ニ (ni),ふた (futa),,
 3,kanji,N5,三,san,Tres,サン (san),み (mi),,
