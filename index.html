@@ -14,10 +14,16 @@
 
         <div id="seccion-practica">
             <select id="selector-modo" class="selector-modo">
-                <option value="todos">Repasar Todos (Mezclado)</option>
-                <option value="hiragana">Práctica: Solo Hiragana</option>
-                <option value="katakana">Práctica: Solo Katakana</option>
-                <option value="kanji">Práctica: Solo Kanji</option>
+                <option value="todos">Todos los caracteres (Mezclado)</option>
+                <option value="hiragana">Solo Hiragana</option>
+                <option value="katakana">Solo Katakana</option>
+                <option value="kanji">Solo Kanji</option>
+            </select>
+
+            <select id="selector-progreso" class="selector-modo" style="margin-top: -10px; background-color: #f8fafc;">
+                <option value="todos">📋 Todo el vocabulario</option>
+                <option value="faltan">⏳ Solo las que me faltan</option>
+                <option value="examen">🧠 Modo Examen (Solo lo que ya sé)</option>
             </select>
 
             <div class="tarjeta-pregunta">
@@ -46,7 +52,11 @@
                     <p id="fila-onyomi"><strong>Onyomi:</strong> <span id="resp-onyomi">-</span></p>
                     <p id="fila-kunyomi"><strong>Kunyomi:</strong> <span id="resp-kunyomi">-</span></p>
                 </div>
-                <button id="btn-siguiente" class="btn-exito">Siguiente Carácter ➔</button>
+                
+                <div class="controles-pizarra" style="margin-top: 15px;">
+                    <button id="btn-no-sabe" style="background-color: #ef4444; color: white; width: 50%;">❌ No la supe</button>
+                    <button id="btn-sabe" style="background-color: #10b981; color: white; width: 50%;">✅ ¡La supe!</button>
+                </div>
             </div>
         </div>
 
