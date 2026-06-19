@@ -207,7 +207,7 @@ btnNoSabe.addEventListener('click', () => guardarProgreso('falta'));
 
 
 // ==========================================
-// 3. MODO ESTUDIO Y BUSCADOR (CON MODAL)
+// 3. MODO ESTUDIO AVANZADO (FILTROS, FAVORITOS Y GESTOS)
 // ==========================================
 const tabPractica = document.getElementById('tab-practica');
 const tabEstudio = document.getElementById('tab-estudio');
@@ -217,14 +217,28 @@ const buscadorTexto = document.getElementById('buscador-texto');
 const filtroNivel = document.getElementById('filtro-nivel');
 const listaDiccionario = document.getElementById('lista-diccionario');
 
+// Memoria de favoritos
+let favoritosUsuario = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
+
+// Variables de Navegación del Modal
+let listaFiltradaActual = [];
+let indiceModalActual = 0;
+
+// Referencias del Modal
 const modalDetalles = document.getElementById('modal-detalles');
 const cerrarModal = document.getElementById('cerrar-modal');
 const modalCaracter = document.getElementById('modal-caracter');
-const btnToggleTrazos = document.getElementById('btn-toggle-trazos');
-let mostrandoTrazos = false;
 const modalRomaji = document.getElementById('modal-romaji');
 const modalSignificado = document.getElementById('modal-significado');
 const modalCategoria = document.getElementById('modal-categoria');
+const btnFavorito = document.getElementById('btn-favorito');
+const btnModalPrev = document.getElementById('btn-modal-prev');
+const btnModalNext = document.getElementById('btn-modal-next');
+const contadorModal = document.getElementById('contador-modal');
+const btnToggleTrazos = document.getElementById('btn-toggle-trazos');
+let mostrandoTrazos = false;
+
+// Elementos de texto del modal
 const modalFilaContraparte = document.getElementById('modal-fila-contraparte');
 const modalContraparte = document.getElementById('modal-contraparte');
 const modalFilaPalabra = document.getElementById('modal-fila-palabra');
@@ -251,26 +265,33 @@ tabEstudio.addEventListener('click', () => {
     renderizarDiccionario(); 
 });
 
-function abrirModal(item) {
-    // Limpia el lienzo de calco automáticamente
-    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
+function abrirModal(item, indice) {
+    indiceModalActual = indice; // Guardamos en qué tarjeta estamos
     
-    // Resetear visualización de trazos
+    // Limpiar trazos y pizarra
+    if(typeof ctxModal !== 'undefined') ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
     mostrandoTrazos = false;
     modalCaracter.classList.remove('fuente-trazos');
-    btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
-    
-    /* ... el resto de tu función se queda igual ... */
-    mostrandoTrazos = false;
-    modalCaracter.classList.remove('fuente-trazos');
-    btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
+    btnToggleTrazos.innerText = "🔢 Orden de Trazos";
+
+    // Llenar datos
     modalCaracter.innerText = item.caracter || "?";
     modalRomaji.innerText = item.romaji || "-";
     modalSignificado.innerText = item.significado || "-";
     modalCategoria.innerText = item.categoria || "-";
+    contadorModal.innerText = `${indice + 1} / ${listaFiltradaActual.length}`;
+
+    // Revisar si es favorito
+    const idUnico = `${item.tipo}_${item.caracter}`;
+    if (favoritosUsuario[idUnico]) {
+        btnFavorito.classList.add('activo');
+        btnFavorito.innerText = "⭐";
+    } else {
+        btnFavorito.classList.remove('activo');
+        btnFavorito.innerText = "☆";
+    }
 
     const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
-
     if (esKanji) {
         modalFilaId.style.display = 'block';
         modalFilaOnyomi.style.display = 'block';
@@ -292,9 +313,73 @@ function abrirModal(item) {
     modalDetalles.classList.remove('oculto');
 }
 
+// Botón de Favorito
+btnFavorito.addEventListener('click', () => {
+    const item = listaFiltradaActual[indiceModalActual];
+    const idUnico = `${item.tipo}_${item.caracter}`;
+    
+    if (favoritosUsuario[idUnico]) {
+        delete favoritosUsuario[idUnico];
+        btnFavorito.classList.remove('activo');
+        btnFavorito.innerText = "☆";
+    } else {
+        favoritosUsuario[idUnico] = true;
+        btnFavorito.classList.add('activo');
+        btnFavorito.innerText = "⭐";
+    }
+    localStorage.setItem('favoritos_japones', JSON.stringify(favoritosUsuario));
+    renderizarDiccionario(); // Actualiza la lista por detrás por si estás filtrando favoritos
+});
+
+// Navegación con Botones
+btnModalNext.addEventListener('click', () => {
+    if (indiceModalActual < listaFiltradaActual.length - 1) abrirModal(listaFiltradaActual[indiceModalActual + 1], indiceModalActual + 1);
+});
+btnModalPrev.addEventListener('click', () => {
+    if (indiceModalActual > 0) abrirModal(listaFiltradaActual[indiceModalActual - 1], indiceModalActual - 1);
+});
+
+// NAVEGACIÓN CON DESLIZAMIENTO (SWIPE TÁCTIL)
+let touchStartX = 0;
+let touchEndX = 0;
+
+modalDetalles.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+modalDetalles.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const umbralSwipe = 50; // Distancia mínima en píxeles para que cuente como deslizamiento
+    if (touchEndX < touchStartX - umbralSwipe) {
+        // Deslizó hacia la izquierda -> Siguiente
+        btnModalNext.click();
+    }
+    if (touchEndX > touchStartX + umbralSwipe) {
+        // Deslizó hacia la derecha -> Anterior
+        btnModalPrev.click();
+    }
+}
+
+// Cerrar Modal
 cerrarModal.addEventListener('click', () => modalDetalles.classList.add('oculto'));
 window.addEventListener('click', (e) => {
     if (e.target === modalDetalles) modalDetalles.classList.add('oculto');
+});
+
+// Botón de Trazos
+btnToggleTrazos.addEventListener('click', () => {
+    mostrandoTrazos = !mostrandoTrazos;
+    if (mostrandoTrazos) {
+        modalCaracter.classList.add('fuente-trazos');
+        btnToggleTrazos.innerText = "🔤 Ocultar Guía";
+    } else {
+        modalCaracter.classList.remove('fuente-trazos');
+        btnToggleTrazos.innerText = "🔢 Orden de Trazos";
+    }
 });
 
 function renderizarDiccionario() {
@@ -302,23 +387,35 @@ function renderizarDiccionario() {
     const texto = buscadorTexto.value.toLowerCase().trim();
     const categoriaSeleccionada = filtroNivel.value;
 
-    const filtrados = diccionarioJapones.filter(item => {
+    listaFiltradaActual = diccionarioJapones.filter(item => {
         const romaji = (item.romaji || "").toLowerCase();
         let significadoLimpio = (item.significado || "").toLowerCase().replace("letra ", "");
+        const tipo = (item.tipo || "").toLowerCase();
         const categoria = (item.categoria || "");
 
         const coincideTexto = texto === "" || romaji.includes(texto) || significadoLimpio.includes(texto);
-        const coincideNivel = categoriaSeleccionada === 'todos' || categoria === categoriaSeleccionada;
+        
+        // El nuevo sistema de filtros
+        let coincideNivel = false;
+        if (categoriaSeleccionada === 'todos') coincideNivel = true;
+        else if (categoriaSeleccionada === 'hiragana') coincideNivel = tipo === 'hiragana';
+        else if (categoriaSeleccionada === 'katakana') coincideNivel = tipo === 'katakana';
+        else if (categoriaSeleccionada === 'kana') coincideNivel = (tipo === 'hiragana' || tipo === 'katakana');
+        else if (categoriaSeleccionada === 'importantes') {
+            const idUnico = `${item.tipo}_${item.caracter}`;
+            coincideNivel = favoritosUsuario[idUnico] === true;
+        }
+        else coincideNivel = categoria === categoriaSeleccionada;
 
         return coincideTexto && coincideNivel;
     });
 
-    if(filtrados.length === 0) {
+    if(listaFiltradaActual.length === 0) {
         listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b; text-align:center; padding:20px;">No se encontraron caracteres.</p>';
         return;
     }
 
-    filtrados.forEach(item => {
+    listaFiltradaActual.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'tarjeta-diccionario';
         div.innerHTML = `
@@ -327,28 +424,14 @@ function renderizarDiccionario() {
             <div class="td-significado">${item.significado}</div>
             <div class="td-tipo">${(item.tipo || "").toUpperCase()}</div>
         `;
-        div.addEventListener('click', () => abrirModal(item));
+        // Al tocar, le enviamos el item y su posición (index) en la lista actual
+        div.addEventListener('click', () => abrirModal(item, index));
         listaDiccionario.appendChild(div);
     });
 }
 
 buscadorTexto.addEventListener('input', renderizarDiccionario);
 filtroNivel.addEventListener('change', renderizarDiccionario);
-
-// Arrancar la app cargando el CSV
-cargarDatos();
-
-// Activar o desactivar la fuente de trazos al presionar el botón
-btnToggleTrazos.addEventListener('click', () => {
-    mostrandoTrazos = !mostrandoTrazos;
-    if (mostrandoTrazos) {
-        modalCaracter.classList.add('fuente-trazos');
-        btnToggleTrazos.innerText = "🔤 Ocultar Guía de Trazos";
-    } else {
-        modalCaracter.classList.remove('fuente-trazos');
-        btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
-    }
-});
 // ==========================================
 // 4. MOTOR DE CALCO (PIZARRA DEL MODAL)
 // ==========================================
