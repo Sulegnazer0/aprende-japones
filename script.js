@@ -154,6 +154,9 @@ function presentarDesafio() {
     const modoElegido = selectorModo.value;
     const progresoElegido = selectorProgreso.value;
     
+    // Leemos los favoritos directo de la memoria en tiempo real
+    const favoritosActuales = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
+    
     let listaFiltrada = diccionarioJapones;
     if (modoElegido !== 'todos') {
         listaFiltrada = diccionarioJapones.filter(item => (item.tipo || "").toLowerCase() === modoElegido);
@@ -162,8 +165,12 @@ function presentarDesafio() {
     listaFiltrada = listaFiltrada.filter(item => {
         const idUnico = `${item.tipo}_${item.caracter}`;
         const estado = progresoUsuario[idUnico];
+        
+        // Las reglas de filtrado de la pizarra
         if (progresoElegido === 'faltan') return estado !== 'sabe';
         if (progresoElegido === 'examen') return estado === 'sabe';
+        if (progresoElegido === 'favoritos') return favoritosActuales[idUnico] === true; // NUEVA REGLA
+        
         return true;
     });
     
