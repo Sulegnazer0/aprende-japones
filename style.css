@@ -7,17 +7,14 @@
 }
 
 
+/* --- Cuando se ven los números, lo hacemos tenue para calcar --- */
 .fuente-trazos {
     font-family: 'OrdenTrazos', sans-serif !important;
-    font-size: 240px !important; /* Tamaño masivo para distinguir los números con total claridad */
-    font-weight: normal !important; /* Mantiene la línea delgada para que no se encimen los trazos */
-    color: #ef4444 !important;
-    line-height: 1.1 !important;
-    display: inline-block;
-    min-height: 260px; /* Espacio mínimo garantizado para que el carácter no se desborde */
-    margin-bottom: 15px;
+    font-size: 240px !important; 
+    font-weight: normal !important; 
+    color: rgba(239, 68, 68, 0.3) !important; /* 0.3 es la transparencia */
+    line-height: 1 !important;
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -320,4 +317,45 @@ button:active {
 #selector-progreso {
     border-color: #e2e8f0;
     font-size: 14px;
+}
+/* --- Zona de Calco en el Modal --- */
+.zona-practica-modal {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 20px auto;
+    border: 3px dashed #cbd5e1;
+    border-radius: 15px;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+.caracter-fondo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 180px; /* Tamaño normal si no son trazos */
+    color: #cbd5e1; /* Gris claro por defecto */
+    z-index: 1; /* Queda abajo */
+    user-select: none;
+}
+
+#pizarra-modal {
+    position: absolute;
+    top: 0; left: 0;
+    width: 300px !important;
+    height: 300px !important;
+    z-index: 2; /* El lienzo de dibujo va por encima de la letra */
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.botones-modal-trazos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
