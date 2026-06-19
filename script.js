@@ -76,8 +76,9 @@ canvasModal.addEventListener('pointermove', (e) => {
 canvasModal.addEventListener('pointerup', () => { dibujandoModal = false; ctxModal.closePath(); });
 canvasModal.addEventListener('pointerout', () => { dibujandoModal = false; ctxModal.closePath(); });
 
-btnLimpiarModal.addEventListener('click', () => { 
-    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height); 
+btnLimpiar.addEventListener('click', () => { 
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
 
 
