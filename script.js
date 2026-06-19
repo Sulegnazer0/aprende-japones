@@ -354,12 +354,29 @@ btnModalPrev.addEventListener('click', () => {
 
 let touchStartX = 0;
 let touchEndX = 0;
-modalDetalles.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+
+modalDetalles.addEventListener('touchstart', e => { 
+    // NUEVO: Si estás tocando el lienzo de dibujo, ignoramos el inicio del swipe
+    if (e.target.id === 'pizarra-modal') return;
+    
+    touchStartX = e.changedTouches[0].screenX; 
+}, {passive: true});
+
 modalDetalles.addEventListener('touchend', e => {
+    // NUEVO: Si terminas el trazo sobre el lienzo de dibujo, ignoramos el final del swipe
+    if (e.target.id === 'pizarra-modal') return;
+
     touchEndX = e.changedTouches[0].screenX;
     const umbralSwipe = 50;
-    if (touchEndX < touchStartX - umbralSwipe) btnModalNext.click();
-    if (touchEndX > touchStartX + umbralSwipe) btnModalPrev.click();
+    
+    // Solo cambiamos de tarjeta si el inicio del toque no fue en la pizarra
+    if (touchStartX !== 0) {
+        if (touchEndX < touchStartX - umbralSwipe) btnModalNext.click();
+        if (touchEndX > touchStartX + umbralSwipe) btnModalPrev.click();
+    }
+    
+    // Reseteamos la variable para el siguiente toque
+    touchStartX = 0;
 });
 
 cerrarModal.addEventListener('click', () => modalDetalles.classList.add('oculto'));
