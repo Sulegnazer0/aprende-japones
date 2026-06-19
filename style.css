@@ -350,9 +350,14 @@ button:active {
     top: 0; left: 0;
     width: 300px !important;
     height: 300px !important;
-    z-index: 2; /* El lienzo de dibujo va por encima de la letra */
+    z-index: 2; 
     cursor: crosshair;
     touch-action: none;
+    
+    /* LA MAGIA: Forzamos a que este lienzo en específico sea transparente */
+    background-color: transparent !important; 
+    background-image: none !important; /* Quitamos la cuadrícula de este lienzo en específico */
+    border: none !important; 
 }
 
 .botones-modal-trazos {
