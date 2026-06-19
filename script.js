@@ -265,24 +265,34 @@ window.addEventListener('click', (e) => {
 });
 
 // Función para dibujar las tarjetas de la lista
+// Función para filtrar y dibujar las tarjetas de la lista
 function renderizarDiccionario() {
     listaDiccionario.innerHTML = ''; 
-    const texto = buscadorTexto.value.toLowerCase();
+    
+    // Obtenemos lo que escribiste y le quitamos espacios extra
+    const texto = buscadorTexto.value.toLowerCase().trim();
     const categoriaSeleccionada = filtroNivel.value;
 
     const filtrados = diccionarioJapones.filter(item => {
         const romaji = (item.romaji || "").toLowerCase();
-        const significado = (item.significado || "").toLowerCase();
+        
+        // EL TRUCO: Limpiamos la palabra "letra " del significado temporalmente 
+        // para que no contamine tu búsqueda.
+        let significadoLimpio = (item.significado || "").toLowerCase();
+        significadoLimpio = significadoLimpio.replace("letra ", "");
+
         const categoria = (item.categoria || "");
 
-        const coincideTexto = romaji.includes(texto) || significado.includes(texto);
+        // Buscamos si lo que escribiste coincide con el romaji o el significado limpio
+        const coincideTexto = texto === "" || romaji.includes(texto) || significadoLimpio.includes(texto);
+        
         const coincideNivel = categoriaSeleccionada === 'todos' || categoria === categoriaSeleccionada;
 
         return coincideTexto && coincideNivel;
     });
 
     if(filtrados.length === 0) {
-        listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b;">No se encontraron caracteres.</p>';
+        listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b; text-align:center; padding: 20px;">No se encontraron caracteres.</p>';
         return;
     }
 
@@ -296,7 +306,7 @@ function renderizarDiccionario() {
             <div class="td-tipo">${(item.tipo || "").toUpperCase()}</div>
         `;
         
-        // --- ¡AQUÍ ESTÁ LA MAGIA! Le decimos que abra el modal al tocarla ---
+        // Abre el modal al tocarla
         div.addEventListener('click', () => abrirModal(item));
         
         listaDiccionario.appendChild(div);
