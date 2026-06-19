@@ -1,3 +1,18 @@
+
+
+/* --- Importar la fuente de trazos --- */
+@font-face {
+    font-family: 'OrdenTrazos';
+    src: url('KanjiStrokeOrders.ttf') format('truetype');
+}
+
+/* --- Clase que aplicaremos dinámicamente con JavaScript --- */
+.fuente-trazos {
+    font-family: 'OrdenTrazos', sans-serif !important;
+    font-size: 85px !important; /* Ligeramente más grande para leer los números */
+    color: #ef4444 !important; /* En rojo para destacar el modo estudio de trazos */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
