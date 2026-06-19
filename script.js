@@ -35,7 +35,7 @@ canvas.addEventListener('pointermove', (e) => {
 
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
-btnLimpiar.addEventListener('click', () => { ctx.clearRect(0, 0, canvas.width, canvas.height); });
+btnLimpiar.addEventListener('click', () => { arRect(0, 0, canvas.width, canvas.height); });
 
 
 // ==========================================
@@ -149,7 +149,8 @@ async function cargarDatos() {
 
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     const modoElegido = selectorModo.value;
     const progresoElegido = selectorProgreso.value;
@@ -229,7 +230,48 @@ selectorModo.addEventListener('change', presentarDesafio);
 selectorProgreso.addEventListener('change', presentarDesafio); 
 btnSabe.addEventListener('click', () => guardarProgreso('sabe'));
 btnNoSabe.addEventListener('click', () => guardarProgreso('falta'));
+// Referencia al nuevo botón
+const btnEvaluarIA = document.getElementById('btn-evaluar-ia');
 
+// Lógica de Reconocimiento de Machine Learning
+btnEvaluarIA.addEventListener('click', async () => {
+    if (!caracterActual) return;
+
+    // 1. Bloquear botón y mostrar que la IA está pensando
+    const textoOriginal = btnEvaluarIA.innerText;
+    btnEvaluarIA.innerText = "⏳ La IA está analizando...";
+    btnEvaluarIA.disabled = true;
+
+    try {
+        // 2. Tomar una "fotografía" del Canvas
+        const imagenCanvas = canvas.toDataURL("image/png");
+
+        // 3. Enviar la imagen a la Red Neuronal (Tesseract) en idioma Japonés
+        const resultado = await Tesseract.recognize(
+            imagenCanvas,
+            'jpn', // Código para el idioma japonés
+            { logger: m => console.log("Progreso de IA:", m) } // Para ver el progreso en consola
+        );
+
+        // 4. Limpiar el texto que nos devuelve la IA
+        const textoDetectado = resultado.data.text.trim();
+        
+        // 5. El Veredicto Final
+        if (textoDetectado.includes(caracterActual.caracter)) {
+            alert(`✅ ¡PERFECTO!\n\nLa IA leyó correctamente: ${textoDetectado}`);
+            guardarProgreso('sabe'); // Lo marca como aprendido automáticamente y avanza
+        } else {
+            alert(`❌ SIGUE PRACTICANDO\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nIntenta hacer tus trazos más limpios y centrados.`);
+        }
+    } catch (error) {
+        alert("Hubo un error de conexión con la IA. Intenta de nuevo.");
+        console.error(error);
+    } finally {
+        // Restaurar el botón
+        btnEvaluarIA.innerText = textoOriginal;
+        btnEvaluarIA.disabled = false;
+    }
+});
 
 // ==========================================
 // 4. MODO ESTUDIO, FAVORITOS Y GESTOS
