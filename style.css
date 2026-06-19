@@ -340,16 +340,19 @@ button:active {
     height: 300px !important;
     cursor: crosshair;
     touch-action: none;
-    
     z-index: 2; /* ARRIBA */
 
-    /* FORZAR TRANSPARENCIA AGRESIVA (Contrarresta reglas de la pizarra principal) */
+    /* Fondo de cristal para ver la letra abajo */
     background-color: transparent !important;
-    background-image: none !important;
+    
+    /* RECUPERAMOS LA CUADRÍCULA VECTORIAL (Líneas punteadas) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cline x1='50%25' y1='0' x2='50%25' y2='100%25' stroke='%2394a3b8' stroke-width='2' stroke-dasharray='8,8' /%3E%3Cline x1='0' y1='50%25' x2='100%25' y2='50%25' stroke='%2394a3b8' stroke-width='2' stroke-dasharray='8,8' /%3E%3C/svg%3E") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
     border: none !important;
     box-shadow: none !important;
 }
-
 /* 2. LA LETRA VUELVE ABAJO (FONDO: Se ve a través del lienzo) */
 .caracter-fondo {
     position: absolute;
