@@ -320,20 +320,19 @@ button:active {
     font-size: 14px;
 }
 /* --- Zona de Calco en el Modal --- */
-/* --- Zona de Calco en el Modal --- */
-/* --- Zona de Calco en el Modal --- */
-/* --- Zona de Calco en el Modal --- */
+
 .zona-practica-modal {
     position: relative;
     width: 100%;
-    max-width: 280px; /* Ligeramente más pequeño para que quepa bien en el S25 Ultra */
-    height: 280px; /* Mismo tamaño para mantener proporción cuadrada */
-    margin: 15px auto 20px auto; /* Margen superior para despegarlo de la estrella/X */
+    max-width: 280px; 
+    height: 280px; 
+    /* NUEVO: Aumentamos el margen superior (de 15px a 45px) para despejar el área de la estrella y la X */
+    margin: 45px auto 20px auto; 
     border: 3px dashed #cbd5e1;
     border-radius: 15px;
     background-color: #ffffff; 
     overflow: hidden;
-    display: flex; /* Fuerza el centrado de los elementos internos */
+    display: flex; 
     justify-content: center;
     align-items: center;
 }
@@ -377,22 +376,23 @@ button:active {
 }
 
 /* --- Estrella de Favoritos --- */
-/* --- Estrella de Favoritos --- */
 .btn-estrella {
     background: none;
     border: none;
-    font-size: 32px; /* Un poco más grande para facilitar el toque táctil */
+    font-size: 32px; 
     position: absolute;
-    top: 15px; /* Alineada al margen superior interno */
-    left: 15px; /* Alineada al margen izquierdo interno */
+    top: 15px; 
+    left: 15px; 
     cursor: pointer;
-    color: #cbd5e1;
-    transition: transform 0.2s;
+    /* NUEVO: Color azul pálido en stand by */
+    color: #93c5fd; 
+    transition: transform 0.2s, color 0.2s;
     z-index: 20;
-    padding: 5px; /* Amplía el área táctil sin cambiar el tamaño visual */
+    padding: 5px; 
 }
+
 .btn-estrella.activo {
-    color: #fbbf24; /* Amarillo brillante */
+    color: #fbbf24; /* Amarillo brillante cuando está seleccionada */
     transform: scale(1.1);
 }
 
