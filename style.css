@@ -284,14 +284,15 @@ button:active {
 
 .modal-contenido {
     background-color: white;
-    padding: 40px 30px; /* Incrementamos el espacio interno para que respire el diseño */
+    padding: 25px 20px; /* Un poco más de margen interno lateral */
     border-radius: 25px;
-    width: 95%; 
-    max-width: 550px; /* Cuadro mucho más amplio y cómodo para pantallas de alta resolución */
+    width: 90%; /* En lugar de 95% o 100%, deja un margen seguro a los lados */
+    max-width: 500px; /* Redujimos un poco el máximo para mantener proporción */
     text-align: center;
     position: relative;
     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     animation: aparecer 0.2s ease-out;
+    margin: 0 auto; /* Garantiza que el contenedor completo se centre */
 }
 
 .cerrar-btn {
@@ -321,35 +322,35 @@ button:active {
 /* --- Zona de Calco en el Modal --- */
 /* --- Zona de Calco en el Modal --- */
 /* --- Zona de Calco en el Modal --- */
+/* --- Zona de Calco en el Modal --- */
 .zona-practica-modal {
     position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 280px; /* Ligeramente más pequeño para que quepa bien en el S25 Ultra */
+    height: 280px; /* Mismo tamaño para mantener proporción cuadrada */
+    margin: 15px auto 20px auto; /* Margen superior para despegarlo de la estrella/X */
     border: 3px dashed #cbd5e1;
     border-radius: 15px;
-    background-color: #ffffff; /* Fondo blanco sólido como base */
+    background-color: #ffffff; 
     overflow: hidden;
+    display: flex; /* Fuerza el centrado de los elementos internos */
+    justify-content: center;
+    align-items: center;
 }
 
 /* 1. EL LIENZO VUELVE ARRIBA (NATURAL: Tu tinta tapa la guía) */
 #pizarra-modal {
     position: absolute;
     top: 0; left: 0;
-    width: 300px !important;
-    height: 300px !important;
+    width: 100% !important; /* Se adapta al contenedor de 280px */
+    height: 100% !important; /* Se adapta al contenedor de 280px */
     cursor: crosshair;
     touch-action: none;
-    z-index: 2; /* ARRIBA */
-
-    /* Fondo de cristal para ver la letra abajo */
+    z-index: 2; 
     background-color: transparent !important;
-    
-    /* RECUPERAMOS LA CUADRÍCULA VECTORIAL (Líneas punteadas) */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cline x1='50%25' y1='0' x2='50%25' y2='100%25' stroke='%2394a3b8' stroke-width='2' stroke-dasharray='8,8' /%3E%3Cline x1='0' y1='50%25' x2='100%25' y2='50%25' stroke='%2394a3b8' stroke-width='2' stroke-dasharray='8,8' /%3E%3C/svg%3E") !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    
     border: none !important;
     box-shadow: none !important;
 }
@@ -361,15 +362,11 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 180px; 
+    font-size: 160px; /* Ligeramente más pequeño para el nuevo cuadro de 280px */
     color: #cbd5e1; 
     user-select: none;
     background: transparent !important;
-    
-    z-index: 1; /* ABAJO */
-    
-    /* pointer-events: none ya no es estrictamente necesario aquí, 
-       pero se deja para evitar conflictos táctiles residuales */
+    z-index: 1; 
     pointer-events: none; 
 }
 .botones-modal-trazos {
@@ -380,17 +377,19 @@ button:active {
 }
 
 /* --- Estrella de Favoritos --- */
+/* --- Estrella de Favoritos --- */
 .btn-estrella {
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 32px; /* Un poco más grande para facilitar el toque táctil */
     position: absolute;
-    top: 10px;
-    left: 15px;
+    top: 15px; /* Alineada al margen superior interno */
+    left: 15px; /* Alineada al margen izquierdo interno */
     cursor: pointer;
     color: #cbd5e1;
     transition: transform 0.2s;
     z-index: 20;
+    padding: 5px; /* Amplía el área táctil sin cambiar el tamaño visual */
 }
 .btn-estrella.activo {
     color: #fbbf24; /* Amarillo brillante */
