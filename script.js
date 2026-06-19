@@ -252,6 +252,15 @@ tabEstudio.addEventListener('click', () => {
 });
 
 function abrirModal(item) {
+    // Limpia el lienzo de calco automáticamente
+    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
+    
+    // Resetear visualización de trazos
+    mostrandoTrazos = false;
+    modalCaracter.classList.remove('fuente-trazos');
+    btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
+    
+    /* ... el resto de tu función se queda igual ... */
     mostrandoTrazos = false;
     modalCaracter.classList.remove('fuente-trazos');
     btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
@@ -339,4 +348,47 @@ btnToggleTrazos.addEventListener('click', () => {
         modalCaracter.classList.remove('fuente-trazos');
         btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
     }
+});
+// ==========================================
+// 4. MOTOR DE CALCO (PIZARRA DEL MODAL)
+// ==========================================
+const canvasModal = document.getElementById('pizarra-modal');
+const ctxModal = canvasModal.getContext('2d');
+const btnLimpiarModal = document.getElementById('btn-limpiar-modal');
+
+// Estilo de tu S-Pen para la zona de calco
+ctxModal.lineWidth = 6;
+ctxModal.lineCap = 'round';
+ctxModal.lineJoin = 'round';
+ctxModal.strokeStyle = '#1e293b'; 
+
+let dibujandoModal = false;
+
+function obtenerPosicionModal(e) {
+    const rect = canvasModal.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+canvasModal.addEventListener('pointerdown', (e) => {
+    dibujandoModal = true;
+    const pos = obtenerPosicionModal(e);
+    ctxModal.beginPath();
+    ctxModal.moveTo(pos.x, pos.y);
+    e.preventDefault();
+});
+
+canvasModal.addEventListener('pointermove', (e) => {
+    if (!dibujandoModal) return;
+    const pos = obtenerPosicionModal(e);
+    ctxModal.lineTo(pos.x, pos.y);
+    ctxModal.stroke();
+    e.preventDefault();
+});
+
+canvasModal.addEventListener('pointerup', () => { dibujandoModal = false; ctxModal.closePath(); });
+canvasModal.addEventListener('pointerout', () => { dibujandoModal = false; ctxModal.closePath(); });
+
+// Botón para limpiar el calco
+btnLimpiarModal.addEventListener('click', () => { 
+    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height); 
 });
