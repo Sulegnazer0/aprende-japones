@@ -7,10 +7,13 @@
 }
 
 /* --- Clase que aplicaremos dinámicamente con JavaScript --- */
+/* --- Clase que aplicaremos dinámicamente con JavaScript --- */
 .fuente-trazos {
     font-family: 'OrdenTrazos', sans-serif !important;
-    font-size: 85px !important; /* Ligeramente más grande para leer los números */
-    color: #ef4444 !important; /* En rojo para destacar el modo estudio de trazos */
+    font-size: 130px !important; /* Tamaño gigante para ver bien los números */
+    font-weight: normal !important; /* LA CLAVE: Quita la negrita para que la línea sea delgada */
+    color: #ef4444 !important;
+    line-height: 1 !important; /* Evita que empuje los textos de abajo */
 }
 
 * {
@@ -282,10 +285,10 @@ button:active {
 
 .modal-contenido {
     background-color: white;
-    padding: 25px;
+    padding: 30px 20px; /* Un poco más de espacio interno */
     border-radius: 20px;
-    width: 100%;
-    max-width: 340px;
+    width: 95%; /* Aprovecha casi toda la pantalla en celulares */
+    max-width: 420px; /* Se hace mucho más grande en tu tablet/PC */
     text-align: center;
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
