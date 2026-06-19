@@ -275,6 +275,9 @@ tabPractica.addEventListener('click', () => {
     seccionEstudio.classList.add('oculto');
     tabPractica.classList.add('activo');
     tabEstudio.classList.remove('activo');
+    
+    // NUEVA LÍNEA: Obliga a la pizarra a leer tus nuevos favoritos y darte un reto fresco al entrar
+    presentarDesafio();
 });
 
 tabEstudio.addEventListener('click', () => {
