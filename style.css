@@ -7,12 +7,12 @@
 }
 
 
-/* --- Cuando se ven los números, lo hacemos tenue para calcar --- */
+/* 2. Hacemos los trazos visibles para la pantalla de tu celular */
 .fuente-trazos {
     font-family: 'OrdenTrazos', sans-serif !important;
-    font-size: 240px !important; 
+    font-size: 220px !important; /* Un poco más pequeño para que no se salga de la caja */
     font-weight: normal !important; 
-    color: rgba(239, 68, 68, 0.3) !important; /* 0.3 es la transparencia */
+    color: #fca5a5 !important; /* COLOR SÓLIDO: Rojo pastel sin transparencia */
     line-height: 1 !important;
 }
 * {
@@ -330,6 +330,7 @@ button:active {
     overflow: hidden;
 }
 
+/* 1. Hacemos que la letra sea intocable para que no bloquee tu pluma */
 .caracter-fondo {
     position: absolute;
     top: 0; left: 0;
@@ -337,10 +338,11 @@ button:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 180px; /* Tamaño normal si no son trazos */
-    color: #cbd5e1; /* Gris claro por defecto */
-    z-index: 1; /* Queda abajo */
+    font-size: 180px; 
+    color: #cbd5e1; 
+    z-index: 1; 
     user-select: none;
+    pointer-events: none; /* LA CLAVE: La pluma ignorará el texto y dibujará en el lienzo */
 }
 
 #pizarra-modal {
