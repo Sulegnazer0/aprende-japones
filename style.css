@@ -320,6 +320,7 @@ button:active {
 }
 /* --- Zona de Calco en el Modal --- */
 /* --- Zona de Calco en el Modal --- */
+/* --- Zona de Calco en el Modal --- */
 .zona-practica-modal {
     position: relative;
     width: 300px;
@@ -327,23 +328,29 @@ button:active {
     margin: 0 auto 20px auto;
     border: 3px dashed #cbd5e1;
     border-radius: 15px;
-    background-color: #ffffff; /* Fondo blanco limpio */
+    background-color: #ffffff; /* Fondo blanco sólido como base */
     overflow: hidden;
 }
 
-/* 1. EL LIENZO SE VA AL FONDO */
+/* 1. EL LIENZO VUELVE ARRIBA (NATURAL: Tu tinta tapa la guía) */
 #pizarra-modal {
     position: absolute;
     top: 0; left: 0;
     width: 300px !important;
     height: 300px !important;
-    z-index: 1; /* Ahora el lienzo es la base */
     cursor: crosshair;
     touch-action: none;
+    
+    z-index: 2; /* ARRIBA */
+
+    /* FORZAR TRANSPARENCIA AGRESIVA (Contrarresta reglas de la pizarra principal) */
     background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
-/* 2. LA LETRA SE VA HASTA ARRIBA (COMO HOLOGRAMA) */
+/* 2. LA LETRA VUELVE ABAJO (FONDO: Se ve a través del lienzo) */
 .caracter-fondo {
     position: absolute;
     top: 0; left: 0;
@@ -353,11 +360,14 @@ button:active {
     align-items: center;
     font-size: 180px; 
     color: #cbd5e1; 
-    
-    z-index: 10; /* La letra flota por encima de la tinta */
-    pointer-events: none; /* LA MAGIA: El S-Pen ignora la letra y dibuja en la pizarra de atrás */
     user-select: none;
-    background: transparent !important; /* Garantizamos que no tenga fondo que tape el lienzo */
+    background: transparent !important;
+    
+    z-index: 1; /* ABAJO */
+    
+    /* pointer-events: none ya no es estrictamente necesario aquí, 
+       pero se deja para evitar conflictos táctiles residuales */
+    pointer-events: none; 
 }
 .botones-modal-trazos {
     display: flex;
