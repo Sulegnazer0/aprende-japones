@@ -64,16 +64,20 @@
             <div class="filtros-estudio">
                 <input type="text" id="buscador-texto" placeholder="Buscar significado o romaji (ej. agua, a, mizu)...">
                 <select id="filtro-nivel">
-                    <option value="todos">Todos los niveles</option>
-                    <option value="basico">Kana (Básico)</option>
+                    <option value="todos">Todos los caracteres</option>
+                    <option value="hiragana">Solo Hiragana</option>
+                    <option value="katakana">Solo Katakana</option>
+                    <option value="kana">Ambos Kana (Hira + Kata)</option>
                     <option value="N5">Kanji N5</option>
-                    </select>
+                    <option value="importantes">⭐ Mis Importantes</option>
+                </select>
             </div>
             
             <div id="lista-diccionario" class="grid-diccionario"></div>
         </div>
 <div id="modal-detalles" class="modal oculto">
             <div class="modal-contenido">
+                <button id="btn-favorito" class="btn-estrella">☆</button>
                 <span id="cerrar-modal" class="cerrar-btn">&times;</span>
                 
                 <div class="zona-practica-modal">
@@ -82,28 +86,29 @@
                 </div>
                 
                 <div class="botones-modal-trazos">
-                    <button id="btn-toggle-trazos" class="btn-secundario">🔢 Ver Orden de Trazos</button>
+                    <button id="btn-toggle-trazos" class="btn-secundario">🔢 Orden de Trazos</button>
                     <button id="btn-limpiar-modal" class="btn-secundario">🧹 Limpiar Trazo</button>
                 </div>
+                
                 <h3 id="modal-romaji" style="color: #3b82f6; margin-bottom: 10px;">-</h3>
                 <p id="modal-significado" style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #1e293b;">-</p>
 
                 <div class="detalles-grid">
                     <p><strong>Categoría:</strong> <span id="modal-categoria">-</span></p>
-
                     <p id="modal-fila-contraparte"><strong>Contraparte:</strong> <span id="modal-contraparte">-</span></p>
                     <p id="modal-fila-palabra"><strong>Ejemplo:</strong> <span id="modal-palabra">-</span></p>
-
                     <p id="modal-fila-id"><strong>Nº Lista:</strong> <span id="modal-id">-</span></p>
                     <p id="modal-fila-onyomi"><strong>Onyomi:</strong> <span id="modal-onyomi">-</span></p>
                     <p id="modal-fila-kunyomi"><strong>Kunyomi:</strong> <span id="modal-kunyomi">-</span></p>
                 </div>
+
+                <div class="modal-navegacion">
+                    <button id="btn-modal-prev">⬅️ Anterior</button>
+                    <span id="contador-modal" style="color: #94a3b8; font-size: 12px; align-self: center;">-</span>
+                    <button id="btn-modal-next">Siguiente ➡️</button>
+                </div>
             </div>
         </div>
-        
-    </div>
-
-    </div>
     
     <script src="script.js"></script>
 </body>
