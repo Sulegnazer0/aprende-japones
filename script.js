@@ -39,29 +39,34 @@ btnLimpiar.addEventListener('click', () => { ctx.clearRect(0, 0, canvas.width, c
 
 
 // ==========================================
-// 2. SISTEMA DE APRENDIZAJE Y LECTURA DE EXCEL
+// 2. SISTEMA DE APRENDIZAJE, FILTRADO Y PROGRESO
 // ==========================================
 let diccionarioJapones = [];
 let caracterActual = null;
 
-// Elementos de la interfaz
+// Cargar progreso guardado desde el almacenamiento local o iniciar uno vacío
+let progresoUsuario = JSON.parse(localStorage.getItem('progreso_japones')) || {};
+
+// Elementos de la interfaz de Práctica
 const selectorModo = document.getElementById('selector-modo');
+const selectorProgreso = document.getElementById('selector-progreso');
 const txtTipo = document.getElementById('info-tipo');
 const txtSignificado = document.getElementById('texto-significado');
 const panelRespuesta = document.getElementById('panel-respuesta');
 const btnRevelar = document.getElementById('btn-revelar');
-const btnSiguiente = document.getElementById('btn-siguiente');
 
-// Campos de respuesta y sus contenedores
+// Nuevos botones de evaluación
+const btnSabe = document.getElementById('btn-sabe');
+const btnNoSabe = document.getElementById('btn-no-sabe');
+
+// Campos de respuesta del panel
 const respCaracter = document.getElementById('resp-caracter');
 const respRomaji = document.getElementById('resp-romaji');
 const respCategoria = document.getElementById('resp-categoria');
-
 const filaContraparte = document.getElementById('fila-contraparte');
 const respContraparte = document.getElementById('resp-contraparte');
 const filaPalabra = document.getElementById('fila-palabra');
 const respPalabra = document.getElementById('resp-palabra');
-
 const filaId = document.getElementById('fila-id');
 const respId = document.getElementById('resp-id');
 const filaOnyomi = document.getElementById('fila-onyomi');
@@ -90,10 +95,8 @@ function procesarCSV(texto) {
 
 async function cargarDatos() {
     try {
-        // TRUCO ANTI-CACHÉ: Agregamos el tiempo exacto a la URL para forzar al celular a descargar los datos frescos.
         const respuesta = await fetch('datos.csv?v=' + new Date().getTime());
         const textoCSV = await respuesta.text();
-        
         diccionarioJapones = procesarCSV(textoCSV);
         
         if(diccionarioJapones.length > 0) {
@@ -103,7 +106,6 @@ async function cargarDatos() {
         }
     } catch (error) {
         txtSignificado.innerText = "Error al conectar con datos.csv";
-        console.error(error);
     }
 }
 
@@ -112,24 +114,53 @@ function presentarDesafio() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     const modoElegido = selectorModo.value;
+    const progresoElegido = selectorProgreso.value;
     
-    // Filtrado de seguridad
+    // 1. Filtrar primero por tipo de carácter (Hiragana/Katakana/Kanji)
     let listaFiltrada = diccionarioJapones;
     if (modoElegido !== 'todos') {
         listaFiltrada = diccionarioJapones.filter(item => (item.tipo || "").toLowerCase() === modoElegido);
     }
     
+    // 2. Filtrar por el estado del progreso del usuario
+    listaFiltrada = listaFiltrada.filter(item => {
+        const identificadorUnico = `${item.tipo}_${item.caracter}`;
+        const estado = progresoUsuario[identificadorUnico]; // Puede ser 'sabe', 'falta' o undefined
+
+        if (progresoElegido === 'faltan') {
+            return estado !== 'sabe'; // Muestra lo que no se ha visto o lo marcado como 'falta'
+        } else if (progresoElegido === 'examen') {
+            return estado === 'sabe'; // Únicamente lo que ya se marcó como aprendido
+        }
+        return true; // Mostrar todo sin importar el estado
+    });
+    
     if (listaFiltrada.length === 0) {
         txtTipo.innerText = "Aviso";
-        txtSignificado.innerText = "No hay datos de esta categoría aún en tu Excel.";
+        txtSignificado.innerText = "No hay caracteres que coincidan con los filtros seleccionados.";
+        caracterActual = null;
         return;
     }
 
     const indiceAzar = Math.floor(Math.random() * listaFiltrada.length);
     caracterActual = listaFiltrada[indiceAzar];
     
-    txtTipo.innerText = (caracterActual.tipo || "Extra").toUpperCase() + " - " + (caracterActual.categoria || "");
+    txtTipo.innerText = (caracterActual.tipo || "EXTRA").toUpperCase() + " - " + (caracterActual.categoria || "");
     txtSignificado.innerText = `Dibuja: "${caracterActual.significado}"`;
+}
+
+function guardarProgreso(estado) {
+    if (!caracterActual) return;
+    const identificadorUnico = `${caracterActual.tipo}_${caracterActual.caracter}`;
+    
+    // Guardar estado en el objeto de progreso
+    progresoUsuario[identificadorUnico] = estado;
+    
+    // Guardar permanentemente en el navegador
+    localStorage.setItem('progreso_japones', JSON.stringify(progresoUsuario));
+    
+    // Brincar inmediatamente al siguiente reto
+    presentarDesafio();
 }
 
 function revelarRespuesta() {
@@ -165,40 +196,37 @@ function revelarRespuesta() {
     panelRespuesta.classList.remove('oculto');
 }
 
-// Eventos
+// Eventos de Práctica
 btnRevelar.addEventListener('click', revelarRespuesta);
-btnSiguiente.addEventListener('click', presentarDesafio);
 selectorModo.addEventListener('change', presentarDesafio); 
+selectorProgreso.addEventListener('change', presentarDesafio); 
 
-// Arrancar la app
-cargarDatos();
+// Eventos de los nuevos botones de progreso
+btnSabe.addEventListener('click', () => guardarProgreso('sabe'));
+btnNoSabe.addEventListener('click', () => guardarProgreso('falta'));
+
 
 // ==========================================
 // 3. MODO ESTUDIO Y BUSCADOR (CON MODAL)
 // ==========================================
-
 const tabPractica = document.getElementById('tab-practica');
 const tabEstudio = document.getElementById('tab-estudio');
 const seccionPractica = document.getElementById('seccion-practica');
 const seccionEstudio = document.getElementById('seccion-estudio');
-
 const buscadorTexto = document.getElementById('buscador-texto');
 const filtroNivel = document.getElementById('filtro-nivel');
 const listaDiccionario = document.getElementById('lista-diccionario');
 
-// Referencias de la Ventana Modal
 const modalDetalles = document.getElementById('modal-detalles');
 const cerrarModal = document.getElementById('cerrar-modal');
 const modalCaracter = document.getElementById('modal-caracter');
 const modalRomaji = document.getElementById('modal-romaji');
 const modalSignificado = document.getElementById('modal-significado');
 const modalCategoria = document.getElementById('modal-categoria');
-
 const modalFilaContraparte = document.getElementById('modal-fila-contraparte');
 const modalContraparte = document.getElementById('modal-contraparte');
 const modalFilaPalabra = document.getElementById('modal-fila-palabra');
 const modalPalabra = document.getElementById('modal-palabra');
-
 const modalFilaId = document.getElementById('modal-fila-id');
 const modalId = document.getElementById('modal-id');
 const modalFilaOnyomi = document.getElementById('modal-fila-onyomi');
@@ -206,7 +234,6 @@ const modalOnyomi = document.getElementById('modal-onyomi');
 const modalFilaKunyomi = document.getElementById('modal-fila-kunyomi');
 const modalKunyomi = document.getElementById('modal-kunyomi');
 
-// Navegación de pestañas
 tabPractica.addEventListener('click', () => {
     seccionPractica.classList.remove('oculto');
     seccionEstudio.classList.add('oculto');
@@ -222,15 +249,12 @@ tabEstudio.addEventListener('click', () => {
     renderizarDiccionario(); 
 });
 
-// Función para abrir la ventana emergente con datos
 function abrirModal(item) {
-    // 1. Llenar los datos básicos
     modalCaracter.innerText = item.caracter || "?";
     modalRomaji.innerText = item.romaji || "-";
     modalSignificado.innerText = item.significado || "-";
     modalCategoria.innerText = item.categoria || "-";
 
-    // 2. Revisar si es Kanji o Kana para mostrar lo correcto
     const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
 
     if (esKanji) {
@@ -240,7 +264,6 @@ function abrirModal(item) {
         modalId.innerText = item.id_jlpt || "N/A";
         modalOnyomi.innerText = item.onyomi || "-";
         modalKunyomi.innerText = item.kunyomi || "-";
-        
         modalFilaContraparte.style.display = 'none';
         modalFilaPalabra.style.display = 'none';
     } else {
@@ -248,51 +271,36 @@ function abrirModal(item) {
         modalFilaPalabra.style.display = 'block';
         modalContraparte.innerText = item.contraparte || "-";
         modalPalabra.innerText = item.palabra_ejemplo || "-";
-
         modalFilaId.style.display = 'none';
         modalFilaOnyomi.style.display = 'none';
         modalFilaKunyomi.style.display = 'none';
     }
-
-    // 3. Mostrar la ventana
     modalDetalles.classList.remove('oculto');
 }
 
-// Cerrar ventana modal con la 'X' o tocando fuera
 cerrarModal.addEventListener('click', () => modalDetalles.classList.add('oculto'));
 window.addEventListener('click', (e) => {
     if (e.target === modalDetalles) modalDetalles.classList.add('oculto');
 });
 
-// Función para dibujar las tarjetas de la lista
-// Función para filtrar y dibujar las tarjetas de la lista
 function renderizarDiccionario() {
     listaDiccionario.innerHTML = ''; 
-    
-    // Obtenemos lo que escribiste y le quitamos espacios extra
     const texto = buscadorTexto.value.toLowerCase().trim();
     const categoriaSeleccionada = filtroNivel.value;
 
     const filtrados = diccionarioJapones.filter(item => {
         const romaji = (item.romaji || "").toLowerCase();
-        
-        // EL TRUCO: Limpiamos la palabra "letra " del significado temporalmente 
-        // para que no contamine tu búsqueda.
-        let significadoLimpio = (item.significado || "").toLowerCase();
-        significadoLimpio = significadoLimpio.replace("letra ", "");
-
+        let significadoLimpio = (item.significado || "").toLowerCase().replace("letra ", "");
         const categoria = (item.categoria || "");
 
-        // Buscamos si lo que escribiste coincide con el romaji o el significado limpio
         const coincideTexto = texto === "" || romaji.includes(texto) || significadoLimpio.includes(texto);
-        
         const coincideNivel = categoriaSeleccionada === 'todos' || categoria === categoriaSeleccionada;
 
         return coincideTexto && coincideNivel;
     });
 
     if(filtrados.length === 0) {
-        listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b; text-align:center; padding: 20px;">No se encontraron caracteres.</p>';
+        listaDiccionario.innerHTML = '<p style="grid-column: 1/-1; color: #64748b; text-align:center; padding:20px;">No se encontraron caracteres.</p>';
         return;
     }
 
@@ -305,13 +313,13 @@ function renderizarDiccionario() {
             <div class="td-significado">${item.significado}</div>
             <div class="td-tipo">${(item.tipo || "").toUpperCase()}</div>
         `;
-        
-        // Abre el modal al tocarla
         div.addEventListener('click', () => abrirModal(item));
-        
         listaDiccionario.appendChild(div);
     });
 }
 
 buscadorTexto.addEventListener('input', renderizarDiccionario);
 filtroNivel.addEventListener('change', renderizarDiccionario);
+
+// Arrancar la app cargando el CSV
+cargarDatos();
