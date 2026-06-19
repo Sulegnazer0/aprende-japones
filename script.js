@@ -220,6 +220,8 @@ const listaDiccionario = document.getElementById('lista-diccionario');
 const modalDetalles = document.getElementById('modal-detalles');
 const cerrarModal = document.getElementById('cerrar-modal');
 const modalCaracter = document.getElementById('modal-caracter');
+const btnToggleTrazos = document.getElementById('btn-toggle-trazos');
+let mostrandoTrazos = false;
 const modalRomaji = document.getElementById('modal-romaji');
 const modalSignificado = document.getElementById('modal-significado');
 const modalCategoria = document.getElementById('modal-categoria');
@@ -250,6 +252,9 @@ tabEstudio.addEventListener('click', () => {
 });
 
 function abrirModal(item) {
+    mostrandoTrazos = false;
+    modalCaracter.classList.remove('fuente-trazos');
+    btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
     modalCaracter.innerText = item.caracter || "?";
     modalRomaji.innerText = item.romaji || "-";
     modalSignificado.innerText = item.significado || "-";
@@ -323,3 +328,15 @@ filtroNivel.addEventListener('change', renderizarDiccionario);
 
 // Arrancar la app cargando el CSV
 cargarDatos();
+
+// Activar o desactivar la fuente de trazos al presionar el botón
+btnToggleTrazos.addEventListener('click', () => {
+    mostrandoTrazos = !mostrandoTrazos;
+    if (mostrandoTrazos) {
+        modalCaracter.classList.add('fuente-trazos');
+        btnToggleTrazos.innerText = "🔤 Ocultar Guía de Trazos";
+    } else {
+        modalCaracter.classList.remove('fuente-trazos');
+        btnToggleTrazos.innerText = "🔢 Ver Orden de Trazos";
+    }
+});
