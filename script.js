@@ -200,6 +200,26 @@ function guardarProgreso(estado) {
 
 function revelarRespuesta() {
     if (!caracterActual) return;
+    
+    // --- NUEVA LÓGICA: SUPERPOSICIÓN VISUAL (FANTASMA) ---
+    // Imprimimos el carácter perfecto debajo de tu trazo para que compares
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over'; // Dibuja "por debajo" de tu tinta
+    ctx.font = "200px sans-serif";
+    ctx.fillStyle = "rgba(239, 68, 68, 0.25)"; // Un rojo muy tenue
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    
+    // Si es un fonema doble (como きゃ), bajamos un poco el tamaño de fuente para que quepa
+    if (caracterActual.caracter.length > 1) {
+        ctx.font = "140px sans-serif";
+    }
+    
+    ctx.fillText(caracterActual.caracter, canvas.width / 2, canvas.height / 2);
+    ctx.restore();
+    // -----------------------------------------------------
+
+    // Mostrar los datos en el panel
     respCaracter.innerText = caracterActual.caracter || "?";
     respRomaji.innerText = caracterActual.romaji || "-";
     respCategoria.innerText = caracterActual.categoria || "-";
@@ -267,12 +287,12 @@ btnEvaluarIA.addEventListener('click', async () => {
         // 6. Limpiar el texto que nos devuelve la IA
         const textoDetectado = resultado.data.text.trim();
         
-        // 7. El Veredicto Final
+        // 7. El Veredicto Final (Con advertencia de exactitud)
         if (textoDetectado.includes(caracterActual.caracter)) {
-            alert(`✅ ¡PERFECTO!\n\nLa IA leyó correctamente: ${textoDetectado}`);
-            guardarProgreso('sabe'); // Lo marca como aprendido automáticamente y avanza
+            alert(`✅ ¡Excelente!\n\nLa IA leyó correctamente: ${textoDetectado}\n\n(Recuerda que la IA sigue en aprendizaje, pero tu trazo fue lo suficientemente claro).`);
+            guardarProgreso('sabe'); 
         } else {
-            alert(`❌ CASI...\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nIntenta hacerlo un poco más centrado.`);
+            alert(`❌ IA Confundida...\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nNo te desanimes, nuestra IA aún está en fase Beta y puede fallar leyendo trazos manuales. Si crees que lo hiciste bien, usa el botón "Ver Respuesta" para auto-evaluarte.`);
         }
     } catch (error) {
         alert("Hubo un error de conexión con la IA. Intenta de nuevo.");
