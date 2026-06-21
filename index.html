@@ -38,8 +38,14 @@
             <div class="controles-pizarra">
                 <button id="btn-limpiar" class="btn-secundario">Limpiar</button>
                 <button id="btn-revelar" class="btn-secundario">Ver Respuesta</button>
-                <button id="btn-evaluar-ia" class="btn-primario" style="background-color: #8b5cf6;">🤖 Evaluar con IA</button>
+                <div style="position: relative; display: inline-block;">
+                    <span style="position: absolute; top: -10px; right: -5px; background-color: #f59e0b; color: white; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: bold; z-index: 10;">BETA</span>
+                    <button id="btn-evaluar-ia" class="btn-primario" style="background-color: #8b5cf6;">🤖 Evaluar con IA</button>
+                </div>
             </div>
+            <p style="text-align: center; color: #64748b; font-size: 11px; margin-top: 10px; padding: 0 15px;">
+                *Nota: La evaluación por Inteligencia Artificial está en fase experimental. Seguimos trabajando para mejorar su exactitud con trazos manuales.
+            </p>
 
             <div id="panel-respuesta" class="panel-respuesta oculto">
                 <div class="caracter-correcto" id="resp-caracter">?</div>
