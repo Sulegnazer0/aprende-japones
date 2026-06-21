@@ -36,7 +36,6 @@ canvas.addEventListener('pointermove', (e) => {
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
 btnLimpiar.addEventListener('click', () => { 
-    // ¡Vuelve a ser transparente!
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
 });
 
@@ -154,14 +153,13 @@ async function cargarDatos() {
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
     
-    // ¡Vuelve a ser transparente! Eliminamos fillStyle y fillRect
+    // Limpiamos el lienzo dejándolo transparente
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     const modoElegido = selectorModo.value;
-    // ... (el resto de tu función se queda igual)
     const progresoElegido = selectorProgreso.value;
     
-    // Leemos los favoritos directo de la memoria en tiempo real
+    // Leemos los favoritos directo de la memoria
     const favoritosActuales = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
     
     let listaFiltrada = diccionarioJapones;
@@ -173,10 +171,9 @@ function presentarDesafio() {
         const idUnico = `${item.tipo}_${item.caracter}`;
         const estado = progresoUsuario[idUnico];
         
-        // Las reglas de filtrado de la pizarra
         if (progresoElegido === 'faltan') return estado !== 'sabe';
         if (progresoElegido === 'examen') return estado === 'sabe';
-        if (progresoElegido === 'favoritos') return favoritosActuales[idUnico] === true; // NUEVA REGLA
+        if (progresoElegido === 'favoritos') return favoritosActuales[idUnico] === true;
         
         return true;
     });
@@ -194,7 +191,6 @@ function presentarDesafio() {
     txtTipo.innerText = (caracterActual.tipo || "EXTRA").toUpperCase() + " - " + (caracterActual.categoria || "");
     txtSignificado.innerText = `Dibuja: "${caracterActual.significado}"`;
 }
-
 function guardarProgreso(estado) {
     if (!caracterActual) return;
     const idUnico = `${caracterActual.tipo}_${caracterActual.caracter}`;
