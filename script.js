@@ -5,7 +5,7 @@ const canvas = document.getElementById('pizarra');
 const ctx = canvas.getContext('2d');
 const btnLimpiar = document.getElementById('btn-limpiar');
 
-ctx.lineWidth = 6;
+ctx.lineWidth = 12;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
 ctx.strokeStyle = '#1e293b';
@@ -235,34 +235,44 @@ btnNoSabe.addEventListener('click', () => guardarProgreso('falta'));
 const btnEvaluarIA = document.getElementById('btn-evaluar-ia');
 
 // Lógica de Reconocimiento de Machine Learning
+// Lógica de Reconocimiento de Machine Learning AVANZADA
 btnEvaluarIA.addEventListener('click', async () => {
     if (!caracterActual) return;
 
     // 1. Bloquear botón y mostrar que la IA está pensando
     const textoOriginal = btnEvaluarIA.innerText;
-    btnEvaluarIA.innerText = "⏳ La IA está analizando...";
+    btnEvaluarIA.innerText = "⏳ Ajustando lente de IA...";
     btnEvaluarIA.disabled = true;
 
     try {
         // 2. Tomar una "fotografía" del Canvas
         const imagenCanvas = canvas.toDataURL("image/png");
 
-        // 3. Enviar la imagen a la Red Neuronal (Tesseract) en idioma Japonés
-        const resultado = await Tesseract.recognize(
-            imagenCanvas,
-            'jpn', // Código para el idioma japonés
-            { logger: m => console.log("Progreso de IA:", m) } // Para ver el progreso en consola
-        );
+        // 3. Crear un "Trabajador" de Tesseract para darle instrucciones
+        const worker = await Tesseract.createWorker('jpn');
+        
+        // 4. LA MAGIA DINÁMICA: Elegir el modo correcto según la longitud
+        // Si tiene más de 1 carácter (ej. きゃ), usa PSM 8 (Palabra única)
+        // Si es 1 solo carácter (ej. あ), usa PSM 10 (Carácter único)
+        const modoPSM = caracterActual.caracter.length > 1 ? '8' : '10';
 
-        // 4. Limpiar el texto que nos devuelve la IA
+        await worker.setParameters({
+            tessedit_pageseg_mode: modoPSM, 
+        });
+
+        // 5. Analizar la imagen con la nueva configuración
+        const resultado = await worker.recognize(imagenCanvas);
+        await worker.terminate(); // Apagamos el motor para no gastar memoria de tu tableta
+
+        // 6. Limpiar el texto que nos devuelve la IA
         const textoDetectado = resultado.data.text.trim();
         
-        // 5. El Veredicto Final
+        // 7. El Veredicto Final
         if (textoDetectado.includes(caracterActual.caracter)) {
             alert(`✅ ¡PERFECTO!\n\nLa IA leyó correctamente: ${textoDetectado}`);
             guardarProgreso('sabe'); // Lo marca como aprendido automáticamente y avanza
         } else {
-            alert(`❌ SIGUE PRACTICANDO\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nIntenta hacer tus trazos más limpios y centrados.`);
+            alert(`❌ CASI...\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nIntenta hacerlo un poco más centrado.`);
         }
     } catch (error) {
         alert("Hubo un error de conexión con la IA. Intenta de nuevo.");
