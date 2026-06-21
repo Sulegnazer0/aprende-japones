@@ -36,7 +36,8 @@ canvas.addEventListener('pointermove', (e) => {
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
 btnLimpiar.addEventListener('click', () => { 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
 
 
@@ -153,13 +154,13 @@ async function cargarDatos() {
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
     
-    // Limpiamos el lienzo dejándolo transparente
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // VOLVEMOS AL BLANCO SEGURO PARA LA IA
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     const modoElegido = selectorModo.value;
     const progresoElegido = selectorProgreso.value;
     
-    // Leemos los favoritos directo de la memoria
     const favoritosActuales = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
     
     let listaFiltrada = diccionarioJapones;
