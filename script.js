@@ -5,6 +5,32 @@ const canvas = document.getElementById('pizarra');
 const ctx = canvas.getContext('2d');
 const btnLimpiar = document.getElementById('btn-limpiar');
 
+// ==========================================
+// FUNCIÓN MAESTRA: DIBUJAR PAPEL Y CUADRÍCULA
+// ==========================================
+function dibujarPapel(contexto, lienzo, esModal) {
+    // 1. Pintar la hoja opaca color Washi (¡Esto repara el error de la GPU!)
+    contexto.globalCompositeOperation = 'source-over';
+    contexto.fillStyle = '#fdfbf7';
+    contexto.fillRect(0, 0, lienzo.width, lienzo.height);
+
+    // 2. Dibujar la cuadrícula roja estilo Genkō yōshi
+    contexto.strokeStyle = '#fca5a5';
+    contexto.lineWidth = 2;
+    contexto.setLineDash([5, 5]); // Líneas punteadas elegantes
+    contexto.beginPath();
+    contexto.moveTo(lienzo.width / 2, 0); // Línea vertical
+    contexto.lineTo(lienzo.width / 2, lienzo.height);
+    contexto.moveTo(0, lienzo.height / 2); // Línea horizontal
+    contexto.lineTo(lienzo.width, lienzo.height / 2);
+    contexto.stroke();
+    contexto.setLineDash([]); // Quitamos lo punteado para que tu pluma sea normal
+
+    // 3. Preparar tu pluma negra para cuando empieces a dibujar
+    contexto.strokeStyle = '#1e293b';
+    contexto.lineWidth = esModal ? 6 : 12;
+}
+
 ctx.lineWidth = 12;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
@@ -41,8 +67,7 @@ canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath()
 
 // Botón Limpiar: Borrado transparente y reinicio de tinta
 btnLimpiar.addEventListener('click', () => { 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.globalCompositeOperation = 'source-over';
+    dibujarPapel(ctx, canvas, false);
 });
 
 
@@ -89,8 +114,7 @@ canvasModal.addEventListener('pointerout', () => { dibujandoModal = false; ctxMo
 
 // CORRECCIÓN: Este es el botón del modal
 btnLimpiarModal.addEventListener('click', () => { 
-    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
-    ctxModal.globalCompositeOperation = 'source-over';
+    dibujarPapel(ctxModal, canvasModal, true);
 });
 
 
@@ -163,11 +187,11 @@ async function cargarDatos() {
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
     
-    // CRISTAL TRANSPARENTE: Para ver tu fondo Washi y cuadrícula
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.globalCompositeOperation = 'source-over'; // Reinicia la tinta
+    // Creamos el papel fresco
+    dibujarPapel(ctx, canvas, false);
     
     const modoElegido = selectorModo.value;
+    // ... el resto sigue igual
     const progresoElegido = selectorProgreso.value;
     
     const favoritosActuales = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
@@ -389,8 +413,11 @@ tabEstudio.addEventListener('click', () => {
 function abrirModal(item, indice) {
     indiceModalActual = indice;
     
-    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
+    // Creamos el papel fresco para el modal
+    dibujarPapel(ctxModal, canvasModal, true);
+    
     mostrandoTrazos = false;
+    // ... el resto sigue igual
     modalCaracter.classList.remove('fuente-trazos');
     btnToggleTrazos.innerText = "🔢 Orden de Trazos";
 
