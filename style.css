@@ -1,13 +1,14 @@
 /* =========================================
-   1. IMPORTAR FUENTE DE ORDEN DE TRAZOS (NUBE)
+   1. IMPORTAR FUENTE LOCAL DE TRAZOS
    ========================================= */
 @font-face {
-    font-family: 'KanjiStrokeOrders';
-    src: url('https://cdn.jsdelivr.net/gh/parsimonhi/animCJK@master/font/KanjiStrokeOrders_v4.004.ttf') format('truetype');
+    font-family: 'OrdenTrazos';
+    /* Le decimos a la app que busque la fuente físicamente en tu carpeta */
+    src: url('KanjiStrokeOrders.ttf') format('truetype');
 }
 
 /* =========================================
-   2. REPARAR LA CAPA DEL CARÁCTER GIGANTE
+   2. LA CAPA DEL CARÁCTER GIGANTE (NORMAL)
    ========================================= */
 .caracter-fondo {
     position: absolute;
@@ -16,8 +17,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 160px; /* Tamaño perfecto para el lienzo de 280px */
-    color: #94a3b8; /* Gris claro */
+    font-size: 160px; /* Tamaño perfecto para que no se desborde del cuadro */
+    color: #cbd5e1; /* Gris claro en modo normal */
     user-select: none;
     background: transparent !important;
     
@@ -27,15 +28,17 @@
     /* Evitamos que el texto bloquee tu S-Pen */
     pointer-events: none; 
     
-    /* Fusión de color: El gris se transparenta, pero tu tinta negra predomina */
+    /* Efecto "Calca": La tinta negra tapará visualmente al texto gris */
     mix-blend-mode: darken; 
 }
 
 /* =========================================
-   3. CLASE PARA TU BOTÓN DE JAVASCRIPT
+   3. CLASE PARA EL BOTÓN (AL ACTIVAR LOS TRAZOS)
    ========================================= */
 .fuente-trazos {
-    font-family: 'KanjiStrokeOrders', sans-serif !important;
+    font-family: 'OrdenTrazos', sans-serif !important;
+    /* Al presionar el botón, la letra cambiará a rojo pastel para indicar que es la guía */
+    color: #fca5a5 !important; 
 }
 
 /* --- Pizarra Principal (Modo Práctica) --- */
