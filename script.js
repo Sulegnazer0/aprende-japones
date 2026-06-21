@@ -35,7 +35,10 @@ canvas.addEventListener('pointermove', (e) => {
 
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
-btnLimpiar.addEventListener('click', () => { arRect(0, 0, canvas.width, canvas.height); });
+btnLimpiar.addEventListener('click', () => { 
+    // ¡Vuelve a ser transparente!
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+});
 
 
 // ==========================================
@@ -150,10 +153,12 @@ async function cargarDatos() {
 
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // ¡Vuelve a ser transparente! Eliminamos fillStyle y fillRect
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     const modoElegido = selectorModo.value;
+    // ... (el resto de tu función se queda igual)
     const progresoElegido = selectorProgreso.value;
     
     // Leemos los favoritos directo de la memoria en tiempo real
@@ -265,8 +270,22 @@ btnEvaluarIA.addEventListener('click', async () => {
     btnEvaluarIA.disabled = true;
 
     try {
-        // 2. Tomar una "fotografía" del Canvas
-        const imagenCanvas = canvas.toDataURL("image/png");
+        // 2. Tomar una "fotografía" usando un LIENZO VIRTUAL
+        // Creamos un lienzo temporal invisible en la memoria
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+        const tempCtx = tempCanvas.getContext('2d');
+
+        // Lo pintamos de blanco sólido para la IA
+        tempCtx.fillStyle = '#ffffff';
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+        // Copiamos tus trazos oscuros justo encima de ese fondo blanco
+        tempCtx.drawImage(canvas, 0, 0);
+
+        // Tomamos la foto de este lienzo temporal en lugar del transparente
+        const imagenCanvas = tempCanvas.toDataURL("image/png");
 
         // 3. Crear un "Trabajador" de Tesseract para darle instrucciones
         const worker = await Tesseract.createWorker('jpn');
