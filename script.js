@@ -20,6 +20,9 @@ function obtenerPosicion(e) {
 canvas.addEventListener('pointerdown', (e) => {
     dibujando = true;
     const pos = obtenerPosicion(e);
+    
+    // LA SOLUCIÓN: Tinta negra sólida al tocar la pantalla
+    ctx.globalCompositeOperation = 'source-over'; 
     ctx.beginPath();
     ctx.moveTo(pos.x, pos.y);
     e.preventDefault();
@@ -35,9 +38,11 @@ canvas.addEventListener('pointermove', (e) => {
 
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
+
+// Botón Limpiar: Borrado transparente y reinicio de tinta
 btnLimpiar.addEventListener('click', () => { 
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over';
 });
 
 
@@ -63,6 +68,9 @@ function obtenerPosicionModal(e) {
 canvasModal.addEventListener('pointerdown', (e) => {
     dibujandoModal = true;
     const pos = obtenerPosicionModal(e);
+    
+    // Tinta negra sólida también para el modal
+    ctxModal.globalCompositeOperation = 'source-over';
     ctxModal.beginPath();
     ctxModal.moveTo(pos.x, pos.y);
     e.preventDefault();
@@ -79,9 +87,10 @@ canvasModal.addEventListener('pointermove', (e) => {
 canvasModal.addEventListener('pointerup', () => { dibujandoModal = false; ctxModal.closePath(); });
 canvasModal.addEventListener('pointerout', () => { dibujandoModal = false; ctxModal.closePath(); });
 
-btnLimpiar.addEventListener('click', () => { 
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+// CORRECCIÓN: Este es el botón del modal
+btnLimpiarModal.addEventListener('click', () => { 
+    ctxModal.clearRect(0, 0, canvasModal.width, canvasModal.height);
+    ctxModal.globalCompositeOperation = 'source-over';
 });
 
 
@@ -154,9 +163,9 @@ async function cargarDatos() {
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
     
-    // VOLVEMOS AL BLANCO SEGURO PARA LA IA
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // CRISTAL TRANSPARENTE: Para ver tu fondo Washi y cuadrícula
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = 'source-over'; // Reinicia la tinta
     
     const modoElegido = selectorModo.value;
     const progresoElegido = selectorProgreso.value;
