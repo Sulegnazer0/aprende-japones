@@ -204,7 +204,7 @@ function revelarRespuesta() {
     // --- NUEVA LÓGICA: SUPERPOSICIÓN VISUAL (FANTASMA) ---
     // Imprimimos el carácter perfecto debajo de tu trazo para que compares
     ctx.save();
-    ctx.globalCompositeOperation = 'destination-over'; // Dibuja "por debajo" de tu tinta
+    ctx.globalCompositeOperation = 'multiply'; // Efecto "marcatextos" que tiñe el fondo blanco sin tapar tu tinta negra
     ctx.font = "200px sans-serif";
     ctx.fillStyle = "rgba(239, 68, 68, 0.25)"; // Un rojo muy tenue
     ctx.textAlign = "center";
