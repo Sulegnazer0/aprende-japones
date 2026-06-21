@@ -1,3 +1,44 @@
+/* =========================================
+   1. IMPORTAR FUENTE DE ORDEN DE TRAZOS
+   ========================================= */
+@font-face {
+    font-family: 'KanjiStrokeOrders';
+    /* Descargamos la fuente especial directamente desde un repositorio seguro */
+    src: url('https://cdn.jsdelivr.net/gh/parsimonhi/animCJK@master/font/KanjiStrokeOrders_v4.004.ttf') format('truetype');
+}
+
+/* =========================================
+   2. REPARAR LA CAPA DEL CARÁCTER GIGANTE
+   ========================================= */
+.caracter-fondo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 160px;
+    color: #94a3b8; /* Gris claro */
+    user-select: none;
+    background: transparent !important;
+    
+    /* LA MAGIA DE CAPAS: Lo ponemos POR ENCIMA de tu lienzo opaco */
+    z-index: 10; 
+    
+    /* Evitamos que el texto bloquee tu S-Pen */
+    pointer-events: none; 
+    
+    /* Fusión de color: El gris se transparenta, pero tu tinta negra predomina */
+    mix-blend-mode: darken; 
+}
+
+/* =========================================
+   3. CLASE PARA TU BOTÓN DE JAVASCRIPT
+   ========================================= */
+.fuente-trazos {
+    font-family: 'KanjiStrokeOrders', sans-serif !important;
+}
+
 /* --- Pizarra Principal (Modo Práctica) --- */
 #pizarra {
     width: 100%;
