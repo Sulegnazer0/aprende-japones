@@ -1,40 +1,35 @@
 // ==========================================
+// FUNCIÓN MAESTRA: DIBUJAR PAPEL Y CUADRÍCULA
+// ==========================================
+function dibujarPapel(contexto, lienzo, esModal) {
+    contexto.globalCompositeOperation = 'source-over';
+    contexto.fillStyle = '#fdfbf7';
+    contexto.fillRect(0, 0, lienzo.width, lienzo.height);
+
+    contexto.strokeStyle = '#fca5a5';
+    contexto.lineWidth = 2;
+    contexto.setLineDash([5, 5]);
+    contexto.beginPath();
+    contexto.moveTo(lienzo.width / 2, 0);
+    contexto.lineTo(lienzo.width / 2, lienzo.height);
+    contexto.moveTo(0, lienzo.height / 2);
+    contexto.lineTo(lienzo.width, lienzo.height / 2);
+    contexto.stroke();
+    contexto.setLineDash([]);
+
+    contexto.strokeStyle = '#1e293b';
+    contexto.lineWidth = esModal ? 6 : 12;
+}
+
+// ==========================================
 // 1. MOTOR DE DIBUJO (PIZARRA PRINCIPAL)
 // ==========================================
 const canvas = document.getElementById('pizarra');
 const ctx = canvas.getContext('2d');
 const btnLimpiar = document.getElementById('btn-limpiar');
 
-// ==========================================
-// FUNCIÓN MAESTRA: DIBUJAR PAPEL Y CUADRÍCULA
-// ==========================================
-function dibujarPapel(contexto, lienzo, esModal) {
-    // 1. Pintar la hoja opaca color Washi (¡Esto repara el error de la GPU!)
-    contexto.globalCompositeOperation = 'source-over';
-    contexto.fillStyle = '#fdfbf7';
-    contexto.fillRect(0, 0, lienzo.width, lienzo.height);
-
-    // 2. Dibujar la cuadrícula roja estilo Genkō yōshi
-    contexto.strokeStyle = '#fca5a5';
-    contexto.lineWidth = 2;
-    contexto.setLineDash([5, 5]); // Líneas punteadas elegantes
-    contexto.beginPath();
-    contexto.moveTo(lienzo.width / 2, 0); // Línea vertical
-    contexto.lineTo(lienzo.width / 2, lienzo.height);
-    contexto.moveTo(0, lienzo.height / 2); // Línea horizontal
-    contexto.lineTo(lienzo.width, lienzo.height / 2);
-    contexto.stroke();
-    contexto.setLineDash([]); // Quitamos lo punteado para que tu pluma sea normal
-
-    // 3. Preparar tu pluma negra para cuando empieces a dibujar
-    contexto.strokeStyle = '#1e293b';
-    contexto.lineWidth = esModal ? 6 : 12;
-}
-
-ctx.lineWidth = 12;
 ctx.lineCap = 'round';
 ctx.lineJoin = 'round';
-ctx.strokeStyle = '#1e293b';
 
 let dibujando = false;
 
@@ -46,8 +41,6 @@ function obtenerPosicion(e) {
 canvas.addEventListener('pointerdown', (e) => {
     dibujando = true;
     const pos = obtenerPosicion(e);
-    
-    // LA SOLUCIÓN: Tinta negra sólida al tocar la pantalla
     ctx.globalCompositeOperation = 'source-over'; 
     ctx.beginPath();
     ctx.moveTo(pos.x, pos.y);
@@ -65,11 +58,9 @@ canvas.addEventListener('pointermove', (e) => {
 canvas.addEventListener('pointerup', () => { dibujando = false; ctx.closePath(); });
 canvas.addEventListener('pointerout', () => { dibujando = false; ctx.closePath(); });
 
-// Botón Limpiar: Borrado transparente y reinicio de tinta
 btnLimpiar.addEventListener('click', () => { 
     dibujarPapel(ctx, canvas, false);
 });
-
 
 // ==========================================
 // 2. MOTOR DE CALCO (PIZARRA DEL MODAL)
@@ -78,10 +69,8 @@ const canvasModal = document.getElementById('pizarra-modal');
 const ctxModal = canvasModal.getContext('2d');
 const btnLimpiarModal = document.getElementById('btn-limpiar-modal');
 
-ctxModal.lineWidth = 6;
 ctxModal.lineCap = 'round';
 ctxModal.lineJoin = 'round';
-ctxModal.strokeStyle = '#1e293b'; 
 
 let dibujandoModal = false;
 
@@ -93,8 +82,6 @@ function obtenerPosicionModal(e) {
 canvasModal.addEventListener('pointerdown', (e) => {
     dibujandoModal = true;
     const pos = obtenerPosicionModal(e);
-    
-    // Tinta negra sólida también para el modal
     ctxModal.globalCompositeOperation = 'source-over';
     ctxModal.beginPath();
     ctxModal.moveTo(pos.x, pos.y);
@@ -112,18 +99,15 @@ canvasModal.addEventListener('pointermove', (e) => {
 canvasModal.addEventListener('pointerup', () => { dibujandoModal = false; ctxModal.closePath(); });
 canvasModal.addEventListener('pointerout', () => { dibujandoModal = false; ctxModal.closePath(); });
 
-// CORRECCIÓN: Este es el botón del modal
 btnLimpiarModal.addEventListener('click', () => { 
     dibujarPapel(ctxModal, canvasModal, true);
 });
-
 
 // ==========================================
 // 3. DATOS, PROGRESO Y MODO PRÁCTICA
 // ==========================================
 let diccionarioJapones = [];
 let caracterActual = null;
-
 let progresoUsuario = JSON.parse(localStorage.getItem('progreso_japones')) || {};
 
 const selectorModo = document.getElementById('selector-modo');
@@ -171,10 +155,9 @@ async function cargarDatos() {
         const respuesta = await fetch('datos.csv?v=' + new Date().getTime());
         const textoCSV = await respuesta.text();
         diccionarioJapones = procesarCSV(textoCSV);
-        
         if(diccionarioJapones.length > 0) {
             presentarDesafio();
-            renderizarDiccionario(); // Pre-carga el diccionario de estudio
+            renderizarDiccionario();
         } else {
             txtSignificado.innerText = "El archivo Excel está vacío.";
         }
@@ -186,14 +169,10 @@ async function cargarDatos() {
 
 function presentarDesafio() {
     panelRespuesta.classList.add('oculto');
-    
-    // Creamos el papel fresco
     dibujarPapel(ctx, canvas, false);
     
     const modoElegido = selectorModo.value;
-    // ... el resto sigue igual
     const progresoElegido = selectorProgreso.value;
-    
     const favoritosActuales = JSON.parse(localStorage.getItem('favoritos_japones')) || {};
     
     let listaFiltrada = diccionarioJapones;
@@ -204,11 +183,9 @@ function presentarDesafio() {
     listaFiltrada = listaFiltrada.filter(item => {
         const idUnico = `${item.tipo}_${item.caracter}`;
         const estado = progresoUsuario[idUnico];
-        
         if (progresoElegido === 'faltan') return estado !== 'sabe';
         if (progresoElegido === 'examen') return estado === 'sabe';
         if (progresoElegido === 'favoritos') return favoritosActuales[idUnico] === true;
-        
         return true;
     });
     
@@ -225,6 +202,7 @@ function presentarDesafio() {
     txtTipo.innerText = (caracterActual.tipo || "EXTRA").toUpperCase() + " - " + (caracterActual.categoria || "");
     txtSignificado.innerText = `Dibuja: "${caracterActual.significado}"`;
 }
+
 function guardarProgreso(estado) {
     if (!caracterActual) return;
     const idUnico = `${caracterActual.tipo}_${caracterActual.caracter}`;
@@ -236,25 +214,16 @@ function guardarProgreso(estado) {
 function revelarRespuesta() {
     if (!caracterActual) return;
     
-    // --- NUEVA LÓGICA: SUPERPOSICIÓN VISUAL (FANTASMA) ---
-    // Imprimimos el carácter perfecto debajo de tu trazo para que compares
     ctx.save();
-    ctx.globalCompositeOperation = 'multiply'; // Efecto "marcatextos" que tiñe el fondo blanco sin tapar tu tinta negra
+    ctx.globalCompositeOperation = 'multiply'; 
     ctx.font = "200px sans-serif";
-    ctx.fillStyle = "rgba(239, 68, 68, 0.25)"; // Un rojo muy tenue
+    ctx.fillStyle = "rgba(239, 68, 68, 0.25)"; 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    
-    // Si es un fonema doble (como きゃ), bajamos un poco el tamaño de fuente para que quepa
-    if (caracterActual.caracter.length > 1) {
-        ctx.font = "140px sans-serif";
-    }
-    
+    if (caracterActual.caracter.length > 1) ctx.font = "140px sans-serif";
     ctx.fillText(caracterActual.caracter, canvas.width / 2, canvas.height / 2);
     ctx.restore();
-    // -----------------------------------------------------
 
-    // Mostrar los datos en el panel
     respCaracter.innerText = caracterActual.caracter || "?";
     respRomaji.innerText = caracterActual.romaji || "-";
     respCategoria.innerText = caracterActual.categoria || "-";
@@ -286,68 +255,42 @@ selectorModo.addEventListener('change', presentarDesafio);
 selectorProgreso.addEventListener('change', presentarDesafio); 
 btnSabe.addEventListener('click', () => guardarProgreso('sabe'));
 btnNoSabe.addEventListener('click', () => guardarProgreso('falta'));
-// Referencia al nuevo botón
+
 const btnEvaluarIA = document.getElementById('btn-evaluar-ia');
 
-// Lógica de Reconocimiento de Machine Learning
-// Lógica de Reconocimiento de Machine Learning AVANZADA
 btnEvaluarIA.addEventListener('click', async () => {
     if (!caracterActual) return;
-
-    // 1. Bloquear botón y mostrar que la IA está pensando
     const textoOriginal = btnEvaluarIA.innerText;
     btnEvaluarIA.innerText = "⏳ Ajustando lente de IA...";
     btnEvaluarIA.disabled = true;
 
     try {
-        // 2. Tomar una "fotografía" usando un LIENZO VIRTUAL
-        // Creamos un lienzo temporal invisible en la memoria
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = canvas.width;
         tempCanvas.height = canvas.height;
         const tempCtx = tempCanvas.getContext('2d');
-
-        // Lo pintamos de blanco sólido para la IA
         tempCtx.fillStyle = '#ffffff';
         tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-
-        // Copiamos tus trazos oscuros justo encima de ese fondo blanco
         tempCtx.drawImage(canvas, 0, 0);
-
-        // Tomamos la foto de este lienzo temporal en lugar del transparente
         const imagenCanvas = tempCanvas.toDataURL("image/png");
 
-        // 3. Crear un "Trabajador" de Tesseract para darle instrucciones
         const worker = await Tesseract.createWorker('jpn');
-        
-        // 4. LA MAGIA DINÁMICA: Elegir el modo correcto según la longitud
-        // Si tiene más de 1 carácter (ej. きゃ), usa PSM 8 (Palabra única)
-        // Si es 1 solo carácter (ej. あ), usa PSM 10 (Carácter único)
         const modoPSM = caracterActual.caracter.length > 1 ? '8' : '10';
-
-        await worker.setParameters({
-            tessedit_pageseg_mode: modoPSM, 
-        });
-
-        // 5. Analizar la imagen con la nueva configuración
+        await worker.setParameters({ tessedit_pageseg_mode: modoPSM });
         const resultado = await worker.recognize(imagenCanvas);
-        await worker.terminate(); // Apagamos el motor para no gastar memoria de tu tableta
+        await worker.terminate();
 
-        // 6. Limpiar el texto que nos devuelve la IA
         const textoDetectado = resultado.data.text.trim();
-        
-        // 7. El Veredicto Final (Con advertencia de exactitud)
         if (textoDetectado.includes(caracterActual.caracter)) {
-            alert(`✅ ¡Excelente!\n\nLa IA leyó correctamente: ${textoDetectado}\n\n(Recuerda que la IA sigue en aprendizaje, pero tu trazo fue lo suficientemente claro).`);
+            alert(`✅ ¡Excelente!\n\nLa IA leyó correctamente: ${textoDetectado}\n\n(La IA está en Beta, pero tu trazo fue lo suficientemente claro).`);
             guardarProgreso('sabe'); 
         } else {
-            alert(`❌ IA Confundida...\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nNo te desanimes, nuestra IA aún está en fase Beta y puede fallar leyendo trazos manuales. Si crees que lo hiciste bien, usa el botón "Ver Respuesta" para auto-evaluarte.`);
+            alert(`❌ IA Confundida...\n\nEsperábamos: ${caracterActual.caracter}\nLa IA detectó: ${textoDetectado || "Nada claro"}\n\nUsa "Ver Respuesta" para auto-evaluarte.`);
         }
     } catch (error) {
-        alert("Hubo un error de conexión con la IA. Intenta de nuevo.");
+        alert("Hubo un error de conexión con la IA.");
         console.error(error);
     } finally {
-        // Restaurar el botón
         btnEvaluarIA.innerText = textoOriginal;
         btnEvaluarIA.disabled = false;
     }
@@ -371,9 +314,6 @@ let indiceModalActual = 0;
 const modalDetalles = document.getElementById('modal-detalles');
 const cerrarModal = document.getElementById('cerrar-modal');
 const modalCaracter = document.getElementById('modal-caracter');
-const modalRomaji = document.getElementById('modal-romaji');
-const modalSignificado = document.getElementById('modal-significado');
-const modalCategoria = document.getElementById('modal-categoria');
 const btnFavorito = document.getElementById('btn-favorito');
 const btnModalPrev = document.getElementById('btn-modal-prev');
 const btnModalNext = document.getElementById('btn-modal-next');
@@ -381,24 +321,11 @@ const contadorModal = document.getElementById('contador-modal');
 const btnToggleTrazos = document.getElementById('btn-toggle-trazos');
 let mostrandoTrazos = false;
 
-const modalFilaContraparte = document.getElementById('modal-fila-contraparte');
-const modalContraparte = document.getElementById('modal-contraparte');
-const modalFilaPalabra = document.getElementById('modal-fila-palabra');
-const modalPalabra = document.getElementById('modal-palabra');
-const modalFilaId = document.getElementById('modal-fila-id');
-const modalId = document.getElementById('modal-id');
-const modalFilaOnyomi = document.getElementById('modal-fila-onyomi');
-const modalOnyomi = document.getElementById('modal-onyomi');
-const modalFilaKunyomi = document.getElementById('modal-fila-kunyomi');
-const modalKunyomi = document.getElementById('modal-kunyomi');
-
 tabPractica.addEventListener('click', () => {
     seccionPractica.classList.remove('oculto');
     seccionEstudio.classList.add('oculto');
     tabPractica.classList.add('activo');
     tabEstudio.classList.remove('activo');
-    
-    // NUEVA LÍNEA: Obliga a la pizarra a leer tus nuevos favoritos y darte un reto fresco al entrar
     presentarDesafio();
 });
 
@@ -412,19 +339,15 @@ tabEstudio.addEventListener('click', () => {
 
 function abrirModal(item, indice) {
     indiceModalActual = indice;
-    
-    // Creamos el papel fresco para el modal
-    dibujarPapel(ctxModal, canvasModal, true);
-    
+    dibujarPaper(ctxModal, canvasModal, true);
     mostrandoTrazos = false;
-    // ... el resto sigue igual
     modalCaracter.classList.remove('fuente-trazos');
     btnToggleTrazos.innerText = "🔢 Orden de Trazos";
 
     modalCaracter.innerText = item.caracter || "?";
-    modalRomaji.innerText = item.romaji || "-";
-    modalSignificado.innerText = item.significado || "-";
-    modalCategoria.innerText = item.categoria || "-";
+    document.getElementById('modal-romaji').innerText = item.romaji || "-";
+    document.getElementById('modal-significado').innerText = item.significado || "-";
+    document.getElementById('modal-categoria').innerText = item.categoria || "-";
     contadorModal.innerText = `${indice + 1} / ${listaFiltradaActual.length}`;
 
     const idUnico = `${item.tipo}_${item.caracter}`;
@@ -438,31 +361,33 @@ function abrirModal(item, indice) {
 
     const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
     if (esKanji) {
-        modalFilaId.style.display = 'block';
-        modalFilaOnyomi.style.display = 'block';
-        modalFilaKunyomi.style.display = 'block';
-        modalId.innerText = item.id_jlpt || "N/A";
-        modalOnyomi.innerText = item.onyomi || "-";
-        modalKunyomi.innerText = item.kunyomi || "-";
-        modalFilaContraparte.style.display = 'none';
-        modalFilaPalabra.style.display = 'none';
+        document.getElementById('modal-fila-id').style.display = 'block';
+        document.getElementById('modal-fila-onyomi').style.display = 'flex';
+        document.getElementById('modal-fila-kunyomi').style.display = 'flex';
+        document.getElementById('modal-fila-contraparte').style.display = 'none';
+        document.getElementById('modal-fila-palabra').style.display = 'none';
+        
+        document.getElementById('modal-id').innerText = item.id_jlpt || "N/A";
+        document.getElementById('modal-onyomi').innerText = item.onyomi || "-";
+        document.getElementById('modal-kunyomi').innerText = item.kunyomi || "-";
     } else {
-        modalFilaContraparte.style.display = 'block';
-        modalFilaPalabra.style.display = 'block';
-        modalContraparte.innerText = item.contraparte || "-";
-        modalPalabra.innerText = item.palabra_ejemplo || "-";
-        modalFilaId.style.display = 'none';
-        modalFilaOnyomi.style.display = 'none';
-        modalFilaKunyomi.style.display = 'none';
+        document.getElementById('modal-fila-id').style.display = 'none';
+        document.getElementById('modal-fila-onyomi').style.display = 'none';
+        document.getElementById('modal-fila-kunyomi').style.display = 'none';
+        document.getElementById('modal-fila-contraparte').style.display = 'block';
+        document.getElementById('modal-fila-palabra').style.display = 'flex';
+        
+        document.getElementById('modal-contraparte').innerText = item.contraparte || "-";
+        document.getElementById('modal-palabra').innerText = item.palabra_ejemplo || "-";
     }
     modalDetalles.classList.remove('oculto');
+    pronunciarJapones(item.caracter); // Auto-lectura al abrir
 }
 
 btnFavorito.addEventListener('click', () => {
     if (listaFiltradaActual.length === 0) return;
     const item = listaFiltradaActual[indiceModalActual];
     const idUnico = `${item.tipo}_${item.caracter}`;
-    
     if (favoritosUsuario[idUnico]) {
         delete favoritosUsuario[idUnico];
         btnFavorito.classList.remove('activo');
@@ -473,11 +398,7 @@ btnFavorito.addEventListener('click', () => {
         btnFavorito.innerText = "⭐";
     }
     localStorage.setItem('favoritos_japones', JSON.stringify(favoritosUsuario));
-    
-    // Si estamos filtrando por importantes, se actualiza la lista del fondo
-    if (filtroNivel.value === 'importantes') {
-        renderizarDiccionario();
-    }
+    if (filtroNivel.value === 'importantes') renderizarDiccionario();
 });
 
 btnModalNext.addEventListener('click', () => {
@@ -487,37 +408,7 @@ btnModalPrev.addEventListener('click', () => {
     if (indiceModalActual > 0) abrirModal(listaFiltradaActual[indiceModalActual - 1], indiceModalActual - 1);
 });
 
-let touchStartX = 0;
-let touchEndX = 0;
-
-modalDetalles.addEventListener('touchstart', e => { 
-    // NUEVO: Si estás tocando el lienzo de dibujo, ignoramos el inicio del swipe
-    if (e.target.id === 'pizarra-modal') return;
-    
-    touchStartX = e.changedTouches[0].screenX; 
-}, {passive: true});
-
-modalDetalles.addEventListener('touchend', e => {
-    // NUEVO: Si terminas el trazo sobre el lienzo de dibujo, ignoramos el final del swipe
-    if (e.target.id === 'pizarra-modal') return;
-
-    touchEndX = e.changedTouches[0].screenX;
-    const umbralSwipe = 50;
-    
-    // Solo cambiamos de tarjeta si el inicio del toque no fue en la pizarra
-    if (touchStartX !== 0) {
-        if (touchEndX < touchStartX - umbralSwipe) btnModalNext.click();
-        if (touchEndX > touchStartX + umbralSwipe) btnModalPrev.click();
-    }
-    
-    // Reseteamos la variable para el siguiente toque
-    touchStartX = 0;
-});
-
 cerrarModal.addEventListener('click', () => modalDetalles.classList.add('oculto'));
-window.addEventListener('click', (e) => {
-    if (e.target === modalDetalles) modalDetalles.classList.add('oculto');
-});
 
 btnToggleTrazos.addEventListener('click', () => {
     mostrandoTrazos = !mostrandoTrazos;
@@ -543,7 +434,6 @@ function renderizarDiccionario() {
         const categoria = (item.categoria || "");
 
         const coincideTexto = texto === "" || romaji.includes(texto) || significadoLimpio.includes(texto);
-        
         let coincideNivel = false;
         if (categoriaSeleccionada === 'todos') coincideNivel = true;
         else if (categoriaSeleccionada === 'hiragana') coincideNivel = tipo === 'hiragana';
@@ -554,7 +444,6 @@ function renderizarDiccionario() {
             coincideNivel = favoritosUsuario[idUnico] === true;
         }
         else coincideNivel = categoria === categoriaSeleccionada;
-
         return coincideTexto && coincideNivel;
     });
 
@@ -581,6 +470,43 @@ buscadorTexto.addEventListener('input', renderizarDiccionario);
 filtroNivel.addEventListener('change', renderizarDiccionario);
 
 // ==========================================
-// ¡ARRANQUE DE LA APLICACIÓN! 
+// SISTEMA MAESTRO DE PRONUNCIACIÓN (TTS)
 // ==========================================
+function pronunciarJapones(texto) {
+    if (!texto || texto === "-" || texto === "?") return;
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); 
+        const enunciado = new SpeechSynthesisUtterance(texto);
+        enunciado.lang = 'ja-JP'; 
+        enunciado.rate = 0.85;
+        window.speechSynthesis.speak(enunciado);
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const id = e.target.id;
+    if (id === 'btn-sonido-practica') {
+        if (caracterActual) pronunciarJapones(caracterActual.caracter);
+    } 
+    else if (id === 'btn-sonido-principal') {
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].caracter);
+    } 
+    else if (id === 'btn-sonido-palabra') {
+        if (listaFiltradaActual[indiceModalActual]) {
+            const palabraLimpia = listaFiltradaActual[indiceModalActual].palabra_ejemplo.split('(')[0].trim();
+            pronunciarJapones(palabraLimpia);
+        }
+    } 
+    else if (id === 'btn-sonido-onyomi') {
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].onyomi);
+    } 
+    else if (id === 'btn-sonido-kunyomi') {
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].kunyomi);
+    }
+});
+
+// Alias por compatibilidad
+function dibujarPaper(cx, cv, m) { dibujarPapel(cx, cv, m); }
+
+// ¡ARRANQUE!
 cargarDatos();
