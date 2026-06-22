@@ -456,3 +456,29 @@ button:active {
 .modal-navegacion button:active {
     background-color: #e2e8f0;
 }
+
+/* =========================================
+   ESTILOS PARA BOTONES DE SONIDO (TTS)
+   ========================================= */
+.btn-sonido {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.1s;
+    border-radius: 50%;
+}
+.btn-sonido-mini {
+    background: #f1f5f9;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.1s;
+}
+.btn-sonido:active, .btn-sonido-mini:active {
+    transform: scale(0.85);
+    background: #e2e8f0;
+}
