@@ -27,9 +27,14 @@
                 <option value="favoritos">⭐ Solo mis Importantes</option>
             </select>
 
-            <div class="tarjeta-pregunta">
+           <div class="tarjeta-pregunta">
                 <span id="info-tipo" class="etiqueta">Cargando...</span>
-                <h1 id="texto-significado">Cargando vocabulario...</h1>
+                
+                <div style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <h1 id="texto-significado" style="margin: 0;">Cargando vocabulario...</h1>
+                    <button id="btn-sonido-practica" class="btn-sonido" title="Escuchar pronunciación">🔊</button>
+                </div>
+                
                 <p id="pista-romaji" class="pista"></p>
             </div>
 
@@ -56,9 +61,16 @@
                     <p id="fila-contraparte"><strong>Contraparte:</strong> <span id="resp-contraparte">-</span></p>
                     <p id="fila-palabra"><strong>Ejemplo:</strong> <span id="resp-palabra">-</span></p>
                     
-                    <p id="fila-id"><strong>Nº Lista:</strong> <span id="resp-id">-</span></p>
-                    <p id="fila-onyomi"><strong>Onyomi:</strong> <span id="resp-onyomi">-</span></p>
-                    <p id="fila-kunyomi"><strong>Kunyomi:</strong> <span id="resp-kunyomi">-</span></p>
+                    <p id="modal-fila-id"><strong>Nº Lista:</strong> <span id="modal-id">-</span></p>
+                    
+                    <div id="modal-fila-onyomi" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <p style="margin: 0;"><strong>Onyomi:</strong> <span id="modal-onyomi">-</span></p>
+                        <button id="btn-sonido-onyomi" class="btn-sonido-mini">🔊</button>
+                    </div>
+                    <div id="modal-fila-kunyomi" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                        <p style="margin: 0;"><strong>Kunyomi:</strong> <span id="modal-kunyomi">-</span></p>
+                        <button id="btn-sonido-kunyomi" class="btn-sonido-mini">🔊</button>
+                    </div>
                 </div>
                 
                 <div class="controles-pizarra" style="margin-top: 15px;">
