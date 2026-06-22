@@ -496,13 +496,14 @@ document.addEventListener('click', (e) => {
     const id = e.target.id;
     
     if (id === 'btn-sonido-practica') {
-        if (caracterActual) pronunciarJapones(caracterActual.caracter);
+        // LA MAGIA: Ahora lee la columna romaji en lugar de enviarle el Kanji a la IA
+        if (caracterActual) pronunciarJapones(caracterActual.romaji);
     } 
     else if (id === 'btn-sonido-principal') {
-        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].caracter);
+        // LA MAGIA: Lee exactamente el texto azul (romaji)
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].romaji);
     } 
     else if (id === 'btn-sonido-palabra') {
-        // Ya no necesitamos limpiarlo aquí, la función maestra lo hace por nosotros
         if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].palabra_ejemplo);
     } 
     else if (id === 'btn-sonido-onyomi') {
