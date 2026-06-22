@@ -510,3 +510,31 @@ function dibujarPaper(cx, cv, m) { dibujarPapel(cx, cv, m); }
 
 // ¡ARRANQUE!
 cargarDatos();
+// ==========================================
+// 5. GESTOS TÁCTILES (SWIPE) Y CIERRE EXTERNO
+// ==========================================
+let touchStartX = 0;
+let touchEndX = 0;
+
+modalDetalles.addEventListener('touchstart', e => { 
+    // Si estás tocando el lienzo para dibujar, ignoramos el swipe
+    if (e.target.id === 'pizarra-modal') return;
+    touchStartX = e.changedTouches[0].screenX; 
+}, {passive: true});
+
+modalDetalles.addEventListener('touchend', e => {
+    if (e.target.id === 'pizarra-modal') return;
+    touchEndX = e.changedTouches[0].screenX;
+    const umbralSwipe = 50;
+    
+    if (touchStartX !== 0) {
+        if (touchEndX < touchStartX - umbralSwipe) btnModalNext.click(); // Deslizar Izquierda
+        if (touchEndX > touchStartX + umbralSwipe) btnModalPrev.click(); // Deslizar Derecha
+    }
+    touchStartX = 0;
+});
+
+// Cerrar el modal si tocas la parte oscura (fuera de la tarjeta)
+window.addEventListener('click', (e) => {
+    if (e.target === modalDetalles) modalDetalles.classList.add('oculto');
+});
