@@ -320,11 +320,14 @@ button:active {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    background-color: rgba(0, 0, 0, 0.6); 
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    
+    /* CORRECCIÓN: Alineamos al inicio (arriba) y permitimos scroll */
+    align-items: flex-start; 
+    overflow-y: auto; 
+    padding: 40px 20px; 
 }
 
 .modal.oculto {
