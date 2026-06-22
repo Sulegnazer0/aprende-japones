@@ -474,17 +474,27 @@ filtroNivel.addEventListener('change', renderizarDiccionario);
 // ==========================================
 function pronunciarJapones(texto) {
     if (!texto || texto === "-" || texto === "?") return;
+    
+    // 🌟 LA NUEVA REGLA MÁGICA (RegEx): Borra todo lo que esté entre paréntesis
+    // Busca "(" seguido de cualquier carácter que no sea ")", seguido de ")" y lo reemplaza por nada.
+    const textoLimpio = texto.replace(/\([^)]*\)/g, '').trim();
+    
+    // Si después de limpiar el texto se quedó vacío, no hacemos nada
+    if (!textoLimpio) return;
+
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel(); 
-        const enunciado = new SpeechSynthesisUtterance(texto);
+        const enunciado = new SpeechSynthesisUtterance(textoLimpio);
         enunciado.lang = 'ja-JP'; 
         enunciado.rate = 0.85;
         window.speechSynthesis.speak(enunciado);
     }
 }
 
+// Escuchamos los clics de los botones de sonido
 document.addEventListener('click', (e) => {
     const id = e.target.id;
+    
     if (id === 'btn-sonido-practica') {
         if (caracterActual) pronunciarJapones(caracterActual.caracter);
     } 
@@ -492,10 +502,8 @@ document.addEventListener('click', (e) => {
         if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].caracter);
     } 
     else if (id === 'btn-sonido-palabra') {
-        if (listaFiltradaActual[indiceModalActual]) {
-            const palabraLimpia = listaFiltradaActual[indiceModalActual].palabra_ejemplo.split('(')[0].trim();
-            pronunciarJapones(palabraLimpia);
-        }
+        // Ya no necesitamos limpiarlo aquí, la función maestra lo hace por nosotros
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].palabra_ejemplo);
     } 
     else if (id === 'btn-sonido-onyomi') {
         if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].onyomi);
@@ -505,7 +513,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Alias por compatibilidad
+// Alias por compatibilidad de funciones anteriores
 function dibujarPaper(cx, cv, m) { dibujarPapel(cx, cv, m); }
 
 // ¡ARRANQUE!
