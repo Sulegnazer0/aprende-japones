@@ -110,16 +110,30 @@
                     <button id="btn-limpiar-modal" class="btn-secundario">🧹 Limpiar Trazo</button>
                 </div>
                 
-                <h3 id="modal-romaji" style="color: #3b82f6; margin-bottom: 10px;">-</h3>
+                <<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <h3 id="modal-romaji" style="color: #3b82f6; margin: 0;">-</h3>
+                    <button id="btn-sonido-principal" class="btn-sonido-mini">🔊</button>
+                </div>
                 <p id="modal-significado" style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #1e293b;">-</p>
 
                 <div class="detalles-grid">
                     <p><strong>Categoría:</strong> <span id="modal-categoria">-</span></p>
-                    <p id="modal-fila-contraparte"><strong>Contraparte:</strong> <span id="modal-contraparte">-</span></p>
-                    <p id="modal-fila-palabra"><strong>Ejemplo:</strong> <span id="modal-palabra">-</span></p>
-                    <p id="modal-fila-id"><strong>Nº Lista:</strong> <span id="modal-id">-</span></p>
-                    <p id="modal-fila-onyomi"><strong>Onyomi:</strong> <span id="modal-onyomi">-</span></p>
-                    <p id="modal-fila-kunyomi"><strong>Kunyomi:</strong> <span id="modal-kunyomi">-</span></p>
+                    
+                    <div id="modal-fila-contraparte"><p style="margin: 0;"><strong>Contraparte:</strong> <span id="modal-contraparte">-</span></p></div>
+                    <div id="modal-fila-palabra" style="display: flex; justify-content: space-between; align-items: center;">
+                        <p style="margin: 0;"><strong>Ejemplo:</strong> <span id="modal-palabra">-</span></p>
+                        <button id="btn-sonido-palabra" class="btn-sonido-mini">🔊</button>
+                    </div>
+
+                    <div id="modal-fila-id"><p style="margin: 0;"><strong>Nº Lista:</strong> <span id="modal-id">-</span></p></div>
+                    <div id="modal-fila-onyomi" style="display: flex; justify-content: space-between; align-items: center;">
+                        <p style="margin: 0;"><strong>Onyomi:</strong> <span id="modal-onyomi">-</span></p>
+                        <button id="btn-sonido-onyomi" class="btn-sonido-mini">🔊</button>
+                    </div>
+                    <div id="modal-fila-kunyomi" style="display: flex; justify-content: space-between; align-items: center;">
+                        <p style="margin: 0;"><strong>Kunyomi:</strong> <span id="modal-kunyomi">-</span></p>
+                        <button id="btn-sonido-kunyomi" class="btn-sonido-mini">🔊</button>
+                    </div>
                 </div>
 
                 <div class="modal-navegacion">
