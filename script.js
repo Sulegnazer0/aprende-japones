@@ -437,20 +437,16 @@ function abrirModal(item, indice) {
     }
 
     const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
+    const esKanji = (item.tipo || "").toLowerCase() === 'kanji';
     if (esKanji) {
         modalFilaId.style.display = 'block';
-        modalFilaOnyomi.style.display = 'block';
-        modalFilaKunyomi.style.display = 'block';
-        modalId.innerText = item.id_jlpt || "N/A";
-        modalOnyomi.innerText = item.onyomi || "-";
-        modalKunyomi.innerText = item.kunyomi || "-";
+        modalFilaOnyomi.style.display = 'flex'; // ¡LA CLAVE! Usar flex en lugar de block
+        modalFilaKunyomi.style.display = 'flex'; // ¡LA CLAVE!
         modalFilaContraparte.style.display = 'none';
         modalFilaPalabra.style.display = 'none';
     } else {
         modalFilaContraparte.style.display = 'block';
-        modalFilaPalabra.style.display = 'block';
-        modalContraparte.innerText = item.contraparte || "-";
-        modalPalabra.innerText = item.palabra_ejemplo || "-";
+        modalFilaPalabra.style.display = 'flex'; // ¡LA CLAVE! Usar flex para la palabra de ejemplo
         modalFilaId.style.display = 'none';
         modalFilaOnyomi.style.display = 'none';
         modalFilaKunyomi.style.display = 'none';
@@ -593,52 +589,71 @@ cargarDatos();
 // ==========================================
 // SISTEMA MAESTRO DE PRONUNCIACIÓN (TTS)
 // ==========================================
-const sintesisVoz = window.speechSynthesis;
-let vozJaponesa = null;
-
-function buscarVozJaponesa() {
-    const voces = sintesisVoz.getVoices();
-    vozJaponesa = voces.find(voz => voz.lang.startsWith('ja')) || voces[0]; 
-}
-
-buscarVozJaponesa();
-if (sintesisVoz.onvoiceschanged !== undefined) {
-    sintesisVoz.onvoiceschanged = buscarVozJaponesa;
-}
-
-// Función maestra que podemos llamar desde cualquier parte
 function pronunciarJapones(texto) {
     if (!texto || texto === "-" || texto === "?") return;
     
-    sintesisVoz.cancel(); // Corta cualquier audio anterior
+    // Verificamos que el dispositivo soporte voz
+    if (!window.speechSynthesis) {
+        alert("Tu navegador no soporta lectura en voz alta.");
+        return;
+    }
+
+    // Cancelamos cualquier audio anterior que se haya quedado trabado
+    window.speechSynthesis.cancel(); 
+    
     const enunciado = new SpeechSynthesisUtterance(texto);
-    
-    if (vozJaponesa) enunciado.voice = vozJaponesa;
-    enunciado.lang = 'ja-JP';
-    enunciado.rate = 0.85; // Velocidad de estudio
-    enunciado.pitch = 1.0;
-    
-    sintesisVoz.speak(enunciado);
+    enunciado.lang = 'ja-JP'; // Forzamos el idioma japonés siempre
+    enunciado.rate = 0.85; 
+
+    // Buscamos la mejor voz disponible en ese momento
+    const voces = window.speechSynthesis.getVoices();
+    const vozJap = voces.find(voz => voz.lang.includes('ja'));
+    if (vozJap) enunciado.voice = vozJap;
+
+    window.speechSynthesis.speak(enunciado);
 }
 
-// Referencias a los nuevos botones
+// Asegurarnos de que las voces se carguen en Android
+window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+
+// Referencias a todos los botones
 const btnSonidoPractica = document.getElementById('btn-sonido-practica');
+const btnSonidoPrincipal = document.getElementById('btn-sonido-principal');
+const btnSonidoPalabra = document.getElementById('btn-sonido-palabra');
 const btnSonidoOnyomi = document.getElementById('btn-sonido-onyomi');
 const btnSonidoKunyomi = document.getElementById('btn-sonido-kunyomi');
 
 // Evento: Botón de la Pizarra de Práctica
-btnSonidoPractica.addEventListener('click', () => {
-    if (caracterActual) pronunciarJapones(caracterActual.caracter);
-});
+if (btnSonidoPractica) {
+    btnSonidoPractica.addEventListener('click', () => {
+        if (caracterActual) pronunciarJapones(caracterActual.caracter);
+    });
+}
 
 // Eventos: Botones dentro del Modal
-btnSonidoOnyomi.addEventListener('click', () => {
-    if (listaFiltradaActual[indiceModalActual]) {
-        pronunciarJapones(listaFiltradaActual[indiceModalActual].onyomi);
-    }
-});
-btnSonidoKunyomi.addEventListener('click', () => {
-    if (listaFiltradaActual[indiceModalActual]) {
-        pronunciarJapones(listaFiltradaActual[indiceModalActual].kunyomi);
-    }
-});
+if (btnSonidoPrincipal) {
+    btnSonidoPrincipal.addEventListener('click', () => {
+        if (listaFiltradaActual[indiceModalActual]) {
+            pronunciarJapones(listaFiltradaActual[indiceModalActual].caracter);
+        }
+    });
+}
+if (btnSonidoPalabra) {
+    btnSonidoPalabra.addEventListener('click', () => {
+        if (listaFiltradaActual[indiceModalActual]) {
+            // Extrae solo la parte japonesa si hay traducción (ej. "Mizu (Agua)" -> "Mizu")
+            const palabra = listaFiltradaActual[indiceModalActual].palabra_ejemplo.split('(')[0].trim();
+            pronunciarJapones(palabra);
+        }
+    });
+}
+if (btnSonidoOnyomi) {
+    btnSonidoOnyomi.addEventListener('click', () => {
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].onyomi);
+    });
+}
+if (btnSonidoKunyomi) {
+    btnSonidoKunyomi.addEventListener('click', () => {
+        if (listaFiltradaActual[indiceModalActual]) pronunciarJapones(listaFiltradaActual[indiceModalActual].kunyomi);
+    });
+}
