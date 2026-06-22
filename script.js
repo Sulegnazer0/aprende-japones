@@ -455,7 +455,12 @@ function abrirModal(item, indice) {
         modalFilaOnyomi.style.display = 'none';
         modalFilaKunyomi.style.display = 'none';
     }
+    // ... tu código existente de abrirModal ...
     modalDetalles.classList.remove('oculto');
+    
+    // NUEVA LÍNEA: Auto-pronunciar al abrir
+    pronunciarJapones(item.caracter);
+}
 }
 
 btnFavorito.addEventListener('click', () => {
@@ -584,3 +589,56 @@ filtroNivel.addEventListener('change', renderizarDiccionario);
 // ¡ARRANQUE DE LA APLICACIÓN! 
 // ==========================================
 cargarDatos();
+
+// ==========================================
+// SISTEMA MAESTRO DE PRONUNCIACIÓN (TTS)
+// ==========================================
+const sintesisVoz = window.speechSynthesis;
+let vozJaponesa = null;
+
+function buscarVozJaponesa() {
+    const voces = sintesisVoz.getVoices();
+    vozJaponesa = voces.find(voz => voz.lang.startsWith('ja')) || voces[0]; 
+}
+
+buscarVozJaponesa();
+if (sintesisVoz.onvoiceschanged !== undefined) {
+    sintesisVoz.onvoiceschanged = buscarVozJaponesa;
+}
+
+// Función maestra que podemos llamar desde cualquier parte
+function pronunciarJapones(texto) {
+    if (!texto || texto === "-" || texto === "?") return;
+    
+    sintesisVoz.cancel(); // Corta cualquier audio anterior
+    const enunciado = new SpeechSynthesisUtterance(texto);
+    
+    if (vozJaponesa) enunciado.voice = vozJaponesa;
+    enunciado.lang = 'ja-JP';
+    enunciado.rate = 0.85; // Velocidad de estudio
+    enunciado.pitch = 1.0;
+    
+    sintesisVoz.speak(enunciado);
+}
+
+// Referencias a los nuevos botones
+const btnSonidoPractica = document.getElementById('btn-sonido-practica');
+const btnSonidoOnyomi = document.getElementById('btn-sonido-onyomi');
+const btnSonidoKunyomi = document.getElementById('btn-sonido-kunyomi');
+
+// Evento: Botón de la Pizarra de Práctica
+btnSonidoPractica.addEventListener('click', () => {
+    if (caracterActual) pronunciarJapones(caracterActual.caracter);
+});
+
+// Eventos: Botones dentro del Modal
+btnSonidoOnyomi.addEventListener('click', () => {
+    if (listaFiltradaActual[indiceModalActual]) {
+        pronunciarJapones(listaFiltradaActual[indiceModalActual].onyomi);
+    }
+});
+btnSonidoKunyomi.addEventListener('click', () => {
+    if (listaFiltradaActual[indiceModalActual]) {
+        pronunciarJapones(listaFiltradaActual[indiceModalActual].kunyomi);
+    }
+});
